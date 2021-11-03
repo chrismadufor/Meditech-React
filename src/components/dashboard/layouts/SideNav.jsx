@@ -11,6 +11,7 @@ function SideNav() {
             <Link to='/dashboard/notifications'>Notifications</Link>
             {/* Check the link below to be sure it redirects to the proper sign-in page */}
             <Link to='/signin'>Log out</Link> 
+            dashboard template!!!!
         </div>
     )
 }
