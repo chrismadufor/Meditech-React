@@ -7,24 +7,27 @@ import Appointments from '../components/dashboard/Appointments'
 import HealthTips from '../components/dashboard/HealthTips'
 import Profile from '../components/dashboard/Profile'
 import Notifications from '../components/dashboard/Notifications'
-// import SignIn from './auth/SignIn'
-// import SignUp from './auth/SignUp'
+import '../components/styles/dashboard-template.css'
+import '../components/styles/appointments.css'
+import '../components/styles/patient-dashboard.css'
 
 function Dashboard() {
     return (
         <Router>
-            <div>
+            <div className='container'>
                 <SideNav />
-                <TopNav />
-                <Switch>
-                    <Route exact path='/dashboard/' component={Home}></Route>
-                    <Route exact path='/dashboard/appointments/' component={Appointments}></Route>
-                    <Route exact path='/dashboard/health-tips/' component={HealthTips}></Route>
-                    <Route exact path='/dashboard/profile/' component={Profile}></Route>
-                    <Route exact path='/dashboard/notifications/' component={Notifications}></Route>
-                    {/* <Route exact path="/signin" component = {SignIn}></Route> */}
-                    {/* <Route exact path="/signup" component = {SignUp}></Route> */}
-                </Switch>
+                <div className='main'>
+                    <TopNav />
+                    <div className='main-content'>
+                        <Switch>
+                            <Route exact path='/dashboard/' component={Home}></Route>
+                            <Route exact path='/dashboard/appointments/' component={Appointments}></Route>
+                            <Route exact path='/dashboard/health-tips/' component={HealthTips}></Route>
+                            <Route exact path='/dashboard/profile/' component={Profile}></Route>
+                            <Route exact path='/dashboard/notifications/' component={Notifications}></Route>
+                        </Switch>
+                    </div>
+                </div>
             </div>
         </Router>
     )
