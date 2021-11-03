@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function SideNav() {
     return (
         <div>
-            <Link to='/dashboard/appointments'>Appointments</Link>
+            <Link to='/dashboard/appointments'><i className='fas fa-search'></i> Appointments</Link>
             <Link to='/dashboard/health-tips'>Health Tips</Link>
             <Link to='/dashboard/profile'>Profile</Link>
             <Link to='/dashboard/notifications'>Notifications</Link>
