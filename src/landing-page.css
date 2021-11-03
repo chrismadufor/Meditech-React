@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'inter';
+}
+
+html{
+  font-size: 10px;
+}
+
+/* HEADER */
+
+.header{
+  height: 80px;
+  width: 100%;
+  background-color: #00A8DB;
+  padding: 0 5%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img {
+  display: block;
+  height: 100%;
+}
+
+.logo{
+  height: auto;
+  width: 20rem;
+}
+
+.btn{
+  padding: 0.7rem 1.8rem;
+  font-size: 1.8rem;
+  color: #00A8DB;
+  background-color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  text-transform: uppercase;
+}
+
+.btn-flex{
+    display: inline-flex;
+}
+
+/* HEADER */
+/* hero */
+
+.hero-background{
+  height: 75vh;
+  max-height: 500px;
+  width: 100%;
+  background-color: #F5FFFD;
+}
+
+.hero{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 5%;
+  align-items: center;
+}
+
+.heroleft {
+  width: 60%;
+}
+.hero > img {
+  width: 40%;
+}
+
+
+.heroleft h1{
+  margin-top: 3rem;
+  font-size: 4.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.heroleft p{
+  font-size: 1.8rem;
+  line-height: 2.5;
+}
+
+.heroleft a button{
+  padding: 1rem 1.5rem;
+  background-color: #00A8DB;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 1.2rem;
+  border-radius: 0.8rem;
+}
+
+.heroleft p {
+  display: flex;
+  align-items: center;
+}
+
+.heroleft p i{
+  margin-right: 10px;
+}
+
+/* hero */
+
+/* quality-system-background */
+
+/* .quality-system-background */
+
+.quality-system{
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.quality-system-header{
+  width: 85%;
+  margin: 0 auto;
+}
+
+.quality-system-header h1{
+  font-size: 4rem;
+  margin: 6rem 0;
+}
+
+.dot{
+  color: #000;
+}
+
+.help{
+  color: #00A8DB;
+}
+
+.quality-system-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quality-system-content img{
+  width: 5.5rem;
+  height: fit-content;
+  margin-bottom: 0.8rem;
+}
+
+.quality-system-content h1{
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.quality-system-content p{
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: #8C9997;
+  font-family: 'Montserrat';
+
+}
+/* quality-system-background */
+
+/* footer */
+
+.footer{
+  background-color: #013D4F;
+  color: #fff;
+}
+
+.footer-icon{
+  font-size: 1.7rem;
+  position: relative;
+  bottom: 0.2rem;
+}
+
+.footer-background{
+  height: inherit;
+  width: 85%;
+  background-color: inherit;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 6rem 0 6rem 0; 
+}
+
+.get-in-touch{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register img{
+  height: auto;
+  width: 18.5rem;
+}
+
+.register .slogan{
+  font-size: 1rem;
+  position: relative;
+  top: -0.4rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-family: 'courgette';
+  opacity: 0.9;
+}
+
+.register .para{
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: 'Montserrat';
+}
+
+.register button{
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: 'inter';
+  background-color: #00A8DB;
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.contact h2{
+  text-transform: uppercase;
+  font-size: 1.9rem;
+  margin-bottom: 1.2rem;
+  margin-left: 4rem;
+}
+
+.contact p{
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-family: 'Montserrat';
+}
+
+.contact p span{
+  margin-right: 0.8rem;
+  position: relative;
+  top: 0.35rem;
+}
+
+.get-in-touch h1{
+  text-transform: uppercase;
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.get-in-touch input{
+  padding: 0.9rem;
+  margin-bottom: 0.7rem;
+  width: 25rem;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  font-family: 'Montserrat';
+}
+
+.get-in-touch a button{
+  padding: 0.9rem;
+  width: 25rem;
+  background-color: #00A8DB;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.footer-text{
+  width: 85%;
+  height: 3rem;
+  background-color: inherit;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text p{
+  font-size: 1.2rem;
+  font-family: 'Montserrat';
+}
+/* footer */
