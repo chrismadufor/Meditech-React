@@ -1,5 +1,4 @@
-import ".././landing-page.css";
-
+import "../components/styles/landing-page.css";
 import React from "react";
 import Nav from "../components/landing page/layout/Nav";
 import Hero from "../components/landing page/layout/Hero";
