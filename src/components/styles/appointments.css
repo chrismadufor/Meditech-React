@@ -1,0 +1,154 @@
+.top-nav i.fa-cog, .top-nav i.fa-bell{
+  color: #00A8DB;
+}
+
+  button.new-appointments{
+    height: 40px;
+    width: 180px;
+    display: flex;
+    background-color: #00a8db;
+    color: aliceblue;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  button.new-appointments img{
+    margin-left: 5px;
+    height: 18px;
+    width: 15px;
+  }
+
+  input.searchPage{
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
+    border:1px solid grey;
+    /* background-image: url('/img/search-icon.png'); */
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 97%;
+    height: 33px;
+    width: 220px;
+  }
+
+  .notification-icons .message-icon img {
+    width: 22px;
+    height: 27px;
+  }
+
+  .main-content .singleRow{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .main-content .singleRow select{
+    width: 10em;
+    font-weight: bold;
+    padding-left: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 32px;
+  }
+
+  .main-content .singleRow label{
+    margin-left: 20px;
+    padding-right: 5px;
+    color: #8C9997;
+    font-weight: bold;
+  }
+
+  table{
+      width: 100%;
+      margin-top: 19px;
+      background-color: #fff;
+      border-collapse: collapse;
+  }
+  table img{
+      width: 40px;
+      height: 40px;
+      display: inline;
+  }
+
+  table thead{
+    background-color: #00DED6;
+    color: #fff;
+    height: 50px;
+    
+  }
+  table thead th {
+    /* padding-left: 50px; */
+  }
+
+  table th:first-child {
+    border-radius: 5px 0 0 0 ;
+    padding-left: 0;
+  }
+
+  table th:last-child {
+    border-radius:0 5px 0 0 ;
+    padding-left: 0;
+  }
+
+  div.tableTag{
+    border-radius: 6px;
+    color:#fff;
+    text-align: center;
+    font-weight: bold;
+    align-self: center;
+    padding-top: 7px;
+    width: 120px;
+    height: 35px;
+  }
+
+  div.tableTag.pending{
+    background-color: #FF7A00;
+  }
+  div.tableTag.completed{
+    background-color: #00BA07;
+  }
+  div.tableTag.cancelled{
+    background-color: #EC0000;
+  }
+
+  table tr td{
+    border-bottom: 1px solid #CCCCCC;
+    padding-left: 50px;
+  }
+ 
+  table .firstCol{
+     display: flex;
+     margin-top: 17px !important;
+     margin-bottom: -1px;
+  }
+  table .firstCol img{
+      margin-right: 20px;
+  }
+
+  .tableControls{
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    box-shadow: 0px 5px 6px #888888;
+    background-color: #fff;
+    margin-bottom: 40px;
+    border-radius: 0 0 15px 15px;
+    transition: all 2.5s ease-in;
+  }
+
+  .tableControls .control-box{
+    cursor: pointer;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: auto 5px;
+    align-items: center;
+  }
+
+  .tableControls .control-box:hover, .tableControls .control-box:active{
+    box-shadow: 2px 2px 3px #888888;
+  }

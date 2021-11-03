@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Raleway:wght@400;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+  /* font-size: 16px; */
+}
+
+
+.patient-info{
+  display: flex;
+  justify-content: space-between;
+  /* margin-left: 20px; */
+}
+.patient{
+  margin-right: 50px ;
+  height: 170px;
+  width: 40%;
+  padding: 6px 10px;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.tableTopRow{
+  display: grid;
+  margin-top: 20px;
+  margin-left: 50px;
+  grid-template-columns: 80% 10%;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.tableTopRow img{
+margin-left: 30px;
+max-width: 6px;
+height: auto;
+}
+
+.tableTopRow select{
+  height: 30px;
+  width: 90px;
+}
+
+.tableComponent {
+  margin: 50px 0;
+  background-color: white;
+}
+
+.patient img{
+  width: 70px;
+  height: 70px;
+  margin: 0 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  margin-left: 20px;
+}
+.patient-name{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.hosed{
+  font-size: 14px;
+  margin-top: 10px;
+
+}
+.patient-greet{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.patient-greet img{
+  width: 50px;
+  height: 50px;
+}
+
+.total-appointment{
+  margin-right: 50px ;
+  text-align: center;
+  height: 170px;
+  width: 30%;
+  padding: 30px ;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.total{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.total img{
+  height: 70px;
+  width: 70px;
+}
+.total p{
+  font-size: 50px;
+  font-weight: bold;
+}
+.fa-hospital{
+  color: #00A8DB;
+}
+.new-appointments{
+  height: 60px;
+  width: 200px;
+  display: flex;
+  background-color: #00a8db;
+  color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.new-appointments img{
+  margin-left: 5px;
+  height: 10px;
+  width: 10px;
+}
+div p{
+  font-weight: bold;
+}
+
+.appointmentDashboard {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 15px;
+  padding: 5px 20px;
+  background-color: white;
+  border-radius: 10px;
+  height: 50vh;
+  flex-direction: column;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.all-app {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: center;
+  padding: 10px;
+}
+td img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+table thead th {
+  padding-left: 50px;
+}
+
+table th:first-child {
+  border-radius: 5px 0 0 0 ;
+  padding-left: 0;
+}
+
+table th:last-child {
+  border-radius:0 5px 0 0 ;
+  padding-left: 0;
+}
+
+.cancelled{
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background-color: red;
+  
+}
+.completed{
+  padding: 5px;
+  background-color: #00ba07;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+
+.view-all {
+  padding: 5px;
+  background-color: #00a8db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 8%;
+}
+
+button.afterTable{
+  background-color: #00A8DB;
+  color: #fff;
+  padding: 7px;
+  width: 100px;
+  height: 35px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin: 20px 0 20px 50px;
+}
+
+.tableControls, .control-box, .tableTopRow {
+  display: none;
+}
+.elipses {
+  width: unset;
+}
