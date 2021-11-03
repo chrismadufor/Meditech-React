@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Poppins", sans-serif;
+  /* font-size: 14px; */
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  border-radius: 5px;
+  border: 0;
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  /* background-color: coral; */
+}
+/* SIDE NAV */
+.side-nav {
+  width: 240px;
+  padding: 0 0 0 20px;
+  height: 100vh;
+  background: linear-gradient(#00e3d5, #00a8db);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  height: 80px;
+  padding: 0 0 0 20px;
+}
+.header img {
+  height: 24px;
+  width: 24px;
+}
+.header h2 {
+  font-size: 20px;
+  color: white;
+  font-family: "Rubik";
+  margin-left: 24px;
+}
+.side-nav-links {
+  margin-top: 10px;
+  /* padding: 0 12px; */
+}
+.side-nav-links li {
+  color: white;
+  padding-left: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 15px 0 0 15px;
+  cursor: pointer;
+  /* width: 200px; */
+}
+.side-nav-links li a {
+  display: flex;
+  align-items: center;
+}
+.side-nav-links span {
+  margin-left: 24px;
+  font-weight: 600;
+}
+.side-nav-links li i {
+  font-size: 20px;
+  width: 20px;
+}
+.side-nav-links li.active {
+  border-radius: 15px 0 0 15px;
+  background-color: white;
+  color: #00a8db;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.side-nav-links li.active:hover {
+  transform: none;
+}
+.side-nav-links li:hover {
+  transform: scale(1.05);
+}
+.log-out {
+  position: absolute;
+  bottom: 50px;
+}
+/* MAIN */
+.main {
+  margin: 80px 0 0 240px;
+  background-color: #f3f3f3;
+  width: 100%;
+}
+/* TOP NAV */
+.top-nav {
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(100, 100, 100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 240px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+.top-nav button {
+  display: flex;
+}
+.page-name {
+  display: flex;
+  align-items: center;
+}
+.page-name p {
+  font-size: 20px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.page-name i {
+  cursor: pointer;
+}
+.search-field {
+  position: relative;
+  margin-right: 20px;
+}
+.search-field input {
+  height: 40px;
+  width: 350px;
+  border: 1px solid rgba(153, 153, 153, 0.432);
+  border-radius: 5px;
+  padding: 0 15px;
+}
+.search-field input:focus {
+  outline: none;
+}
+.search-field i {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+}
+.notification-icons {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.notification-icons i {
+  font-size: 20px;
+  margin: 0 15px;
+}
+.profile-details {
+  display: flex;
+  align-items: center;
+}
+.profile-details img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  margin-left: 20px;
+}
+
+/* END OF TEMPLATE STYLES */
+
+.main-content {
+  margin: 30px 0 0;
+  padding: 0 40px;
+  font-size: 14px;
+}
+.first-section {
+  display: grid;
+  width: 100%;
+  height: 320px;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-gap: 30px;
+}
+.first-section .half {
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* background-color: red; */
+}
+.welcome-admin {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  color: white;
+  background: linear-gradient(-90deg, #00e3d5, #00a8db);
+}
+.welcome-admin h3 {
+  font-size: 30px;
+}
+.misc-block {
+  grid-row: 2;
+  grid-column: 1;
+  padding: 20px 30px;
+}
+.patient-activity-block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.patient-activity-item {
+  width: 25%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #00a8db;
+  color: white;
+  font-weight: bold;
+}
+.number {
+  font-size: 28px;
+}
+.first-section .full {
+  border-radius: 10px;
+  background-color: rgba(238, 238, 238, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 10px 20px;
+}
+.doctors-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+.doctors-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #eee;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.mid {
+  width: 50%;
+}
+.doctors-block-header button {
+  background-color: #00a8db;
+  width: 120px;
+  height: 35px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+.doctors-block-header .view-all {
+  width: 80px;
+  margin-right: 10px;
+}
+.doctors-status button {
+  width: 80px;
+  height: 25px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: rgb(0, 224, 0);
+}
+.warning {
+  background-color: rgb(230, 0, 0);
+}
+.blue {
+  background-color: #00a8db;
+}
+
+/* -------MODAL-------- */
+#modal, #sign-up-successful, #edit-profile-modal, #book-appointment-successful, #add-doctor-successful, #appointment-details  {
+  display: none;
+}
+.modal {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.log-out-wrap {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+.log-out-wrap button {
+  width: 100px;
+  height: 30px;
+  margin: 30px 10px;
+  color: white;
+  cursor: pointer;
+}
+.log-out-wrap p{
+  font-size: 20px;
+}
+.log-out-wrap i {
+  font-size: 70px;
+  color: rgb(0, 224, 0);
+  margin-top: 30px;
+}
+.edit-profile {
+  background-color: #00a8db;
+  color: white;
+  padding: 10px 15px;
+  margin-right: 40px;
+  font-weight: bold;
+}
+.edit-profile i {
+  margin-right: 10px;
+}
+.edit-profile:hover {
+  background-color: transparent;
+  color: #00a8db;
+  border: 1px solid #00a8db;
+  cursor: pointer;
+}
+
+/* Health tips page */
+.tips-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tips-item {
+  width: 22%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.tips-item img {
+  height: 150px;
+  border-radius: 5px 5px 0 0;
+}
+.tips-text {
+  text-align: center;
+  padding: 10px 10px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.tips-text p {
+  height: 40px;
+}
+.tips-item button {
+  background-color: #00a8db;
+  color: white;
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 5px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+
+}
