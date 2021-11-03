@@ -1,0 +1,139 @@
+.App {
+  text-align: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  height: 100vh;
+}
+
+/* body */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d5e8fa;
+  z-index: -20;
+}
+/* body */
+
+/* Card Background */
+
+.background {
+  display: flex;
+  height: 80vh;
+  width: 54%;
+  border-radius: 2rem;
+  box-shadow: 10px 10px 42px -20px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 42px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 42px -20px rgba(0, 0, 0, 0.75);
+}
+
+/* Card Background */
+
+/* The left part one the card with the logo and input */
+
+.left {
+  width: 50%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.card {
+  width: 70%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.remfor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* The left part one the card with the logo and input */
+
+/* The right part one the card with a background iamge */
+
+.right {
+  height: inherit;
+  width: 50%;
+  background-color: #d5e8fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 2rem 2rem 0;
+}
+
+.background-image {
+  height: 40vh;
+  width: 100%;
+}
+
+.background-image img {
+  height: 100%;
+  width: 100%;
+}
+
+/* The right part one the card with a background iamge */
+
+/* the content of the right card*/
+
+.card h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.card p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card p > a {
+  text-decoration: none;
+}
+
+.card input {
+  padding: 1rem;
+  font-size: 1.4rem;
+  border: none;
+  border-bottom: 1px black solid;
+  margin-bottom: 0.4rem;
+  outline: none;
+}
+.signInBtn {
+  padding: 1.2rem;
+  margin-top: 2rem;
+  font-size: 1.7rem;
+  background-color: #00a8db;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
