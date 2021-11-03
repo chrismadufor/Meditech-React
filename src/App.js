@@ -1,4 +1,5 @@
 import './App.css';
+
 import LandingPage from './pages/LandingPage'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SignIn from './pages/auth/SignIn'
