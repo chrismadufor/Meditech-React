@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <React.Fragment>
-      <div className="header">
+      <div className="home-header">
         <div>
           <Link to="./">
             <img className="logo" src={img} alt="logo" />
