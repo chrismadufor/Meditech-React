@@ -1,4 +1,5 @@
 import React from 'react'
+import patient from '../../img/patient.jpg'
 
 function TopNav() {
     return (
@@ -16,8 +17,7 @@ function TopNav() {
                 <i className="fas fa-bell"></i>
               </div>
             </div>
-            {/* <img src="img/patient.jpg" alt="" className="top-img" /> */}
-            <i className='top-img fas fa-user'></i>
+            <img src={patient} alt="" className="top-img" />
           </div>
         </div>
     )

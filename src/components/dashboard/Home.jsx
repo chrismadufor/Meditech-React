@@ -1,4 +1,6 @@
 import React from 'react'
+import sunrise from '../img/sunrise.png'
+import patient from '../img/patient.jpg'
 
 function Home() {
     return (
@@ -8,12 +10,12 @@ function Home() {
 
                 <div className="patient-greet">
                 <p>Good Morning</p> <br />
-                <img src="img/sunrise (1).png" alt="" />
+                <img src={sunrise} alt="" />
                 </div>
                 
 
                 <div className="patient-name">
-                    <img src="img/patient.jpg" alt="" className="patient-img" />
+                    <img src={patient} alt="" className="patient-img" />
 
                 <div className="patient-details">
                     <p className="pat-name">Abiola Odeyemi </p>
