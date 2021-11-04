@@ -1,0 +1,30 @@
+thead {
+  background-color: #00DED6;
+  color: #fff;
+  /* height: 50px; */
+}
+
+table {
+  margin-top: 20px;
+  padding: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+}
+.table-notification{
+  border-bottom: 1px solid rgb(224, 224, 224);
+
+}
+td {
+  padding: 15px;
+}
+
+td i {
+  padding-left: 10px;
+  color: #00a8db;
+}
+.fa-2x {
+  font-size: 18px;
+}

@@ -8,7 +8,7 @@ function SignUp() {
     return (
 
 <div>
-<section className="hero">
+<section className="sign-in-hero">
       <div className="background">
         <div className="left">
           <div className="card">
