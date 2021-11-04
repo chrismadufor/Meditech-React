@@ -14,8 +14,8 @@ function SignIn() {
           <div className="card">
             <h1>Welcome!</h1>
             <p>
-              Don't have an account?
-              <Link to="/signup" >Sign Up Free!</Link>
+              Don't have an account? 
+              <Link to="/signup"  className='goToSignup'>   Sign Up Free!</Link>
             </p>
      <Formik
       initialValues={{ email: '', password: '' }}
@@ -33,7 +33,7 @@ function SignIn() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
+          setSubmitting(true);
         }, 400);
       }}
     >
