@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from 'formik';
 import '../../components/styles/Sign-in.css';
 import Background1 from '../../components/img/background1.png'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 function SignUp() {
     return (
@@ -23,18 +23,29 @@ function SignUp() {
       initialValues={{ email: '', password: '', name: '',  hospitalId:''}}
       validate={values => {
         const errors = {};
+        if(!values.name){
+          errors.name = 'Name Required'
+        }
+
+        if(!values.hospitalId){
+          errors.hospitalId = 'Identification Required'
+        }
+
         if (!values.email) {
-          errors.email = 'Required';
+          errors.email = 'Email Required';
+         
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
         ) {
           errors.email = 'Invalid email address';
         }
         return errors;
+        
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+
+          // alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
         }, 400);
       }}
@@ -59,9 +70,9 @@ function SignUp() {
             className="usenameSignin"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.email}
+            value={values.name}
           />
-          {errors.email && touched.email && errors.email}
+         <div style={{color:"red"}}>  {errors.name && touched.name && errors.name} </div>
 
 
           <input
@@ -75,8 +86,7 @@ function SignUp() {
             onBlur={handleBlur}
             value={values.email}
           />
-          {errors.email && touched.email && errors.email}
-          {/* <p className="usernameErr" style={{color: 'red', textAlign: 'left'}}></p> */}
+          <div style={{color:"red"}}>{errors.email && touched.email && errors.email}</div>
 
 
           <input
@@ -88,9 +98,9 @@ function SignUp() {
             name="hospitalId"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.email}
+            value={values.hospitalId}
           />
-          {errors.email && touched.email && errors.email}
+          <div style={{color:"red"}}>{errors.hospitalId && touched.hospitalId && errors.hospitalId}</div>
 
 
           <input
@@ -104,10 +114,11 @@ function SignUp() {
             onBlur={handleBlur}
             value={values.password}
           />
-          {errors.password && touched.password && errors.password}
-          {/* <p class="passwordErr" style={{color: 'red', textAlign: 'left'}}></p> */}
+          <div style={{color:"red"}}>{errors.password && touched.password && errors.password}</div>
 
-          <button type="submit" className="signInBtn"  onSubmit={isSubmitting}><Link to="/signin">SIGN UP</Link></button>
+         
+            <button type="submit " className="signInBtn"  onSubmit={isSubmitting}> <a href='../components/SignIn'>SIGN UP</a>
+           </button> 
           
         </form>
 
