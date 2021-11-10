@@ -3,16 +3,9 @@ import tip from '../img/tip.jpg'
 import tip1 from '../img/tip1.jpg'
 import tip2 from '../img/tip2.jpg'
 import tip3 from '../img/tip3.jpg'
-import { connect } from "react-redux";
 
-const mapStateToProps = state => ({
-    ...state
-  });
 
-function HealthTips(props) {
-    React.useEffect(() => {
-        console.log(props)
-    }, [])
+function HealthTips() {
     return (
         <div className="tips-wrap">
               <div className="tips-item">
@@ -47,4 +40,4 @@ function HealthTips(props) {
     )
 }
 
-export default connect(mapStateToProps)(HealthTips);
+export default HealthTips;

@@ -1,12 +1,7 @@
 import { createStore } from "redux";
 import rootReducer from "../theStore/rootReducer";
 
-let appState = {
-    bgColor: "black",
-    activeColor: "blue"
-}
 
-function configureStore(state = appState) {
-  return createStore(rootReducer,state);
-}
+let  configureStore =  createStore(rootReducer, 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 export default configureStore;
