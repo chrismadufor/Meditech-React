@@ -38,11 +38,11 @@
 
 .yesorno {
   height: 1.8rem;
-  width: 80%;
+  width: 60%;
   background-color: #00e3d5;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   border-radius: 0.5rem;
   position: relative;
 }
@@ -115,9 +115,9 @@
 }
 
 .no {
-  position: absolute;
-  height: inherit;
-  width: 50%;
+  /* position: absolute; */
+  /* height: inherit; */
+  width: 100%;
   border-radius: 0.5rem;
   top: 0;
   right: 0;
@@ -137,6 +137,50 @@
 
 .errors{
   color:red ;
+}
+
+.not-reg{
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .sign-in-hero {
+    background-color: #d5e8fa;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .left {
+    width: 100%;
+    border-radius: 2rem 0  2rem 0;
+
+  }
+ 
+
+  .background-image{
+    display: none;
+  }
+
+  .right {
+    display: none;
+
+  }
+  .card{
+    width: 100%;
+
+  }
+  .background{
+    width: 80%;
+  }
+  .signInBtn {
+    width: 50%;
+    margin: 10px auto;
+  }
+
+  .sign-in-hero input{
+    margin: 0 20px;
+  }
 }
 
 
