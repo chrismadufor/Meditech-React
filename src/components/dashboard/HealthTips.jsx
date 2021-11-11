@@ -4,6 +4,7 @@ import tip1 from '../img/tip1.jpg'
 import tip2 from '../img/tip2.jpg'
 import tip3 from '../img/tip3.jpg'
 
+
 function HealthTips() {
     return (
         <div className="tips-wrap">
@@ -39,4 +40,4 @@ function HealthTips() {
     )
 }
 
-export default HealthTips
+export default HealthTips;

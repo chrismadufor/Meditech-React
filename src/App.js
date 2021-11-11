@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SignIn from './pages/auth/SignIn'
 import SignUp from './pages/auth/SignUp'
 import Dashboard from './pages/Dashboard'
+// import { Provider } from "react-redux";
+// import configureStore from "store";
 
 function App() {
   return (
