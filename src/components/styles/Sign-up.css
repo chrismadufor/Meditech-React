@@ -143,7 +143,7 @@
   margin-top: 50px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
 
   .sign-in-hero {
     background-color: #d5e8fa;

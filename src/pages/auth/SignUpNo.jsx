@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from 'formik';
 import '../../components/styles/Sign-up.css';
 import Background1 from '../../components/img/background1.png'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 
 function SignUpNo(props) {
@@ -14,21 +14,33 @@ function SignUpNo(props) {
         <div className="left">
           <div className="card">
             <h1>Sign Up Free</h1>
-            <p>Registered with the Hospital?</p>
+            {/* <p>Registered with the Hospital?</p>
             <div className="yesorno">
-              {/* <a className="no" href="./signup-no-page.html"><p>No</p></a> */}
               <Link to="/signup" className="no" ><p>Yes</p></Link>
             </div>
-            <p id="message"></p>
+            <p id="message"></p> */}
             <Formik
-      initialValues={{ email: '', password: '', name: ''}}
+      initialValues={{ email: '', name: '',  password: '', confirmPassword:''}}
       validate={values => {
         const errors = {};
+
         if(!values.name){
           errors.name = 'Name Required'
         }
 
-       
+        if(!values.password){
+          errors.password = 'Password Required'
+        }
+
+        if(!values.confirmPassword){
+          errors.confirmPassword = 'Please Confirm your password'
+        }
+
+       if(values.password !== values.confirmPassword){
+        errors.confirmPassword = 'Password does not match'
+
+
+       }
 
         if (!values.email) {
           errors.email = 'Email Required';
@@ -101,9 +113,21 @@ function SignUpNo(props) {
           />
           <div style={{color:"red"}}>{errors.password && touched.password && errors.password}</div>
 
+          <input
+            id="password"
+            className="passwordSignin"
+            placeholder="Confirm Password"
+            type="password"
+            name="confirmPassword"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.confirmPassword}
+          />
+
+          <div style={{color:"red"}}>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</div>
+
           
-            <button type="submit " className="signInBtn"  disabled={isSubmitting}> SIGN UP
-           </button> 
+          <button type="submit " className="signInBtn"  disabled={isSubmitting}> SIGN UP </button> 
           
         </form>
 

@@ -32,6 +32,11 @@ function SignIn(props) {
                 ) {
                   errors.email = 'Invalid email address';
                 }
+
+                if (!values.password) {
+                  errors.password = 'Password Required';
+                } 
+
                 return errors;
               }}
               onSubmit={(values, { setSubmitting }) => {
@@ -80,7 +85,10 @@ function SignIn(props) {
                     onBlur={handleBlur}
                     value={values.password}
                   />
+
+                  <div style={{color:"red"}}> 
                   {errors.password && touched.password && errors.password}
+                  </div>
                    
                   <button type="submit" className="signInBtn" disabled={isSubmitting}   >SIGN IN</button>
                 

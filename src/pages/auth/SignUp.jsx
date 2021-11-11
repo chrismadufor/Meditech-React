@@ -65,7 +65,7 @@ function SignUp(props) {
           <div style={{color:"red"}}>{errors.patientId && touched.patientId && errors.patientId}</div>          
             <button type="submit " className="signInBtn"  disabled={isSubmitting}> CONFIRM</button> 
           
-           <p className='not-reg'>Not registered with the Hospital? 
+           <p className='not-reg'>Not registered with the Hospital? <br/>
            <Link to="/signupno" style={{  color: '#0ab1e4'}} > Sign up here </Link>
            
            </p>
