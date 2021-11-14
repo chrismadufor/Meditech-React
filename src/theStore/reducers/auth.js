@@ -3,11 +3,11 @@ import { UPDATE_USER_DETAILS } from '../constants'
 const INITIAL_STATE = {
   userDetails: {
     idUser: 0,
-    fullName: '',
-    email: '',
-    address: '',
+    fullName: 'Chris',
+    email: 'name@email.com',
+    address: 'address',
     gender: '',
-    enrollmentId: '',
+    enrollmentId: '1234',
     dateOfBirth: '',
     profilePhoto: '',
     userType: ''

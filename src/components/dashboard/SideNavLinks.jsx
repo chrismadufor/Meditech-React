@@ -1,43 +1,43 @@
 export const patientSideNavLinks = [
     {
         title: "Dashboard",
-        url: "/dashboard/",
+        url: "/dashboard",
         icon: "fas fa-home",
-        extraClass: "active"
+        extraClass: ""
     },
     {
         title: "Appointments",
-        url: "/dashboard/appointments",
+        url: "/appointments",
         icon: "fas fa-list",
         extraClass: ""
     },
     {
         title: "Health Tips",
-        url: "/dashboard/health-tips",
+        url: "/health-tips",
         icon: "fas fa-heartbeat",
         extraClass: ""
     },
     {
         title: "Profile",
-        url: "/dashboard/profile",
+        url: "/profile",
         icon: "fas fa-user",
         extraClass: ""
     },
     // {
     //     title: "Payments",
-    //     url: "/dashboard/payments",
+    //     url: "/payments",
     //     icon: "",
     //     extraClass: ""
     // },
     {
         title: "Notifications",
-        url: "/dashboard/notifications",
+        url: "/notifications",
         icon: "fas fa-bell",
         extraClass: ""
     },
     {
         title: "Settings",
-        url: "/dashboard/settings",
+        url: "/settings",
         icon: "fas fa-cogs",
         extraClass: ""
     },
@@ -45,6 +45,6 @@ export const patientSideNavLinks = [
         title: "Logout",
         url: "/signin",
         icon: "fas fa-sign-out",
-        extraClass: "log-out"
+        extraClass: "logOut"
     },
 ]
