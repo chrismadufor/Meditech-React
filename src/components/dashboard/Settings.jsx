@@ -1,39 +1,43 @@
 import React from 'react'
+import TopNav from './layouts/TopNav'
 
 function Settings() {
     return (
-        <div>
-            <table>
+      <div className='main'>
+        <TopNav name= 'Settings'/>
+        <div className='main-content'>
+          <table>
          
          <tbody>
-           <tr class="table-settings">
-             <td><i class="fas fa-bell "></i></td>
+           <tr className="table-settings">
+             <td><i className="fas fa-bell "></i></td>
              <td><p> <a href="#"> Enable Push Notification</a></p></td>
              <td>
-               <label class="switch">
-               <input type="checkbox" checked />
-               <span class="slider round"></span>
+               <label className="switch">
+               <input type="checkbox" />
+               <span className="slider round"></span>
              </label>
            </td>
            </tr>
-           <tr class="table-settings">
-             <td> <i class="fas fa-cog "></i></td>
+           <tr className="table-settings">
+             <td> <i className="fas fa-cog "></i></td>
              <td><p><a href="#"> Themes</a></p></td>
            </tr>
-           <tr class="table-settings">
-             <td><i class="fas fa-user"></i></td>
+           <tr className="table-settings">
+             <td><i className="fas fa-user"></i></td>
              <td><p><a href="#"> Update Profile</a></p></td>
            </tr>
-           <tr class="table-settings">
-             <td><i class="fas fa-key "></i></td>
+           <tr className="table-settings">
+             <td><i className="fas fa-key "></i></td>
              <td><p><a href="#">Change Password</a></p></td>
            </tr>
            
           
            
          </tbody>
-       </table>
+          </table>
         </div>
+      </div>
     )
 }
 
