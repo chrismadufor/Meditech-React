@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from 'formik';
-import '../../components/styles/Sign-up.css';
+import SignUpCss from '../../components/styles/Sign-in.module.css'
 import Background1 from '../../components/img/background1.png'
 // import {Link} from 'react-router-dom'
 
@@ -9,10 +9,10 @@ function SignUpNo(props) {
     return (
 
 <div>
-<section className="sign-in-hero">
-      <div className="background">
-        <div className="left">
-          <div className="card">
+<section className={SignUpCss.signInHero}>
+      <div className= {SignUpCss.background}>
+        <div className={SignUpCss.left}>
+          <div className={SignUpCss.card}>
             <h1>Sign Up Free</h1>
             {/* <p>Registered with the Hospital?</p>
             <div className="yesorno">
@@ -127,7 +127,7 @@ function SignUpNo(props) {
           <div style={{color:"red"}}>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</div>
 
           
-          <button type="submit " className="signInBtn"  disabled={isSubmitting}> SIGN UP </button> 
+          <button type="submit " className={SignUpCss.signInBtn}  disabled={isSubmitting}> SIGN UP </button> 
           
         </form>
 
@@ -138,8 +138,8 @@ function SignUpNo(props) {
 
           </div>
         </div>
-        <div className="right">
-          <div className="background-image">
+        <div className={SignUpCss.right}>
+          <div className={SignUpCss.backgroundImage}>
             <img src={Background1} alt="background" />
           </div>
         </div>

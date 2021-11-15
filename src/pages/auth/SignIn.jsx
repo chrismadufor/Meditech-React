@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import '../../components/styles/Sign-in.css'
+import SignInCss from '../../components/styles/Sign-in.module.css'
 import Background from '../../components/img/background.png'
 import { Link } from 'react-router-dom'
 
@@ -11,14 +11,14 @@ function SignIn(props) {
     return (
 
 <div>
-    <section className="sign-in-hero">
-      <div className="background">
-        <div className="left">
-          <div className="card">
+    <section className= {SignInCss.signInHero}>
+      <div className={SignInCss.background}>
+        <div className={SignInCss.left}>
+          <div className={SignInCss.card}>
             <h1>Welcome!</h1>
             <p>
               Don't have an account? 
-              <Link to="/signup"  className='goToSignup'>   Sign Up Free!</Link>
+              <Link to="/signup"  className={SignInCss.goToSignup}>   Sign Up Free!</Link>
             </p>
      
             <Formik 
@@ -90,7 +90,7 @@ function SignIn(props) {
                   {errors.password && touched.password && errors.password}
                   </div>
                    
-                  <button type="submit" className="signInBtn" disabled={isSubmitting}   >SIGN IN</button>
+                  <button type="submit" className={SignInCss.signInBtn} disabled={isSubmitting}   >SIGN IN</button>
                 
                   
                 </form>
@@ -101,8 +101,8 @@ function SignIn(props) {
           </div>
         </div>
 
-        <div className="right">
-          <div className="background-image">
+        <div className={SignInCss.right}>
+          <div className={SignInCss.backgroundImage}>
             <img src={Background} alt="background" />
           </div>
         </div>
@@ -114,4 +114,4 @@ function SignIn(props) {
     )
 }
 
-export default SignIn
+export default SignIn;
