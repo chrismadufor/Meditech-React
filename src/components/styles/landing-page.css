@@ -1,24 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'inter';
+  font-family: "inter";
 }
 
-html{
+html {
   font-size: 10px;
 }
 
 /* HEADER */
 
-.home-header{
-  height: 80px;
+.bg-mybg {
+  background-color: #00a8db;
+  min-height: 80px;
   width: 100%;
-  background-color: #00A8DB;
+  padding: 0 5%;
+  margin: 0 auto;
+}
+
+/* .pos{
+ width: 100%;
+} */
+
+.styl {
+  padding: 0.7rem 1.8rem;
+  font-size: 1.8rem;
+  color: #00a8db;
+  background-color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  float: right;
+  text-transform: uppercase;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+
+
+/* .home-header {
+  width: 100%;
   padding: 0 5%;
   margin: 0 auto;
   display: flex;
@@ -31,15 +59,26 @@ img {
   height: 100%;
 }
 
-.logo{
+.logo {
   height: auto;
   width: 20rem;
 }
 
-.btn{
+.hamburger {
+  height: 3px;
+  width: 35px;
+  background-color: #fff;
+  margin-top: 7px;
+}
+
+.hamburger-main {
+  display: none;
+}
+
+.btn {
   padding: 0.7rem 1.8rem;
   font-size: 1.8rem;
-  color: #00A8DB;
+  color: #00a8db;
   background-color: #fff;
   border: none;
   border-radius: 0.5rem;
@@ -47,21 +86,22 @@ img {
   text-transform: uppercase;
 }
 
-.btn-flex{
-    display: inline-flex;
-}
+.btn-flex {
+  display: inline-flex;
+} */
 
 /* HEADER */
 /* hero */
 
-.hero-background{
+.hero-background {
   height: 75vh;
   max-height: 500px;
   width: 100%;
-  background-color: #F5FFFD;
+  background-color: #f5fffd;
+  z-index: -1000000000;
 }
 
-.hero{
+.hero {
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -76,21 +116,20 @@ img {
   width: 40%;
 }
 
-
-.heroleft h1{
+.heroleft h1 {
   margin-top: 3rem;
   font-size: 4.8rem;
   margin-bottom: 1.2rem;
 }
 
-.heroleft p{
+.heroleft p {
   font-size: 1.8rem;
   line-height: 2.5;
 }
 
-.heroleft a button{
+.heroleft a button {
   padding: 1rem 1.5rem;
-  background-color: #00A8DB;
+  background-color: #00a8db;
   border: none;
   font-size: 2rem;
   color: #fff;
@@ -104,7 +143,7 @@ img {
   align-items: center;
 }
 
-.heroleft p i{
+.heroleft p i {
   margin-right: 10px;
 }
 
@@ -114,167 +153,172 @@ img {
 
 /* .quality-system-background */
 
-.quality-system{
+.quality-system {
   width: 85%;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
+  min-height: 30rem;
 }
 
-.quality-system-header{
+.quality-system-header {
   width: 85%;
   margin: 0 auto;
 }
 
-.quality-system-header h1{
+.quality-system-header h1 {
   font-size: 4rem;
   margin: 6rem 0;
 }
 
-.dot{
+.dot {
   color: #000;
 }
 
-.help{
-  color: #00A8DB;
+.help {
+  color: #00a8db;
 }
 
-.quality-system-content{
+.quality-system-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 33.3%;
+  margin-bottom: 2.5rem;
 }
 
-.quality-system-content img{
+.quality-system-content img {
   width: 5.5rem;
   height: fit-content;
   margin-bottom: 0.8rem;
 }
 
-.quality-system-content h1{
+.quality-system-content h1 {
   font-size: 2rem;
   line-height: 1.5;
+  text-align: center;
 }
 
-.quality-system-content p{
+.quality-system-content p {
   font-size: 1.4rem;
   line-height: 1.4;
-  color: #8C9997;
-  font-family: 'Montserrat';
-
+  color: #8c9997;
+  font-family: "Montserrat";
+  text-align: center;
 }
 /* quality-system-background */
 
 /* footer */
 
-.footer{
-  background-color: #013D4F;
+.footer {
+  background-color: #013d4f;
   color: #fff;
 }
 
-.footer-icon{
+.footer-icon {
   font-size: 1.7rem;
   position: relative;
   bottom: 0.2rem;
 }
 
-.footer-background{
+.footer-background {
   height: inherit;
   width: 85%;
   background-color: inherit;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 6rem 0 6rem 0; 
+  padding: 6rem 0 6rem 0;
 }
 
-.get-in-touch{
+.get-in-touch {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.register img{
+.register img {
   height: auto;
   width: 18.5rem;
 }
 
-.register .slogan{
+.register .slogan {
   font-size: 1rem;
   position: relative;
   top: -0.4rem;
   font-style: italic;
   margin-bottom: 1rem;
-  font-family: 'courgette';
+  font-family: "courgette";
   opacity: 0.9;
 }
 
-.register .para{
+.register .para {
   font-size: 1.1rem;
   line-height: 1.5;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
-.register button{
+.register button {
   margin-top: 1rem;
   padding: 0.6rem 1rem;
   text-transform: uppercase;
   color: #fff;
-  font-family: 'inter';
-  background-color: #00A8DB;
+  font-family: "inter";
+  background-color: #00a8db;
   border: none;
   border-radius: 0.7rem;
   font-size: 1.2rem;
 }
 
-.contact h2{
+.contact h2 {
   text-transform: uppercase;
   font-size: 1.9rem;
   margin-bottom: 1.2rem;
   margin-left: 4rem;
 }
 
-.contact p{
+.contact p {
   margin-bottom: 0.8rem;
   letter-spacing: 0.1rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
-.contact p span{
+.contact p span {
   margin-right: 0.8rem;
   position: relative;
   top: 0.35rem;
 }
 
-.get-in-touch h1{
+.get-in-touch h1 {
   text-transform: uppercase;
   font-size: 1.9rem;
   margin-bottom: 1.5rem;
 }
 
-.get-in-touch input{
+.get-in-touch input {
   padding: 0.9rem;
   margin-bottom: 0.7rem;
   width: 25rem;
   border: none;
   outline: none;
   font-size: 1.2rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
-.get-in-touch a button{
+.get-in-touch a button {
   padding: 0.9rem;
   width: 25rem;
-  background-color: #00A8DB;
+  background-color: #00a8db;
   border: none;
   color: #fff;
   text-transform: uppercase;
 }
 
-.footer-text{
+.footer-text {
   width: 85%;
   height: 3rem;
   background-color: inherit;
@@ -284,8 +328,109 @@ img {
   justify-content: center;
 }
 
-.footer-text p{
+.footer-text p {
   font-size: 1.2rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 /* footer */
+
+/* ======================================== */
+
+@media screen and (max-width: 780px) {
+  .logo {
+    height: auto;
+    width: 18rem;
+  }
+  .styl {
+    font-size: 1.6rem;
+  }
+
+  .quality-system-header h1 {
+    font-size: 2.5rem;
+    margin: 4rem 0;
+  }
+
+  .quality-system-content {
+    width: 47%;
+    margin-bottom: 2rem;
+  }
+
+  .quality-system-content img {
+    width: 5rem;
+    height: fit-content;
+    margin-bottom: 0.8rem;
+  }
+
+  .quality-system-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .quality-system-content p {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .footer-background {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+  .get-in-touch {
+    margin-top: 4rem;
+  }
+  .contact {
+    margin-top: 4rem;
+  }
+  .heroleft h1 {
+    font-size: 3.2rem;
+  }
+  .heroleft p {
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+  .heroleft a button {
+    transform: scale(0.8);
+    position: relative;
+    right: 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .quality-system-header h1 {
+    margin: 3rem 0;
+  }
+
+  .quality-system-content {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .quality-system-content img {
+    width: 5.5rem;
+    height: fit-content;
+    margin-bottom: 0.8rem;
+  }
+  
+  .heroleft h1 {
+    font-size: 3.2rem;
+  }
+  .hero > img {
+    display: none;
+  }
+  .hero-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url(../../img/heroimage.png) no-repeat center / cover;
+    /* color: #00a8db; */
+  }
+  .hero {
+    display: block;
+  }
+  .heroleft {
+    width: 100%;
+    color: rgb(209, 205, 205);
+    padding: 1rem;
+  }
+}
