@@ -4,10 +4,6 @@ import { NavLink } from 'react-router-dom'
 import { patientSideNavLinks } from '../SideNavLinks'
 import SideNavCSS from "../../styles/SideNav.module.css"
 
-function activeLink () {
-    
-}
-
 
 function SideNav() {
     const [active, setActive] = useState(false)
@@ -53,5 +49,5 @@ function SideNav() {
 }
 
 
-activeLink()
 export default SideNav
+
