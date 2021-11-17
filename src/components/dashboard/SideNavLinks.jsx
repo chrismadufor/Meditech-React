@@ -48,3 +48,9 @@ export const patientSideNavLinks = [
         extraClass: "logOut"
     },
 ]
+
+const SideNavLinks = {
+    patientSideNavLinks: [],
+    doctorSideNavLinks: [],
+    adminSideNavLinks: []
+}
