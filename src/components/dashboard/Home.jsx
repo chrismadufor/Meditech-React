@@ -1,9 +1,19 @@
 import React from 'react'
+import { useState } from 'react'
 import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
+import { useSelector } from "react-redux";
 
 function Home() {
+    const dummyData = useSelector((state) => state.dashboardReducer.appointments);
+        let renderTableRows = () => {
+            return dummyData.map(item =>
+                <tr>
+                    <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
+                </tr>
+            );
+          }
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
@@ -70,7 +80,9 @@ function Home() {
                         </tr>
                     </thead>
                     <tbody id="table-body-ad">
-                    
+                    {
+                        renderTableRows()
+                    }
                     </tbody>
                     </table>
                     <div className="tableControls">
