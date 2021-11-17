@@ -23,12 +23,12 @@ export const patientSideNavLinks = [
         icon: "fas fa-user",
         extraClass: ""
     },
-    // {
-    //     title: "Payments",
-    //     url: "/payments",
-    //     icon: "",
-    //     extraClass: ""
-    // },
+    {
+        title: "Payments",
+        url: "/payments",
+        icon: "fas fa-search",
+        extraClass: ""
+    },
     {
         title: "Notifications",
         url: "/notifications",
