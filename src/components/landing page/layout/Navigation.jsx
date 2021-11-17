@@ -15,16 +15,16 @@ const Navigation = () => {
 
         
         <Navbar.Brand className="mgn">
-          <img className="logo" src={img} />
+          <img className="logo" src={img} alt='' />
         </Navbar.Brand>
 
         <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav>
-              <Nav.Link href="#">
+              <Nav.Link href="/signin">
                 <button className="styl">Sign in</button>
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/signup">
                 <button className="styl">Get Started</button>
               </Nav.Link>
             </Nav>
