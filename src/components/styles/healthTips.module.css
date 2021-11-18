@@ -1,0 +1,35 @@
+.tipsWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tipsItem {
+    width: 22%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+.tipsItem img {
+    height: 150px;
+    border-radius: 5px 5px 0 0;
+}
+.tipsText {
+    text-align: center;
+    padding: 10px 10px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.tipsText p {
+height: 40px;
+}
+.tipsItem button {
+background-color: #00a8db;
+color: white;
+display: block;
+width: 100px;
+margin: 0 auto;
+padding: 5px 15px;
+font-weight: bold;
+text-transform: uppercase;
+margin-top: 10px;
+
+}

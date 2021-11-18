@@ -1,0 +1,97 @@
+.topNav {
+    height: 75px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(100, 100, 100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+  } 
+  .topNav button {
+    display: flex;
+  }
+  .pageName {
+    display: flex;
+    align-items: center;
+  }
+  .pageName p {
+    font-size: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+  }
+  .pageName i {
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+  }
+  .searchField {
+    position: relative;
+    margin-right: 20px;
+  }
+  .searchField input {
+    height: 40px;
+    width: 350px;
+    border: 1px solid rgba(153, 153, 153, 0.432);
+    border-radius: 5px;
+    padding: 0 15px;
+  }
+  .searchField input:focus {
+    outline: none;
+  }
+  .searchField i {
+    position: absolute;
+    top: 13px;
+    right: 20px;
+  }
+  .notificationIcons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .notificationIcons i {
+    font-size: 20px;
+    margin: 0 10px;
+  }
+  .profileDetails {
+    display: flex;
+    align-items: center;
+  }
+  .profileDetails img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  @media (max-width:1150px) {
+    .topNav {
+      width: 100%;
+    }
+  }
+  @media (max-width:760px) {
+    .topNav {
+      width: 100%;
+      padding: 0 5%;
+      height: 70px;
+    }
+    .pageName p {
+      font-size: 20px;
+      margin-left: 30px;
+      margin-bottom: 3px;
+    }
+    .profileDetails img {
+      width: 30px;
+      height: 30px;
+    }
+    .notificationIcons i {
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  }
