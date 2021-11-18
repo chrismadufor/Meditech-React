@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import SignUpCss from '../../components/styles/Sign-in.module.css'
 import Background1 from '../../components/img/background1.png'
 // import {Link} from 'react-router-dom'
-import {Link, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 
 
 
