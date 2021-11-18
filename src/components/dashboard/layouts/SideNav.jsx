@@ -4,10 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { patientSideNavLinks } from '../SideNavLinks'
 import SideNavCSS from "../../styles/SideNav.module.css"
 
-function activeLink () {
-    
-}
-
+// const {patientSideNavLinks} = SideNavLinks
 
 function SideNav() {
     const [active, setActive] = useState(false)
@@ -47,11 +44,16 @@ function SideNav() {
                         </li>
                     ))
                 }
+                {/* <li className= {SideNavCSS.logOut}>
+                    <i className='fas fa-sign-out'></i>
+                    <span>Logout</span>
+                    <p className={SideNavCSS.toolTip}>Logout</p>
+                </li> */}
             </ul>          
         </div>
     )
 }
 
 
-activeLink()
 export default SideNav
+

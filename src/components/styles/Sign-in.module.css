@@ -16,7 +16,7 @@ body {
 
 /* body */
 
-.sign-in-hero {
+.signInHero {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -83,12 +83,12 @@ body {
   border-radius: 0 2rem 2rem 0;
 }
 
-.background-image {
+.backgroundImage {
   height: 40vh;
   width: 100%;
 }
 
-.background-image img {
+.backgroundImage img {
   height: 100%;
   width: 100%;
 }
@@ -121,7 +121,7 @@ body {
 }
 .signInBtn {
   padding: 1.2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
   font-size: 1.7rem;
   background-color: #00a8db;
   border: none;
@@ -137,19 +137,19 @@ body {
 
 @media only screen and (max-width: 600px ) {
 
-  .sign-in-hero {
+  .signInHero {
     background-color: #d5e8fa;
     background-size: cover;
     background-repeat: no-repeat;
   }
-
+  
   .left {
     width: 100%;
     border-radius: 2rem 0  2rem 0;
   }
  
 
-  .background-image{
+  .backgroundImage{
     display: none;
   }
 
@@ -169,7 +169,7 @@ body {
     margin: 10px auto;
   }
 
-  .sign-in-hero input{
+  .signInHero input{
     margin: 0 20px;
   }
 

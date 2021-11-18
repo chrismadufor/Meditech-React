@@ -36,8 +36,6 @@ const Quality = () => {
             <p>your time to. No need to wait on</p>
             <p>queues at the hospital.</p>
           </div>
-        </div>
-        <div className="quality-system">
           <div className="quality-system-content">
             <img src={img3} alt="qualitySystem" />
             <h1>Pay securely online</h1>
