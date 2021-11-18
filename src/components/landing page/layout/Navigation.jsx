@@ -1,7 +1,8 @@
- import React from "react";
+import React from "react";
 import img from "../../../img/Logo.png";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 
 const Navigation = () => {
   return (
@@ -21,12 +22,12 @@ const Navigation = () => {
         <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav>
-              <Nav.Link href="/signin">
+              <Link to="/signin">
                 <button className="styl">Sign in</button>
-              </Nav.Link>
-              <Nav.Link href="/signup">
+              </Link>
+              <Link to="/signup">
                 <button className="styl">Get Started</button>
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
       </Navbar>
