@@ -24,38 +24,38 @@ function Profile() {
                       <p className={Profilecss.profileHosID}></p>
                     </div>
                   </div>
-                  <div className="wide">
-                    <div className="info-item">
-                      <p className="info-item-title patient-email">Email</p>
-                      <p className="profileEmail"></p>
+                  <div className={Profilecss.wide}>
+                    <div className={Profilecss.infoItem}>
+                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientEmail}`}>Email</p>
+                      <p className={Profilecss.profileEmail}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-phone">Phone Number</p>
-                      <p className="profilePhone"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientPhone}`}>Phone Number</p>
+                      <p className={Profilecss.profilePhone}></p>
                     </div>
                   </div>
                 </div>
                 <hr />
                 <h2>Other Information</h2>
-                <div className="other-info flex">
+                <div className={`${Profilecss.otherInfo}, ${Profilecss.flex}`}>
                   <div>
-                    <div className="info-item">
-                      <p className="info-item-title">Date of birth</p>
-                      <p className="profileDOB"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Date of birth</p>
+                      <p className={Profilecss.profileDOB}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title">City</p>
-                      <p className="profileCity"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>City</p>
+                      <p className={Profilecss.profileCity}></p>
                     </div>
                   </div>
                   <div className="wide">
-                    <div className="info-item">
-                      <p className="info-item-title">Nationality</p>
-                      <p className="profileNation"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Nationality</p>
+                      <p className={Profilecss.profileNation}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title">Address</p>
-                      <p className="profileAdd">
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Address</p>
+                      <p className={Profilecss.profileAdd}>
                         
                       </p>
                     </div>
