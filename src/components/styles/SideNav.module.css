@@ -1,174 +1,198 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Poppins", sans-serif;
+  /* font-size: 14px; */
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .sideNav {
-    width: 240px;
-    padding: 0 0 0 10px;
-    height: 100vh;
-    min-height: 600px;
-    background: linear-gradient(#00e3d5, #00a8db);
-    display: flex;
-    flex-direction: column;
-    z-index: 50;
-    /* transition: 0.3s; */
+  width: 240px;
+  padding: 0 0 0 10px;
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(#00e3d5, #00a8db);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  /* transition: 0.3s; */
+}
+.sideNav.active {
+  width: 75px;
+}
+.sideNav.active .sideNavLinks span, .sideNav.active .header h2 {
+  display: none;
+}
+.toolTip {
+  position: absolute;
+  background-color: white;
+  color: #00a8db;
+  top: -15px;
+  margin-left: 15px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s;
+  width: 100px;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
+  z-index: 100;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px #cccccc;
+}
+.header {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  padding: 0 0 0 15px;
+  position: relative;
+}
+.header img {
+  height: 25px;
+  width: 25px;
+}
+.sideNavToggle {
+  display: block;
+  position: absolute;
+  font-size: 16px;
+  top: 50%;
+  right: -40px;
+  color: #707070;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.header h2 {
+  font-size: 20px;
+  color: white;
+  font-family: "Rubik";
+  margin-left: 25px;
+}
+.sideNavLinks {
+  margin-top: 10px;
+  position: relative;
+  height: calc(100vh - 70px);
+  min-height: 450px;
+  padding: 0;
+  list-style: none;
+}
+.sideNavLinks li {
+  color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 15px 0 0 15px;
+  width: 100%;
+  /* cursor: pointer; */
+}
+.sideNavLinks li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 0 15px 15px;
+  border-radius: 15px 0 0 15px;
+  transition: background-color 0.5s;
+}
+.sideLinkItem {
+  position: relative;
+}
+.sideNavLinks span {
+  font-weight: 600;
+  min-width: 165px;
+  width: 100%;
+  opacity: 1;
+}
+.sideNavLinks li i {
+  font-size: 20px;
+  width: 25px;
+  margin-right: 25px;
+}
+.activeNavLink{
+  border-radius: 15px 0 0 15px;
+  background-color: white;
+  color: #00a8db;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.sideNavLinks li a:hover {
+  background-color: #003d5017;
+}
+.sideNavLinks li a.activeNavLink:hover {
+  background-color: white;
+  color: #00a8db;
+}
+.sideNav.active .sideNavLinks li:hover .toolTip {
+  opacity: 1;
+}
+.logOut {
+  position: absolute;
+  bottom: 10%;
+}
+
+@media (max-width: 1150px) {
+  .sideNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75px;
+    z-index: 10;
   }
   .sideNav.active {
-    width: 75px;
+    width: 240px;
   }
-  .sideNav.active .sideNavLinks span, .sideNav.active .header h2 {
+  .sideNav .sideNavLinks li:hover .toolTip {
+    opacity: 1;
+  }
+  .sideNav.active .sideNavLinks li:hover .toolTip {
+    opacity: 0;
+  }
+  .sideNav .sideNavLinks span, .sideNav .header h2 {
     display: none;
   }
-  .toolTip {
-    position: absolute;
-    background-color: white;
-    color: #00a8db;
-    top: -15px;
-    margin-left: 15px;
+  .sideNav.active .sideNavLinks span, .sideNav.active .header h2{
     display: block;
-    opacity: 0;
-    transition: opacity 0.4s;
-    width: 100px;
-    text-align: center;
-    font-size: 12px;
-    padding: 5px;
-    z-index: 100;
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px #cccccc;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    height: 75px;
-    padding: 0 0 0 15px;
-    position: relative;
-  }
-  .header img {
-    height: 25px;
-    width: 25px;
   }
   .sideNavToggle {
     display: block;
-    position: absolute;
-    font-size: 16px;
-    top: 50%;
-    right: -40px;
-    color: #707070;
-    transform: translateY(-50%);
-    cursor: pointer;
   }
-  .header h2 {
-    font-size: 20px;
+  .sideNav.active .sideNavToggle {
+    right: 20px;
     color: white;
-    font-family: "Rubik";
-    margin-left: 25px;
   }
-  .sideNavLinks {
-    margin-top: 10px;
-    position: relative;
-    height: calc(100vh - 70px);
-    min-height: 450px;
+}
+
+@media (max-width:760px) {
+  .header {
+    height: 70px;
   }
-  .sideNavLinks li {
-    color: white;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 15px 0 0 15px;
-    width: 100%;
-    /* cursor: pointer; */
+  .sideNav {
+    width: 240px;
+    transform: translateX(-100%);
   }
-  .sideNavLinks li a {
-    display: flex;
-    align-items: center;
-    padding: 15px 0 15px 15px;
-    border-radius: 15px 0 0 15px;
-    transition: background-color 0.5s;
-  }
-  .sideLinkItem {
-    position: relative;
+  .sideNav.active {
+    transform: translateX(0);
   }
   .sideNavLinks span {
-    font-weight: 600;
-    min-width: 165px;
-    width: 100%;
-    opacity: 1;
-    transition: 0.5s;
+    font-size: 14px;
   }
-  .sideNavLinks li i {
-    font-size: 20px;
-    width: 25px;
-    margin-right: 25px;
+  .sideNavToggle {
+    font-size: 14px;
+    right: -15%;
   }
-  .sideNavLinks li a.activeNavLink{
-    border-radius: 15px 0 0 15px;
-    background-color: white;
-    color: #00a8db;
-    transition: 0.3s !important;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-  }
-  .sideNavLinks li a:hover {
-    background-color: #003d5017;
-  }
-  .sideNavLinks li a.activeNavLink:hover {
-    background-color: white;
-  }
-  .sideNav.active .sideNavLinks li:hover .toolTip {
-    opacity: 1;
-  }
-  .logOut {
-    position: absolute;
-    bottom: 10%;
-  }
-
-  @media (max-width: 1150px) {
-    .sideNav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 75px;
-        z-index: 10;
-      }
-      .sideNav.active {
-        width: 240px;
-      }
-      .sideNav .sideNavLinks li:hover .toolTip {
-        opacity: 1;
-      }
-      .sideNav.active .sideNavLinks li:hover .toolTip {
-        opacity: 0;
-      }
-      .sideNav .sideNavLinks span, .sideNav .header h2 {
-        display: none;
-      }
-      .sideNav.active .sideNavLinks span, .sideNav.active .header h2{
-        display: block;
-      }
-      .sideNavToggle {
-        display: block;
-      }
-      .sideNav.active .sideNavToggle {
-        right: 20px;
-        color: white;
-      }
-  }
-
-  @media (max-width:760px) {
-    .header {
-      height: 70px;
-    }
-    .sideNav {
-      width: 240px;
-      transform: translateX(-100%);
-    }
-    .sideNav.active {
-      transform: translateX(0);
-    }
-    .sideNavLinks span {
-      font-size: 14px;
-    }
-    .sideNavToggle {
-        font-size: 14px;
-        right: -15%;
-      }
       
 }
