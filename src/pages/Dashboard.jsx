@@ -6,6 +6,7 @@ import HealthTips from '../components/dashboard/HealthTips'
 import Profile from '../components/dashboard/Profile'
 import Notifications from '../components/dashboard/Notifications'
 import Settings from '../components/dashboard/Settings'
+import DashboardCSS from '../components/styles/Dashboard.module.css'
 import '../components/styles/dashboard-template.css'
 import '../components/styles/appointments.css'
 import '../components/styles/patient-dashboard.css'
@@ -16,7 +17,7 @@ function Dashboard() {
 
     return (
         <Router>
-            <div className='container'>
+            <div className={DashboardCSS.container}>
                 <SideNav />
                 <Switch>
                     <Route exact path='/dashboard' component={Home}></Route>
