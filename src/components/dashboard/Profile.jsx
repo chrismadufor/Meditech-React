@@ -1,27 +1,27 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
-import '../styles/patient-profile.css'
+import Profilecss from '../styles/profile.module.css'
 
 function Profile() {
     return (
-      <div className='main'>
+      <div className={Profilecss.main}>
         <TopNav name= 'Profile'/>
-        <div className='main-content'>
-          <div className="main-content-wrap">
-              <div className="profile-picture">
-                <img className="profile-img" src="" alt="" />
+        <div className={Profilecss.mainContent}>
+          <div className={Profilecss.mainContentWrap}>
+              <div className={Profilecss.profilePicture}>
+                <img className={Profilecss.profileImg} src="" alt="" />
               </div>
-              <div className="profile-wrap">
+              <div className={Profilecss.profileWrap}>
                 <h2>Basic Information</h2>
-                <div className="basic-info flex">
+                <div className={`${Profilecss.basicInfo}, ${Profilecss.flex}`}>
                   <div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-name">Full Name</p>
-                      <p className="profileName"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientName}`}>Full Name</p>
+                      <p className={Profilecss.profileName}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-id">Hospital ID</p>
-                      <p className="profileHosID"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientId}`}>Hospital ID</p>
+                      <p className={Profilecss.profileHosID}></p>
                     </div>
                   </div>
                   <div className="wide">

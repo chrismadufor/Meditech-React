@@ -1,0 +1,111 @@
+.mainContentWrap {
+  display: flex;
+  background-color: white;
+  padding: 50px;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25)
+}
+.profileWrap {
+  width: 80%;
+}
+.profilePicture {
+  width: 20%;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  margin-right: 50px;
+}
+.flex {
+  display: flex;
+}
+.basicInfo > div, .otherInfo > div {
+  width: 30%;
+  margin-right: 20px;
+}
+h2 {
+  font-size: 20px;
+  color: rgb(48, 48, 48);
+}
+hr {
+  margin: 40px 0;
+}
+.infoItem {
+  margin: 20px 0;
+}
+.infoItem p:last-child {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+}
+div.wide {
+  width: 60%;
+}
+.infoItemTitle {
+  font-size: 14px;
+}
+.editProfileContainer {
+  background-color: white;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 20px 30px 50px;
+  margin-top: 40px;
+}
+.inputWrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.formInput {
+  width: 48%;
+  height: 40px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+.formInput input, .formInput select{
+  padding: 10px 15px;
+  border: 1px solid rgb(192, 192, 192);
+}
+label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.submitForm {
+  width: 100%;
+  height: 40px;
+  border: 0;
+  background-color: #00a8db;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.submitForm:hover {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #00a8db;
+  color: #00a8db;
+}
+.formTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.closeModal:hover {
+  cursor: pointer;
+}
+.imgWrap {
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+.imgPreview {
+  height: 100px;
+  width: 100px;
+  border: 1px solid rgb(192, 192, 192);
+  margin-right: 10px;
+}
