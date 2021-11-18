@@ -15,7 +15,7 @@ return (
 
 <div>
 <section className={SignUpCss.signInHero}>
-      <div className= {SignUpCss.background}>
+    <div className= {SignUpCss.background}>
         <div className={SignUpCss.left}>
           <div className={SignUpCss.card}>
             <h1>Sign Up Free</h1>
@@ -150,7 +150,9 @@ return (
           <div className={SignUpCss.backgroundImage}>
             <img src={Background1} alt="background" />
           </div>
-          </section>
+          </div>
+          </div>
+     </section>
 </div>
   )
 }
