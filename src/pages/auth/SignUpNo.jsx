@@ -4,12 +4,18 @@ import SignUpCss from '../../components/styles/Sign-in.module.css'
 import Background1 from '../../components/img/background1.png'
 // import {Link} from 'react-router-dom'
 import {useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
 
 function SignUpNo(props) {
 let navigate =  useNavigate();
  
+const saveUserData = (values) => {
+  axios.post('auth/signup', values) //add role
+    .then (res => console.log(res))
+    .catch (err => console.log(err))
+}
 
 return (
 
@@ -59,14 +65,17 @@ return (
         
       }}
       onSubmit={(values, { setSubmitting }) => {
+        const data = {
+          fullName: values.name,
+          email: values.email,
+          password: values.password,
+          userType: 'patient'
+        }
         setTimeout(() => {
-
           navigate('/signin')
-
-         
-
           setSubmitting(false);
         }, 400);
+        saveUserData(data)
       }}
     >
       {({
@@ -85,7 +94,7 @@ return (
             type="text"
             name="name"
             id="username"
-             placeholder="Name"
+             placeholder="Full Name"
             className="usenameSignin"
             onChange={handleChange}
             onBlur={handleBlur}

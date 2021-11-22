@@ -1,7 +1,7 @@
 export const patientSideNavLinks = [
     {
         title: "Dashboard",
-        url: "/dashboard",
+        url: "/dashboard/home",
         icon: "fas fa-home",
         extraClass: ""
     },
