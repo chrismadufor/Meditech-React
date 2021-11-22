@@ -141,7 +141,7 @@ img {
 }
 .logOut {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
 }
 
 @media (max-width: 1150px) {

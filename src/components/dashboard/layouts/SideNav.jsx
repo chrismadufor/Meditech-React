@@ -36,7 +36,7 @@ function SideNav() {
                 {
                     patientSideNavLinks.map((link, index) => (
                         <li onClick={closeSideNav} className={link.extraClass === "logOut" ? SideNavCSS.logOut : SideNavCSS.sideLinkItem} key={index} >
-                            <NavLink activeClassName={SideNavCSS.activeNavLink} to= {link.url}>
+                            <NavLink className={({isActive}) => (!isActive ? '' : SideNavCSS.activeNavLink) } to= {link.url}>
                                 <i className={link.icon}></i>
                                 <span>{link.title}</span>
                             </NavLink>
