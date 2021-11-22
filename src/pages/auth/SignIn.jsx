@@ -2,11 +2,12 @@ import React from 'react';
 import { Formik } from 'formik';
 import SignInCss from '../../components/styles/Sign-in.module.css'
 import Background from '../../components/img/background.png'
-import { Link } from 'react-router-dom'
+import { Link,  useNavigate } from 'react-router-dom'
+
 
 
 function SignIn(props) {
-
+let navigate =  useNavigate();
 
     return (
 
@@ -41,8 +42,8 @@ function SignIn(props) {
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-
-                  props.history.push('/dashboard')
+                  navigate('/dashboard')
+                  // props.history.push('/dashboard')
                   // alert(JSON.stringify(values, null, 2));
                   setSubmitting(false);
                 }, 400);

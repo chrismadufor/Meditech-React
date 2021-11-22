@@ -1,8 +1,12 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
 import Profilecss from '../styles/profile.module.css'
+import {useNavigate} from 'react-router-dom'
+
 
 function Profile() {
+  let navigate =  useNavigate();
+
     return (
       <div className={Profilecss.main}>
         <TopNav name= 'Profile'/>
@@ -16,27 +20,34 @@ function Profile() {
                 <div className={`${Profilecss.basicInfo}, ${Profilecss.flex}`}>
                   <div>
                     <div className={Profilecss.infoItem}>
-                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientName}`}>Full Name</p>
+                      <p className={Profilecss.infoItemTitle}>Full Name</p>
                       <p className={Profilecss.profileName}></p>
                     </div>
                     <div className={Profilecss.infoItem}>
-                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientId}`}>Hospital ID</p>
+                      <p className={Profilecss.infoItemTitle}>Hospital ID</p>
                       <p className={Profilecss.profileHosID}></p>
                     </div>
                   </div>
                   <div className={Profilecss.wide}>
                     <div className={Profilecss.infoItem}>
-                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientEmail}`}>Email</p>
+                      <p className={Profilecss.infoItemTitle}>Email</p>
                       <p className={Profilecss.profileEmail}></p>
                     </div>
                     <div className={Profilecss.infoItem}>
-                      <p className={`${Profilecss.infoItemTitle}, ${Profilecss.patientPhone}`}>Phone Number</p>
+                      <p className={Profilecss.infoItemTitle}>Phone Number</p>
                       <p className={Profilecss.profilePhone}></p>
                     </div>
                   </div>
+
+                  <button className={Profilecss.editProfile}  onClick={()=>{
+                    navigate('/dashboard/profile-edit')
+                  }}>
+              <i class="fas fa-pencil"></i>Edit Profile
+            </button>
+
                 </div>
                 <hr />
-                <h2>Other Information</h2>
+                <h2 className={Profilecss.h2}>Other Information</h2>
                 <div className={`${Profilecss.otherInfo}, ${Profilecss.flex}`}>
                   <div>
                     <div className={Profilecss.infoItem}>
@@ -62,9 +73,13 @@ function Profile() {
                   </div>
                 </div>
               </div>
+
           </div>
         </div>
+
       </div>
+
+      
     )
 }
 
