@@ -7,13 +7,14 @@ import { useSelector } from "react-redux";
 
 function Home() {
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
-        let renderTableRows = () => {
-            return dummyData.map(item =>
-                <tr>
-                    <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
-                </tr>
-            );
-          }
+    const userData = useSelector((state) => (state.authReducer.userDetails))
+    let renderTableRows = () => {
+        return dummyData.slice(0,4).map(item =>
+            <tr>
+                <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
+            </tr>
+        );
+    }
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
@@ -31,7 +32,7 @@ function Home() {
                         <img src={patient} alt="" className="patient-img" />
 
                     <div className="patient-details">
-                        <p className="pat-name">Abiola Odeyemi </p>
+                        <p className="pat-name">{userData.fullName} </p>
                     <p className="hosed">Hospital ID: <span className="hos-num">TKI545</span></p>
                     </div>
                     
@@ -85,23 +86,6 @@ function Home() {
                     }
                     </tbody>
                     </table>
-                    <div className="tableControls">
-                    <div className="control-box">
-                        <p> &lt&lt </p>
-                    </div>
-                    <div className="control-box">
-                        <p> &lt </p>
-                    </div>
-                    <div className="control-box">
-                    <p>1</p>
-                    </div>
-                    <div className="control-box">
-                        <p> &gt </p>
-                    </div>
-                    <div className="control-box">
-                        <p> &gt&gt </p>
-                    </div>
-                    </div>
                     <button className="afterTable">
                     <a href="/patient-appointment.html">
                     View all

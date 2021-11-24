@@ -6,7 +6,7 @@ import { Link,  useNavigate } from 'react-router-dom'
 import axios from 'axios'
 // import {AuthContext, AuthProvider} from '../../redux/authContext'
 import {useDispatch} from 'react-redux'
-import {UPDATE_USER_DETAILS} from '../../theStore/constants'
+import { updateUserDetails } from '../../theStore/actions'
 
 
 
@@ -19,10 +19,7 @@ function SignIn(props) {
         .then (res => {
           localStorage.setItem('token', res.data.accessToken)
           const userData = res.data.data
-          dispatch({
-            type: UPDATE_USER_DETAILS,
-            payload: userData
-          })
+          dispatch(updateUserDetails(userData))
           // setIsLoggedIn(true)
         }) 
         .catch (err => console.log(err))
