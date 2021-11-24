@@ -1,74 +1,86 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import TopNav from './layouts/TopNav'
-import '../styles/patient-profile.css'
+import Profilecss from '../styles/profile.module.css'
+import {useNavigate} from 'react-router-dom'
+
 
 function Profile() {
-
-  const userData = useSelector((state) => state.authReducer.userDetails)
+  let navigate =  useNavigate();
 
     return (
-      <div className='main'>
+      <div className={Profilecss.main}>
         <TopNav name= 'Profile'/>
-        <div className='main-content'>
-          <div className="main-content-wrap">
-              <div className="profile-picture">
-                <img className="profile-img" src="" alt="" />
+        <div className={Profilecss.mainContent}>
+          <div className={Profilecss.mainContentWrap}>
+              <div className={Profilecss.profilePicture}>
+                <img className={Profilecss.profileImg} src="" alt="" />
               </div>
-              <div className="profile-wrap">
+              <div className={Profilecss.profileWrap}>
                 <h2>Basic Information</h2>
-                <div className="basic-info flex">
+                <div className={`${Profilecss.basicInfo}, ${Profilecss.flex}`}>
                   <div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-name">Full Name</p>
-                      <p className="profileName">{userData.fullName}</p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Full Name</p>
+                      <p className={Profilecss.profileName}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-id">Hospital ID</p>
-                      <p className="profileHosID">{userData.id}</p>
-                    </div>
-                  </div>
-                  <div className="wide">
-                    <div className="info-item">
-                      <p className="info-item-title patient-email">Email</p>
-                      <p className="profileEmail">{userData.email}</p>
-                    </div>
-                    <div className="info-item">
-                      <p className="info-item-title patient-phone">Phone Number</p>
-                      <p className="profilePhone"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Hospital ID</p>
+                      <p className={Profilecss.profileHosID}></p>
                     </div>
                   </div>
+                  <div className={Profilecss.wide}>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Email</p>
+                      <p className={Profilecss.profileEmail}></p>
+                    </div>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Phone Number</p>
+                      <p className={Profilecss.profilePhone}></p>
+                    </div>
+                  </div>
+
+                  <button className={Profilecss.editProfile}  onClick={()=>{
+                    navigate('/dashboard/profile-edit')
+                  }}>
+              <i class="fas fa-pencil"></i>Edit Profile
+            </button>
+
                 </div>
                 <hr />
-                <h2>Other Information</h2>
-                <div className="other-info flex">
+                <h2 className={Profilecss.h2}>Other Information</h2>
+                <div className={`${Profilecss.otherInfo}, ${Profilecss.flex}`}>
                   <div>
-                    <div className="info-item">
-                      <p className="info-item-title">Date of birth</p>
-                      <p className="profileDOB"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Date of birth</p>
+                      <p className={Profilecss.profileDOB}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title">City</p>
-                      <p className="profileCity"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>City</p>
+                      <p className={Profilecss.profileCity}></p>
                     </div>
                   </div>
                   <div className="wide">
-                    <div className="info-item">
-                      <p className="info-item-title">Nationality</p>
-                      <p className="profileNation"></p>
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Nationality</p>
+                      <p className={Profilecss.profileNation}></p>
                     </div>
-                    <div className="info-item">
-                      <p className="info-item-title">Address</p>
-                      <p className="profileAdd">
+                    <div className={Profilecss.infoItem}>
+                      <p className={Profilecss.infoItemTitle}>Address</p>
+                      <p className={Profilecss.profileAdd}>
                         
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
+
           </div>
         </div>
+
       </div>
+
+      
     )
 }
 
