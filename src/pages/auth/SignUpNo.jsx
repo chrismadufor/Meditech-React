@@ -11,11 +11,9 @@ import axios from 'axios'
 function SignUpNo(props) {
 let navigate =  useNavigate();
  
-const saveUserData = (values) => {
-  axios.post('auth/signup', values) //add role
-    .then (res => console.log(res))
-    .catch (err => console.log(err))
-}
+// const saveUserData = (values) => {
+  
+// }
 
 return (
 
@@ -69,13 +67,25 @@ return (
           fullName: values.name,
           email: values.email,
           password: values.password,
-          userType: 'patient'
+          userTye: 'patient'
         }
-        setTimeout(() => {
-          navigate('/signin')
-          setSubmitting(false);
-        }, 400);
-        saveUserData(data)
+        axios.post('auth/signup', data) //add role
+          .then (res => {
+            if(res.status === 200) {
+              alert('Posted successfully')
+              setTimeout(() => {
+                navigate('/signin')
+                setSubmitting(false);
+              }, 400);
+            }
+            else console.log(res.data.message)
+            //display error
+          })
+          .catch ((err) => console.log(err))
+        // saveUserData(data)
+        
+        
+        
       }}
     >
       {({
