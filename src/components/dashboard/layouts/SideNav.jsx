@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { patientSideNavLinks } from '../SideNavLinks'
 import SideNavCSS from "../../styles/SideNav.module.css"
 
+// const {patientSideNavLinks} = SideNavLinks
 
 function SideNav() {
     const [active, setActive] = useState(false)
@@ -35,7 +36,7 @@ function SideNav() {
                 {
                     patientSideNavLinks.map((link, index) => (
                         <li onClick={closeSideNav} className={link.extraClass === "logOut" ? SideNavCSS.logOut : SideNavCSS.sideLinkItem} key={index} >
-                            <NavLink activeClassName={SideNavCSS.activeNavLink} to= {link.url}>
+                            <NavLink className={({isActive}) => (!isActive ? '' : SideNavCSS.activeNavLink) } to= {link.url}>
                                 <i className={link.icon}></i>
                                 <span>{link.title}</span>
                             </NavLink>
@@ -43,6 +44,11 @@ function SideNav() {
                         </li>
                     ))
                 }
+                {/* <li className= {SideNavCSS.logOut}>
+                    <i className='fas fa-sign-out'></i>
+                    <span>Logout</span>
+                    <p className={SideNavCSS.toolTip}>Logout</p>
+                </li> */}
             </ul>          
         </div>
     )

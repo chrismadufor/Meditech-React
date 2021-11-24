@@ -3,9 +3,12 @@ import { Formik } from 'formik';
 import SignUpCss from '../../components/styles/Sign-in.module.css'
 
 import Background1 from '../../components/img/background1.png'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 
 function SignUp(props) {
+let navigate =  useNavigate();
+
+
     return (
 
 <div>
@@ -33,7 +36,7 @@ function SignUp(props) {
       }
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          props.history.push('/signupno')
+          navigate('/signupno')
 
           // alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
