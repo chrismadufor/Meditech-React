@@ -19,6 +19,7 @@ function SignIn(props) {
         .then (res => {
           localStorage.setItem('token', res.data.accessToken)
           const userData = res.data.data
+          console.log(res)
           dispatch({
             type: UPDATE_USER_DETAILS,
             payload: userData
@@ -66,10 +67,10 @@ function SignIn(props) {
                   }
                   getUserInfo(data)
                   
-                    setTimeout(() => {
-                      navigate('/dashboard')
-                      setSubmitting(false);
-                    }, 400);
+                    // setTimeout(() => {
+                    //   navigate('/dashboard/home')
+                    //   setSubmitting(false);
+                    // }, 400);
                   
                   
                 }}

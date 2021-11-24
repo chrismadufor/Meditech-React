@@ -13,14 +13,10 @@ import '../components/styles/notifications.css'
 
 function Dashboard() {
     const userData = useSelector((state) => (state.authReducer.userDetails))
+    const state = useSelector((state) => (state))
     useEffect(() => {
         console.log(userData)
-        // axios.get('user')
-        //     .then(res => {
-        //         console.log(res)
-        //         //setUserData(res.data)
-        //     })
-        //     .catch (err => console.log(err))
+        console.log(state)
     })
     
     return (

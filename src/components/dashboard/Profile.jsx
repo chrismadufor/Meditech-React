@@ -1,8 +1,12 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import TopNav from './layouts/TopNav'
 import '../styles/patient-profile.css'
 
 function Profile() {
+
+  const userData = useSelector((state) => state.authReducer.userDetails)
+
     return (
       <div className='main'>
         <TopNav name= 'Profile'/>
@@ -17,17 +21,17 @@ function Profile() {
                   <div>
                     <div className="info-item">
                       <p className="info-item-title patient-name">Full Name</p>
-                      <p className="profileName"></p>
+                      <p className="profileName">{userData.fullName}</p>
                     </div>
                     <div className="info-item">
                       <p className="info-item-title patient-id">Hospital ID</p>
-                      <p className="profileHosID"></p>
+                      <p className="profileHosID">{userData.id}</p>
                     </div>
                   </div>
                   <div className="wide">
                     <div className="info-item">
                       <p className="info-item-title patient-email">Email</p>
-                      <p className="profileEmail"></p>
+                      <p className="profileEmail">{userData.email}</p>
                     </div>
                     <div className="info-item">
                       <p className="info-item-title patient-phone">Phone Number</p>

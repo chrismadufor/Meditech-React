@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useSelector} from 'react-redux'
 import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
 
 function Home() {
+    const userData = useSelector((state) => (state.authReducer.userDetails))
+
+    // useEffect(() => {
+    // }, [])
+
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
@@ -21,7 +27,7 @@ function Home() {
                         <img src={patient} alt="" className="patient-img" />
 
                     <div className="patient-details">
-                        <p className="pat-name">Abiola Odeyemi </p>
+                        <p className="pat-name"> {userData.fullName} </p>
                     <p className="hosed">Hospital ID: <span className="hos-num">TKI545</span></p>
                     </div>
                     
