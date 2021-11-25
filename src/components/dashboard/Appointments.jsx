@@ -1,11 +1,67 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
+import Styles from '../styles/Appointments.module.css'
+import { useSelector } from "react-redux";
+import axios from 'axios'
 
 function Appointments() {
+    let [page, setPage] = React.useState(1)
+    let [bookings, setBookings] = React.useState([])
+    let [showAll, setShowAll] = React.useState(false)
+    let [currentPage, setCurrentPage] = React.useState([])
+    const dummyData = useSelector((state) => state.dashboardReducer.appointments);
+    
+    let renderTableRows = () => {
+        let rows = []
+        if(showAll){
+            rows = bookings.length === 0 ? dummyData : bookings
+        } else {
+            rows = currentPage
+        }
+        return rows.map(item =>
+            <tr>
+                <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
+            </tr>
+        );
+    }
+    let showAllRows = (e) => {
+        e.preventDefault()
+        setShowAll(!showAll)
+    }
+
+    let fetchAppointments = async () => {
+        await axios.get('bookings/getall', {
+            headers:{
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiaWJvcm9pbnlhbmcwMUBnbWFpbC5jb20iLCJwcm9maWxlUGhvdG8iOm51bGwsInVzZXJUeXBlIjoicGF0aWVudCIsImZ1bGxOYW1lIjoiQWliZWUgTWF0dGhldyIsImlhdCI6MTYzNzc4NzY2OSwiZXhwIjoxNjM3ODE3NjY5fQ.GoQv8T4yyyHMN-wlBG2erLxT0ejCdkiQaud_fJfwGFc`
+            }
+        }).then(val => {
+            console.log(val)
+            setBookings(val.data.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    let flipPage = (e, val) => {
+        e.preventDefault()
+       if(val === 'next'){
+        setPage(++page)
+       } else {
+        setPage(--page)
+       }
+        const first = (page * 4) - 4
+        const last = (page * 4)
+        setCurrentPage(dummyData.slice(first, last))
+    }
+
+    React.useEffect(() => {
+        setCurrentPage(dummyData.slice(0, 4))
+        fetchAppointments()
+    }, [])
     return (
         <div className='main'>
             <TopNav name='Appointments'/>
-            <div className='main-content' style = {{display: "none"}}>
+            <div className='main-content' >
                 <div className="tableComponent">
                     <div className="tableTopRow">
                     <div>
@@ -32,29 +88,23 @@ function Appointments() {
                         </tr>
                     </thead>
                     <tbody id="table-body-ad">
-                    
+                        { renderTableRows() }
                     </tbody>
                     </table>
                     <div className="tableControls">
+                    <button className="control-box"  onClick={e=>flipPage(e, 'prev')} disabled={page===1}>
+                        <i className='fas fa-chevron-left'></i>
+                    </button>
                     <div className="control-box">
-                        <p> <i className='fas fa-chevron-left'></i><i className='fas fa-chevron-left'></i> </p>
+                    <p>{page}</p>
                     </div>
-                    <div className="control-box">
-                        <p> <i className='fas fa-chevron-left'></i> </p>
+                    <button className="control-box" disabled={page>=dummyData.length/4} onClick={e=>flipPage(e, 'next')}>
+                         <i className='fas fa-chevron-right'></i>
+                    </button>
                     </div>
-                    <div className="control-box">
-                    <p>1</p>
-                    </div>
-                    <div className="control-box">
-                        <p> <i className='fas fa-chevron-right'></i> </p>
-                    </div>
-                    <div className="control-box">
-                        <p> <i className='fas fa-chevron-right'></i><i className='fas fa-chevron-right'></i> </p>
-                    </div>
-                    </div>
-                    <button className="afterTable">
+                    <button className="afterTable"  onClick={e=>showAllRows(e)}>
                     <a href="/patient-appointment.html">
-                    View all
+                    {`${showAll?'View less':'View all'}`}
                     </a>
                     </button>
                 </div>

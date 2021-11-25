@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import img from "../../../img/heroimage.png";
 
 const Hero = () => {
@@ -22,9 +23,9 @@ const Hero = () => {
             <i className="fas fa-check"></i> Say bye to long queues at the
             hospital.
           </p>
-          <a href="./signup-yes-page.html" target="_blank">
+          <Link to="/signup">
             <button>Get Started</button>
-          </a>
+          </Link>
         </div>
         <img className="heroimage" src={img} alt="Hero Background" />
       </div>
