@@ -1,17 +1,7 @@
 import { UPDATE_USER_DETAILS } from '../constants'
 
 const INITIAL_STATE = {
-  userDetails: {
-    idUser: 0,
-    fullName: 'Chris',
-    email: 'name@email.com',
-    address: 'address',
-    gender: '',
-    enrollmentId: '1234',
-    dateOfBirth: '',
-    profilePhoto: '',
-    userType: ''
-  }
+  userDetails: {}
 }
 
 let authReducer = (state = INITIAL_STATE, action) => {
