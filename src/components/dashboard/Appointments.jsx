@@ -5,7 +5,7 @@ function Appointments() {
     return (
         <div className='main'>
             <TopNav name='Appointments'/>
-            <div className='main-content' style = {{display: "none"}}>
+            <div className='main-content' >
                 <div className="tableComponent">
                     <div className="tableTopRow">
                     <div>
