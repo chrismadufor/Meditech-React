@@ -1,28 +1,29 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import SignInCss from '../../components/styles/Sign-in.module.css'
 import Background from '../../components/img/background.png'
 import { Link,  useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import {AuthContext, AuthProvider} from '../../redux/authContext'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { userLoggedIn } from '../../theStore/actions'
 import { updateUserDetails } from '../../theStore/actions'
 
 
 
 function SignIn(props) {
+
   let navigate =  useNavigate();
-  // const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
   const dispatch = useDispatch()
-  const getUserInfo = (values) => {
-      axios.post('auth/signin', values)
-        .then (res => {
-          localStorage.setItem('token', res.data.accessToken)
-          const userData = res.data.data
-          dispatch(updateUserDetails(userData))
-          // setIsLoggedIn(true)
-        }) 
-        .catch (err => console.log(err))
+
+  const getUserInfo = async (values) => {
+    await axios.post('auth/signin', values)
+      .then (res => {
+        localStorage.setItem('token', res.data.accessToken)
+        console.log('Result: ', res)
+        //  dispatch(updateUserDetails(res.data.data))
+        // dispatch(userLoggedIn(true))
+      }) 
+      .catch (err => console.log(err))
   }
 
   return (
@@ -63,10 +64,10 @@ function SignIn(props) {
                   }
                   getUserInfo(data)
                   
-                    // setTimeout(() => {
-                    //   navigate('/dashboard/home')
-                    //   setSubmitting(false);
-                    // }, 400);
+                    setTimeout(() => {
+                      navigate('/dashboard/home')
+                      setSubmitting(false);
+                    }, 400);
                   
                   
                 }}

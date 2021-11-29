@@ -1,20 +1,23 @@
-import React from 'react'
-import { useState } from 'react'
+import React, {useState, useEffect} from 'react'
 import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
 import { useSelector } from "react-redux";
 
 function Home() {
+    // const [user, setUser] = useState({})
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
+    
     const userData = useSelector((state) => (state.authReducer.userDetails))
+    console.log(userData)
     let renderTableRows = () => {
-        return dummyData.slice(0,4).map(item =>
-            <tr>
+        return dummyData.slice(0,4).map((item, index) =>
+            <tr key= {index}>
                 <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
             </tr>
         );
     }
+    
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
@@ -33,7 +36,7 @@ function Home() {
 
                     <div className="patient-details">
                         <p className="pat-name">{userData.fullName} </p>
-                    <p className="hosed">Hospital ID: <span className="hos-num">TKI545</span></p>
+                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.fullName}</span></p>
                     </div>
                     
                     </div>
