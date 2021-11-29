@@ -46,17 +46,7 @@ const validate = Yup.object({
           address:'',
            }}
 
-      //  validate={values => {
-      //    const errors = {};
-      //    if (!values.email) {
-      //      errors.email = 'Required';
-      //    } else if (
-      //      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      //    ) {
-      //      errors.email = 'Invalid email address';
-      //    }
-      //    return errors;
-      //  }}
+     
       validationSchema = {validate}
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
@@ -75,7 +65,7 @@ const validate = Yup.object({
          isSubmitting,
          
        }) => (
-         <form className={Editcss.editProfileContainer} onSubmit={handleSubmit}>
+         <form className={Editcss.editForm} onSubmit={handleSubmit}>
            <div className={Editcss.formTitle}>
             <h2>Edit Profile</h2>
           </div>
@@ -83,7 +73,7 @@ const validate = Yup.object({
             <div className={Editcss.imgPreview}>
               <img className={Editcss.editProfileImg} src="img/profile-picture.jpg" alt="" />
             </div>
-            <input type="file" name="profile-image" id="patient-image" />
+            <input type="file" name="profile-image" id="patient-image" className={Editcss.file} />
           </div>
 
           <div className={Editcss.inputWrap}>

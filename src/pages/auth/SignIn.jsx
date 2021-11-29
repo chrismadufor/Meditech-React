@@ -63,10 +63,10 @@ function SignIn(props) {
                   }
                   getUserInfo(data)
                   
-                    // setTimeout(() => {
-                    //   navigate('/dashboard/home')
-                    //   setSubmitting(false);
-                    // }, 400);
+                    setTimeout(() => {
+                      navigate('/dashboard/home')
+                      setSubmitting(false);
+                    }, 400);
                   
                   
                 }}
