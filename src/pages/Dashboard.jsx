@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {Outlet} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {Provider, useDispatch, useSelector} from 'react-redux'
+import configureStore from '../theStore/store'
 import DashboardCSS from '../components/styles/Dashboard.module.css'
 import SideNav from '../components/dashboard/layouts/SideNav'
 import '../components/styles/dashboard-template.css'
@@ -8,22 +9,37 @@ import '../components/styles/appointments.css'
 import '../components/styles/patient-dashboard.css'
 import '../components/styles/settings.css'
 import '../components/styles/notifications.css'
-// import axios from 'axios'
-// import authReducer from '../theStore/reducers/auth'
+import axios from 'axios'
+import { updateUserDetails } from '../theStore/actions'
+import { userLoggedIn } from '../theStore/actions'
+
 
 function Dashboard() {
-    const userData = useSelector((state) => (state.authReducer.userDetails))
-    const state = useSelector((state) => (state))
+    const [loading, setLoading] = useState(true)
+
+    const dispatch = useDispatch()
     useEffect(() => {
-        console.log(userData)
-        console.log(state)
-    })
-    
+        axios.get('users/profile')
+            .then(res => {
+                dispatch(updateUserDetails(res.data))
+                dispatch(userLoggedIn(true))
+                setLoading(false)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return (
+        
         <div className={DashboardCSS.container}>
-            <SideNav />
-            <Outlet />
-        </div>
+       { loading ? <p> Loading </p> :
+            <>
+                <SideNav />
+                <Outlet /> 
+            </>
+            
+        }
+        </div>  
+
     )
 }
 

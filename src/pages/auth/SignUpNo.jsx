@@ -67,19 +67,18 @@ return (
           fullName: values.name,
           email: values.email,
           password: values.password,
-          userTye: 'patient'
+          userType: 'patient'
         }
         axios.post('auth/signup', data) //add role
           .then (res => {
+            console.log(res)
             if(res.status === 200) {
-              alert('Posted successfully')
+              
               setTimeout(() => {
                 navigate('/signin')
                 setSubmitting(false);
               }, 400);
             }
-            else console.log(res.data.message)
-            //display error
           })
           .catch ((err) => console.log(err))
         // saveUserData(data)

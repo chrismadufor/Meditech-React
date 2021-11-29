@@ -1,6 +1,6 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
-import Styles from '../styles/Appointments.module.css'
+// import Styles from '../styles/Appointments.module.css'
 import { useSelector } from "react-redux";
 import axios from 'axios'
 

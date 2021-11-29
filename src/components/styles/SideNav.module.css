@@ -30,6 +30,9 @@ img {
   display: flex;
   flex-direction: column;
   z-index: 50;
+  position: sticky;
+  left: 0;
+  top: 0;
   /* transition: 0.3s; */
 }
 .sideNav.active {
@@ -44,8 +47,7 @@ img {
   color: #00a8db;
   top: -15px;
   margin-left: 15px;
-  display: block;
-  opacity: 0;
+  display: none;
   transition: opacity 0.4s;
   width: 100px;
   text-align: center;
@@ -137,11 +139,12 @@ img {
   color: #00a8db;
 }
 .sideNav.active .sideNavLinks li:hover .toolTip {
-  opacity: 1;
+  display: block;
 }
 .logOut {
   position: absolute;
   bottom: 5%;
+  padding: 15px 0 15px 15px;
 }
 
 @media (max-width: 1150px) {
