@@ -1,12 +1,12 @@
 import React from "react";
-// import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import TopNav from "./layouts/TopNav";
 import Profilecss from "../styles/profile.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Profile() {
   let navigate = useNavigate();
-
+  const user = useSelector((state) => state.authReducer.userDetails)
   return (
     <div className={Profilecss.main}>
       <TopNav name="Profile" />
@@ -21,21 +21,21 @@ function Profile() {
                 <div className={Profilecss.wide}>
                   <div className={Profilecss.infoItem}>
                     <p className={Profilecss.infoItemTitle}>Full Name</p>
-                    <p className={Profilecss.profileName}></p>
+                    <p className={Profilecss.profileName}>{user.fullName}</p>
                   </div>
                   <div className={Profilecss.infoItem}>
                     <p className={Profilecss.infoItemTitle}>Hospital ID</p>
-                    <p className={Profilecss.profileHosID}></p>
+                    <p className={Profilecss.profileHosID}>{user.hospitalId}</p>
                   </div>
                 </div>
                 <div className={Profilecss.wide}>
                   <div className={Profilecss.infoItem}>
                     <p className={Profilecss.infoItemTitle}>Email</p>
-                    <p className={Profilecss.profileEmail}></p>
+                    <p className={Profilecss.profileEmail}>{user.email} </p>
                   </div>
                   <div className={Profilecss.infoItem}>
                     <p className={Profilecss.infoItemTitle}>Phone Number</p>
-                    <p className={Profilecss.profilePhone}></p>
+                    <p className={Profilecss.profilePhone}>{user.phone}</p>
                   </div>
                 </div>
 
@@ -56,21 +56,21 @@ function Profile() {
               <div>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>Date of birth</p>
-                  <p className={Profilecss.profileDOB}></p>
+                  <p className={Profilecss.profileDOB}>{user.dateOfBirth}</p>
                 </div>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>City</p>
-                  <p className={Profilecss.profileCity}></p>
+                  <p className={Profilecss.profileCity}>{user.city}</p>
                 </div>
               </div>
               <div className="wide">
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>Nationality</p>
-                  <p className={Profilecss.profileNation}></p>
+                  <p className={Profilecss.profileNation}>{user.nationality}</p>
                 </div>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>Address</p>
-                  <p className={Profilecss.profileAdd}></p>
+                  <p className={Profilecss.profileAdd}>{user.address}</p>
                 </div>
               </div>
             </div>

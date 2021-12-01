@@ -52,7 +52,7 @@ hr {
 .infoItem p:last-child {
   font-weight: bold;
   font-size: 16px;
-  margin-top: 10px;
+  margin: 10px 30px;
 }
 div.wide {
   width: 60%;

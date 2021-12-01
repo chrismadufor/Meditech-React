@@ -3,8 +3,31 @@ import TopNav from './layouts/TopNav'
 import Editcss from '../styles/profile.module.css'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios'
+import {useDispatch, } from 'react-redux'
+import { userLoggedIn } from '../../theStore/actions'
+import { updateUserDetails } from '../../theStore/actions'
+import {  useNavigate } from 'react-router-dom'
+
+
 
 function ProfileEdit() {
+  let navigate =  useNavigate();
+
+  const dispatch = useDispatch()
+
+  const putUserInfo =  (values) => {
+    axios.put('https://meditech-hospital-app.herokuapp.com/users/update', values)
+     .then (res => {
+       localStorage.setItem('token', res.data.accessToken)
+       console.log('Result: ', res)
+        dispatch(updateUserDetails(res.data.data))
+        console.log(res.data.data)
+       dispatch(userLoggedIn(true))
+     }) 
+     .catch (err => console.log(err))
+ }
+ 
 const validate = Yup.object({
   name: Yup.string()
   .required('Name  required'),
@@ -15,7 +38,7 @@ const validate = Yup.object({
   .required('Hospital Id  required'),
   number: Yup.number()
   .required('Number  required'),
-  DOB: Yup.number()
+  dateOfBirth: Yup.string()
   .required('Date of Birth  required'),
   nationality: Yup.string()
   .required('Nationality  required'),
@@ -40,7 +63,7 @@ const validate = Yup.object({
           email: '',
           hospitalId:'',
           number:'',
-          DOB: '',
+          dateOfBirth: '',
           nationality: '',
           city: '',
           address:'',
@@ -49,8 +72,21 @@ const validate = Yup.object({
      
       validationSchema = {validate}
        onSubmit={(values, { setSubmitting }) => {
+        const data = {
+          name: values.name,
+          email: values.email,
+          hospitalId:values.hospitalId,
+          number:values.number,
+          dateOfBirth: values.dateOfBirth,
+          nationality: values.nationality,
+          city: values.city,
+          address:values.address,
+        }
+        putUserInfo(data)
+
          setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
+          navigate('/dashboard/profile')
+           
            setSubmitting(false);
          }, 400);
        }}
@@ -144,14 +180,14 @@ const validate = Yup.object({
               <input
                 type="text"
                 id="patient-dob"
-                name="DOB"
+                name="dateOfBirth"
                onChange={handleChange}
                onBlur={handleBlur}
-               value={values.DOB}
+               value={values.dateOfBirth}
                 placeholder="Enter your date of birth"
               />
               <div style={{color:"red"}}>  
-           {errors.DOB && touched.DOB && errors.DOB}
+           {errors.dateOfBirth && touched.dateOfBirth && errors.dateOfBirth}
            </div>
 
             </div>
