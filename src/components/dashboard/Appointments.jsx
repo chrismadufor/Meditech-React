@@ -1,6 +1,6 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
-// import Styles from '../styles/Appointments.module.css'
+import Styles from '../styles/Appointments.module.css'
 import { useSelector } from "react-redux";
 import axios from 'axios'
 
@@ -19,8 +19,8 @@ function Appointments() {
             rows = currentPage
         }
         return rows.map(item =>
-            <tr>
-                <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
+            <tr className={Styles.tRow}>
+                <td><p>{item.doctor}</p></td><td  className={Styles.Test}><p>{item.date}</p></td><td  className={Styles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td className={Styles[item.status]}><p>{item.status}</p></td>
             </tr>
         );
     }
@@ -32,7 +32,7 @@ function Appointments() {
     let fetchAppointments = async () => {
         await axios.get('bookings/getall', {
             headers:{
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiaWJvcm9pbnlhbmcwMUBnbWFpbC5jb20iLCJwcm9maWxlUGhvdG8iOm51bGwsInVzZXJUeXBlIjoicGF0aWVudCIsImZ1bGxOYW1lIjoiQWliZWUgTWF0dGhldyIsImlhdCI6MTYzNzc4NzY2OSwiZXhwIjoxNjM3ODE3NjY5fQ.GoQv8T4yyyHMN-wlBG2erLxT0ejCdkiQaud_fJfwGFc`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(val => {
             console.log(val)
