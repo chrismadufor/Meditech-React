@@ -12,7 +12,7 @@ import axios from 'axios'
 
 
 axios.defaults.baseURL = 'https://meditech-hospital-app.herokuapp.com/'
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={configureStore}>
