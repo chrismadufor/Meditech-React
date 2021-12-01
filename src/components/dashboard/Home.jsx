@@ -3,6 +3,7 @@ import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
 import { useSelector } from "react-redux";
+import AppointmentStyles from '../styles/Appointments.module.css'
 
 function Home() {
     // const [user, setUser] = useState({})
@@ -12,8 +13,8 @@ function Home() {
     console.log(userData)
     let renderTableRows = () => {
         return dummyData.slice(0,4).map((item, index) =>
-            <tr key= {index}>
-                <td>{item.doctor}</td><td>{item.date}</td><td>{item.time}</td><td>{item.contact}</td><td>{item.status}</td>
+        <tr className={AppointmentStyles.tRow}>
+                <td><p>{item.doctor}</p></td><td  className={AppointmentStyles.Test}><p>{item.date}</p></td><td  className={AppointmentStyles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td className={AppointmentStyles[item.status]}><p>{item.status}</p></td>
             </tr>
         );
     }
