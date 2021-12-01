@@ -1,8 +1,8 @@
 import logo from '../../img/logo.svg'
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { patientSideNavLinks } from '../SideNavLinks'
+import { sideNavLinks } from '../SideNavLinks'
 import SideNavCSS from "../../styles/SideNav.module.css"
 import { userLoggedIn, updateUserDetails } from '../../../theStore/actions'
 
@@ -13,7 +13,18 @@ function SideNav() {
     const navigate = useNavigate()
 
     const userRole = useSelector((state) => (state.authReducer.userDetails.userType))
-    console.log('Role: ' + userRole)
+
+    let navLinks;
+    if (userRole === 'patient') {
+         navLinks = sideNavLinks.patientSideNavLinks
+    }
+    else if (userRole === 'doctor') {
+         navLinks = sideNavLinks.doctorSideNavLinks
+    }
+    else if (userRole === 'admin') {
+        navLinks = sideNavLinks.adminSideNavLinks
+    }
+    else navLinks = null
 
     const [active, setActive] = useState(false)
 
@@ -34,7 +45,6 @@ function SideNav() {
         localStorage.removeItem('token')
         dispatch(updateUserDetails({}))
         dispatch(userLoggedIn(false))
-        console.log('Logged out!')
         navigate('/signin')
     }
 
@@ -48,8 +58,8 @@ function SideNav() {
                     </div>
             </div>
             <ul className={SideNavCSS.sideNavLinks}>
-                {
-                    patientSideNavLinks.map((link, index) => (
+                {navLinks ?
+                   <> {navLinks.map((link, index) => (
                         <li onClick={closeSideNav} className={link.extraClass === "logOut" ? SideNavCSS.logOut : SideNavCSS.sideLinkItem} key={index} >
                             <NavLink className={({isActive}) => (!isActive ? '' : SideNavCSS.activeNavLink) } to = {link.url}>
                                 <i className={link.icon}></i>
@@ -57,7 +67,7 @@ function SideNav() {
                             </NavLink>
                             <p className={SideNavCSS.toolTip}>{link.title}</p>
                         </li>
-                    ))
+                    )) }</> : null
                 }
                 <li className= {SideNavCSS.logOut} onClick = {logOut}>
                     <i className='fas fa-sign-out'></i>

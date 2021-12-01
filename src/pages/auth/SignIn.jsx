@@ -4,24 +4,18 @@ import SignInCss from '../../components/styles/Sign-in.module.css'
 import Background from '../../components/img/background.png'
 import { Link,  useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {useDispatch, useSelector} from 'react-redux'
-import { userLoggedIn } from '../../theStore/actions'
-import { updateUserDetails } from '../../theStore/actions'
 
 
 
 function SignIn(props) {
 
   let navigate =  useNavigate();
-  const dispatch = useDispatch()
 
   const getUserInfo = async (values) => {
     await axios.post('auth/signin', values)
       .then (res => {
         localStorage.setItem('token', res.data.accessToken)
-        console.log('Result: ', res)
-        //  dispatch(updateUserDetails(res.data.data))
-        // dispatch(userLoggedIn(true))
+        navigate('/dashboard/home')
       }) 
       .catch (err => console.log(err))
   }
@@ -64,11 +58,7 @@ function SignIn(props) {
                   }
                   getUserInfo(data)
                   
-                    setTimeout(() => {
-                      navigate('/dashboard/home')
-                      setSubmitting(false);
-                    }, 400);
-                  
+                  setSubmitting(false);
                   
                 }}
               >
