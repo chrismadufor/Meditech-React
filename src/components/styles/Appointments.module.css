@@ -1,7 +1,7 @@
 .Pending p{
     background-color: orange;
     color: #fff;
-    width: fit-content;
+    width: 110px;
     padding: 6px;
     border-radius: 7px;
     justify-self: end;
@@ -9,6 +9,7 @@
 .Cancelled, .Completed, .Pending{
     display: flex;
     justify-content: space-around;
+   
 }
 
 .Test p{
@@ -18,7 +19,7 @@
 .Completed p{
     background-color: rgb(62, 182, 62);
     color: #fff;
-    width: fit-content;
+    width: 110px;
     padding: 6px;
     border-radius: 7px;
 }
@@ -26,7 +27,7 @@
 .Cancelled p{
     background-color: orangered;
     color: #fff;
-    width: fit-content;
+    width: 110px;
     padding: 6px;
     border-radius: 7px;
 }
@@ -34,4 +35,18 @@
 .tRow td p{
     font-weight: 200 !important;
     
+}
+.patName{
+    font-size: 22px;
+}
+
+.newAppointments{
+    height: 60px;
+  width: 200px;
+  display: flex;
+  background-color: #00a8db;
+  color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
