@@ -115,7 +115,6 @@
 
   table tr td{
     border-bottom: 1px solid #CCCCCC;
-    padding-left: 50px;
   }
  
   table .firstCol{
@@ -146,7 +145,12 @@
     width: 30px;
     height: 30px;
     margin: auto 5px;
+    padding-top: 10px;
     align-items: center;
+  }
+
+  button.control-box{
+    padding-bottom: 9px;
   }
 
   .tableControls .control-box:hover, .tableControls .control-box:active{

@@ -215,7 +215,7 @@ button.afterTable{
   margin: 20px 0 20px 50px;
 }
 
-.tableControls, .control-box, .tableTopRow {
+.tableTopRow {
   display: none;
 }
 .elipses {

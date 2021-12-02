@@ -1,0 +1,37 @@
+.Pending p{
+    background-color: orange;
+    color: #fff;
+    width: fit-content;
+    padding: 6px;
+    border-radius: 7px;
+    justify-self: end;
+}
+.Cancelled, .Completed, .Pending{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Test p{
+    padding-left: 50px;
+
+}
+.Completed p{
+    background-color: rgb(62, 182, 62);
+    color: #fff;
+    width: fit-content;
+    padding: 6px;
+    border-radius: 7px;
+}
+
+.Cancelled p{
+    background-color: orangered;
+    color: #fff;
+    width: fit-content;
+    padding: 6px;
+    border-radius: 7px;
+}
+
+.tRow td p{
+    font-weight: 200 !important;
+    
+}

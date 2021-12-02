@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
+import { useSelector } from "react-redux";
+import AppointmentStyles from '../styles/Appointments.module.css'
 
 function Home() {
+    // const [user, setUser] = useState({})
+    const dummyData = useSelector((state) => state.dashboardReducer.appointments);
+    
+    const userData = useSelector((state) => (state.authReducer.userDetails))
+    console.log(userData)
+    let renderTableRows = () => {
+        return dummyData.slice(0,4).map((item, index) =>
+        <tr className={AppointmentStyles.tRow}>
+                <td><p>{item.doctor}</p></td><td  className={AppointmentStyles.Test}><p>{item.date}</p></td><td  className={AppointmentStyles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td className={AppointmentStyles[item.status]}><p>{item.status}</p></td>
+            </tr>
+        );
+    }
+    
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
@@ -21,8 +36,8 @@ function Home() {
                         <img src={patient} alt="" className="patient-img" />
 
                     <div className="patient-details">
-                        <p className="pat-name">Abiola Odeyemi </p>
-                    <p className="hosed">Hospital ID: <span className="hos-num">TKI545</span></p>
+                        <p className="pat-name">{userData.fullName} </p>
+                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.fullName}</span></p>
                     </div>
                     
                     </div>
@@ -70,26 +85,11 @@ function Home() {
                         </tr>
                     </thead>
                     <tbody id="table-body-ad">
-                    
+                    {
+                        renderTableRows()
+                    }
                     </tbody>
                     </table>
-                    <div className="tableControls">
-                    <div className="control-box">
-                        <p> &lt&lt </p>
-                    </div>
-                    <div className="control-box">
-                        <p> &lt </p>
-                    </div>
-                    <div className="control-box">
-                    <p>1</p>
-                    </div>
-                    <div className="control-box">
-                        <p> &gt </p>
-                    </div>
-                    <div className="control-box">
-                        <p> &gt&gt </p>
-                    </div>
-                    </div>
                     <button className="afterTable">
                     <a href="/patient-appointment.html">
                     View all

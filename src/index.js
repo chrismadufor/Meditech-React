@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useSelector } from 'react-redux'; 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import configureStore from "../src/theStore/store";
+import axios from 'axios'
 
+
+
+
+axios.defaults.baseURL = 'https://meditech-hospital-app.herokuapp.com/'
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={configureStore}>

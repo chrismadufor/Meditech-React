@@ -9,28 +9,29 @@ import Home from './components/dashboard/Home'
 import Appointments from './components/dashboard/Appointments'
 import HealthTips from './components/dashboard/HealthTips'
 import Profile from './components/dashboard/Profile'
+import ProfileEdit from './components/dashboard/ProfileEdit'
 import Notifications from './components/dashboard/Notifications'
 import Settings from './components/dashboard/Settings'
-// import { Provider } from "react-redux";
-// import configureStore from "store";
 
 function App() {
+
   return (
     <Router>
       <div className="App">
         <Routes>
-            <Route path="/" element = {<LandingPage />}></Route>
-            <Route path="/signin" element = {<SignIn />}></Route>
-            <Route path="/signup" element = {<SignUp />}></Route>
-            <Route path="/signupno" element = {<SignUpNo />}></Route>
-            <Route path="/dashboard" element = {<Dashboard />}>
-              <Route path='/dashboard' element={<Home />}></Route>
-              <Route path='/dashboard/appointments' element={<Appointments />}></Route>
-              <Route path='/dashboard/health-tips' element={<HealthTips />}></Route>
-              <Route path='/dashboard/profile' element={<Profile />}></Route>
-              <Route path='/dashboard/notifications' element={<Notifications />}></Route>
-              <Route path='/dashboard/settings' element={<Settings />}></Route>
-            </Route>
+          <Route path="/" element = {<LandingPage />}></Route>
+          <Route path="/signin" element = {<SignIn />}></Route>
+          <Route path="/signup" element = {<SignUp />}></Route>
+          <Route path="/signupno" element = {<SignUpNo />}></Route>
+          <Route path="/dashboard" element = {<Dashboard />}>
+            <Route path='/dashboard/home' element={<Home />}></Route>
+            <Route path='/dashboard/appointments' element={<Appointments />}></Route>
+            <Route path='/dashboard/health-tips' element={<HealthTips />}></Route>
+            <Route path='/dashboard/profile' element={<Profile />}></Route>
+            <Route path='/dashboard/profile-edit' element={<ProfileEdit />}></Route>
+            <Route path='/dashboard/notifications' element={<Notifications />}></Route>
+            <Route path='/dashboard/settings' element={<Settings />}></Route>
+          </Route>
         </Routes>
       </div>
     </Router>

@@ -2,7 +2,85 @@ import { ADD_SINGLE_APPOINNTMENT, ADD_ALL_APPOINNTMENT, SET_APPOINTMENT_STATUS }
 
 const INITIAL_STATE = {
     appointments : [
-  ]
+      {
+          doctor: 'Marylyn Monroe',
+          date: '12-11-2012',
+          time: '2:30pm',
+          contact: '08032888201',
+          status: 'Pending',
+          
+      },
+      {
+          doctor: 'Jack Monroe',
+          date: '12-11-2012',
+          time: '2:30pm',
+          contact: '08032888201',
+          status: 'Completed'
+      },
+      {
+          doctor: 'Jumoke Ajoke',
+          date: '12-11-2012',
+          time: '2:30pm',
+          contact: '08032888201',
+          status: 'Pending'
+      },
+      {
+          doctor: 'Jimmy Kimmel',
+          date: '12-11-2012',
+          time: '2:30pm',
+          contact: '08032888201',
+          status: 'Cancelled'
+      },
+      {
+        doctor: 'Jack Monroe',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Completed'
+    },
+    {
+        doctor: 'Jumoke Ajoke',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Pending'
+    },
+    {
+        doctor: 'Jimmy Kimmel',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Cancelled'
+    },
+      {
+          doctor: 'Tasha Conrad',
+          date: '12-11-2012',
+          time: '2:30pm',
+          contact: '08032888201',
+          status: 'Pending'
+      },
+      {
+        doctor: 'Jack Monroe',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Completed'
+    },
+    {
+        doctor: 'Jumoke Ajoke',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Pending'
+    },
+    {
+        doctor: 'Jimmy Kimmel',
+        date: '12-11-2012',
+        time: '2:30pm',
+        contact: '08032888201',
+        status: 'Cancelled'
+    }
+    ]
 }
 
 let dashboardReducer = (state = INITIAL_STATE, action) => {
