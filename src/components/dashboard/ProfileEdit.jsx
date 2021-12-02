@@ -1,11 +1,85 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TopNav from './layouts/TopNav'
 import Editcss from '../styles/profile.module.css'
 import { Formik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import { updateUserDetails } from '../../theStore/actions'
+
+import {  useNavigate } from 'react-router-dom'
+
 
 
 function ProfileEdit() {
+  let navigate =  useNavigate();
+  let dispatch = useDispatch();
+  const [src, setSrc] = useState(false)
+  const [image, setImage] = useState('')
 
+
+ const putUserInfo =  (values) => {
+   console.log()
+  const token = localStorage.getItem('token');
+  const config = {
+    headers : {
+        Authorization : 'Bearer ' + token
+    }
+}
+   axios.put('https://meditech-hospital-app.herokuapp.com/users/update ', values, config)
+    .then (res => {
+
+      console.log(values)
+      if(res.data.message){
+        axios.get('https://meditech-hospital-app.herokuapp.com/users/profile'
+          , config)
+          .then(res=>{
+
+            dispatch(updateUserDetails(res.data))
+            // setLoading(false)
+            navigate('/dashboard/profile')
+
+            console.log(res)
+          })
+      }
+    }) 
+    .catch (err => console.log(err))
+}
+const validate = Yup.object({
+  fullName: Yup.string()
+  .required('Name  required'),
+  email: Yup.string()
+  .email('Email is invalid')
+  .required('Email  required'),
+  hospitalId: Yup.string()
+  .required('Hospital Id  required'),
+  phone: Yup.number()
+  .required('Number  required'),
+  dateOfBirth: Yup.string()
+  .required('Date of Birth  required'),
+  nationality: Yup.string()
+  .required('Nationality  required'),
+  city: Yup.string()
+  .required('City  required'),
+  address: Yup.string()
+  .required('Address  required'),
+  
+})
+
+const pictureUpload = async (e)=> {
+  const files= e.target.files
+ const formData = new FormData()
+ formData.append('file', files[0])
+  formData.append('upload_preset', 'ml_default')
+  setSrc(true)
+  axios.post('https://api.cloudinary.com/v1_1/dneoru6bp/image/upload', formData)
+  .then((res)=>{
+  console.log(res)
+   setImage(res.data.secure_url)
+
+    setSrc(false)
+  })
+};
     return (
       <div className={Editcss.main}>
         <TopNav name= 'Profile Edit'/>
@@ -16,32 +90,37 @@ function ProfileEdit() {
 
 
           <Formik
-       initialValues={
-         {name:'',
+        initialValues={
+         {fullName:'',
           email: '',
           hospitalId:'',
-          number:'',
-          DOB: '',
+          phone:'',
+          dateOfBirth: '',
           nationality: '',
           city: '',
           address:'',
-          password: '',  }}
-       validate={values => {
-         const errors = {};
-         if (!values.email) {
-           errors.email = 'Required';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Invalid email address';
-         }
-         return errors;
-       }}
+           }}
+
+     
+      validationSchema = {validate}
+
        onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
+         console.log('hello world')
+        const data = {
+          profilePhoto: image,
+          fullName: values.fullName,
+          email: values.email,
+          hospitalId:values.hospitalId,
+          phone:values.phone,
+          dateOfBirth: values.dateOfBirth,
+          nationality: values.nationality,
+          city: values.city,
+          address:values.address,
+        }
+        
+        putUserInfo(data)
+       setSubmitting(false);
+     
        }}
      >
        {({
@@ -54,16 +133,21 @@ function ProfileEdit() {
          isSubmitting,
          
        }) => (
-         <form className={Editcss.editProfileContainer} onSubmit={handleSubmit}>
+         <form className={Editcss.editForm} onSubmit={handleSubmit}>
            <div className={Editcss.formTitle}>
             <h2>Edit Profile</h2>
-            <h2 className={Editcss.closeModal} onclick="editProfile();">x</h2>
           </div>
           <div className={Editcss.imgWrap}>
             <div className={Editcss.imgPreview}>
-              <img className={Editcss.editProfileImg} src="img/profile-picture.jpg" alt="" />
+              {src? (
+                ''):(
+                  <img className={Editcss.editProfileImg} src={image} alt="" />
+                )
+              }
+
+              
             </div>
-            <input type="file" name="profile-image" id="patient-image" />
+            <input type="file" name="profile-image" id="patient-image" onChange={pictureUpload}className={Editcss.file} />
           </div>
 
           <div className={Editcss.inputWrap}>
@@ -71,13 +155,15 @@ function ProfileEdit() {
               <label for="full-name"> Full Name</label>
               <input
                 type="text"
-                name="name"
+                name="fullName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 id="patient-name"
                 placeholder="Enter your name"
               />
-             {errors.name && touched.name && errors.name}
+             <div style={{color:"red"}}>  
+             {errors.fullName && touched.fullName && errors.fullName}
+             </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -91,7 +177,9 @@ function ProfileEdit() {
                id="patient-email"
                placeholder="Enter your email"
               />
+              <div style={{color:"red"}}>  
            {errors.email && touched.email && errors.email}
+           </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -103,8 +191,12 @@ function ProfileEdit() {
                onChange={handleChange}
                onBlur={handleBlur}
                value={values.hospitalId}
+               placeholder="Enter your Hospital Id"
+
                 />
-           {errors.hospitalId && touched.hospitalId && errors.hospitalId}
+                <div style={{color:"red"}}>  
+                {errors.hospitalId && touched.hospitalId && errors.hospitalId}
+                </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -112,13 +204,15 @@ function ProfileEdit() {
               <input
                 type="number"
                 id="patient-phone"
-                name="number"
+                name="phone"
                onChange={handleChange}
                onBlur={handleBlur}
                value={values.number}
                 placeholder="Enter your phone number"
               />
-           {errors.number && touched.number && errors.number}
+              <div style={{color:"red"}}>  
+           {errors.phone && touched.phone && errors.phone}
+           </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -126,13 +220,15 @@ function ProfileEdit() {
               <input
                 type="text"
                 id="patient-dob"
-                name="DOB"
+                name="dateOfBirth"
                onChange={handleChange}
                onBlur={handleBlur}
-               value={values.DOB}
+               value={values.dateOfBirth}
                 placeholder="Enter your date of birth"
               />
-           {errors.DOB && touched.DOB && errors.DOB}
+              <div style={{color:"red"}}>  
+           {errors.dateOfBirth && touched.dateOfBirth && errors.dateOfBirth}
+           </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -146,7 +242,9 @@ function ProfileEdit() {
                 value={values.nationality}
                 placeholder="Enter your nationality"
               />
+              <div style={{color:"red"}}>  
            {errors.nationality && touched.nationality && errors.nationality}
+           </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -160,7 +258,9 @@ function ProfileEdit() {
                 value={values.city}
                 placeholder="Enter your city"
               />
+              <div style={{color:"red"}}>  
            {errors.city && touched.city && errors.city}
+           </div>
 
             </div>
             <div className={Editcss.formInput}>
@@ -174,16 +274,18 @@ function ProfileEdit() {
                 value={values.address}
                 placeholder="Enter your address"
               />
+              <div style={{color:"red"}}>  
            {errors.address && touched.address && errors.address}
+           </div>
 
             </div>
           </div>
           
            <button type="submit" disabled={isSubmitting} 
             value="UPDATE PROFILE"
+            
             className={Editcss.submitForm}
-            id="submit-form"
-            onclick="editProfile();">
+            id="submit-form">
              Submit
            </button>
          </form>

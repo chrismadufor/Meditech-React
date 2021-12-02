@@ -2,6 +2,8 @@
   background-color: #f3f3f3;
   width: 100%;
   transition: 0.3s;
+  overflow-y: scroll;
+
 }
 .mainContent {
   margin: 30px 0 0;
@@ -12,9 +14,12 @@
   display: flex;
   background-color: white;
   padding: 50px;
-  display: flex;
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25)
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.basicWrap{
+  display: flex;
 }
 .profileWrap {
   width: 80%;
@@ -28,6 +33,7 @@
 }
 .flex {
   display: flex;
+  
 }
 .basicInfo > div, .otherInfo > div {
   width: 30%;
@@ -46,7 +52,7 @@ hr {
 .infoItem p:last-child {
   font-weight: bold;
   font-size: 16px;
-  margin-top: 10px;
+  margin: 10px 30px;
 }
 div.wide {
   width: 60%;
@@ -91,7 +97,7 @@ div.wide {
 .formInput {
   width: 48%;
   height: 40px;
-  margin: 20px 0;
+  margin: 30px 0;
   display: flex;
   flex-direction: column;
 }
@@ -124,9 +130,7 @@ label {
   justify-content: space-between;
   align-items: center;
 }
-.closeModal:hover {
-  cursor: pointer;
-}
+
 .imgWrap {
   margin-top: 20px;
   display: flex;
@@ -143,10 +147,98 @@ label {
   .main {
     margin-left: 75px;
   }
+ .editForm{
+   width: 100%;
+ }
 }
 
-@media (max-width:760px) {
+@media (max-width:650px) {
   .main {
     margin-left: 0;
+    font-size: 12px;
   }
+
+  .mainContent {
+   
+   width: 100%;
+  }
+
+  
+  .mainContentWrap{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+  }
+
+   .editProfile{
+     width: 50%;
+   }
+
+  .editForm{
+    width: 80%;
+    margin-right: 0;
+  }
+  .formInput {
+    
+    display: flex;
+    width: 100%;
+  }
+
+  .inputWrap {
+    display: flex;
+    align-items:center;
+    width: 100%;
+    justify-content: center;
+
+  }
+
+  .imgWrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .submitForm{
+    width: 80%;
+    justify-content: center;
+
+  }
+
+  .file{
+    font-size: 12px;
+  }
+}
+
+@media (max-width:400px) {
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainContent {
+   padding: 10px;
+    width: 100%;
+   }
+
+   
+   .formInput {
+     
+     display: flex;
+     justify-content: space-between;
+     width: 80%;
+   }
+ 
+   .inputWrap {
+     display: flex;
+     align-items: flex-start;
+     flex-direction: column;
+     width: 100%;
+   }
+ 
+   .imgWrap {
+     margin-top: 20px;
+     display: flex;
+     justify-content: center;
+   }
+   
 }
