@@ -1,11 +1,19 @@
-import React from "react";
+// import React, {useState, useEffect} from "react";
 import {useSelector} from 'react-redux'
 import TopNav from "./layouts/TopNav";
 import Profilecss from "../styles/profile.module.css";
 import { useNavigate } from "react-router-dom";
+// import {Image} from "cloudinary-react"
 
 function Profile() {
+//  const {pic, setPic} = useState('')
+
+//  useEffect(()=>{
+//   const base64= btoa(String.fromCharCode(...new Uint8Array(user.profilePhoto.data)))
+//   //  {()=> setPic( base64)} 
+//  }, [])
   let navigate = useNavigate();
+  
   const user = useSelector((state) => state.authReducer.userDetails)
   return (
     <div className={Profilecss.main}>
@@ -13,7 +21,8 @@ function Profile() {
       <div className={Profilecss.mainContent}>
         <div className={Profilecss.mainContentWrap}>
           <div className={Profilecss.profilePicture}>
-            <img className={Profilecss.profileImg} src="" alt="" />
+            <img className={Profilecss.profileImg} src={user.profilePhoto } alt="" />
+            
           </div>
           <div className={Profilecss.profileWrap}>
             <h2>Basic Information</h2>
@@ -63,7 +72,7 @@ function Profile() {
                   <p className={Profilecss.profileCity}>{user.city}</p>
                 </div>
               </div>
-              <div className="wide">
+              <div className={Profilecss.wide}>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>Nationality</p>
                   <p className={Profilecss.profileNation}>{user.nationality}</p>

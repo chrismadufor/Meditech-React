@@ -1,42 +1,59 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TopNav from './layouts/TopNav'
 import Editcss from '../styles/profile.module.css'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios'
-import {useDispatch, } from 'react-redux'
-import { userLoggedIn } from '../../theStore/actions'
+import {useDispatch} from 'react-redux'
 import { updateUserDetails } from '../../theStore/actions'
+
 import {  useNavigate } from 'react-router-dom'
 
 
 
 function ProfileEdit() {
   let navigate =  useNavigate();
+  let dispatch = useDispatch();
+  const [src, setSrc] = useState(false)
+  const [image, setImage] = useState('')
 
-  const dispatch = useDispatch()
 
-  const putUserInfo =  (values) => {
-    axios.put('https://meditech-hospital-app.herokuapp.com/users/update', values)
-     .then (res => {
-       localStorage.setItem('token', res.data.accessToken)
-       console.log('Result: ', res)
-        dispatch(updateUserDetails(res.data.data))
-        console.log(res.data.data)
-       dispatch(userLoggedIn(true))
-     }) 
-     .catch (err => console.log(err))
- }
- 
+ const putUserInfo =  (values) => {
+   console.log()
+  const token = localStorage.getItem('token');
+  const config = {
+    headers : {
+        Authorization : 'Bearer ' + token
+    }
+}
+   axios.put('https://meditech-hospital-app.herokuapp.com/users/update ', values, config)
+    .then (res => {
+
+      console.log(values)
+      if(res.data.message){
+        axios.get('https://meditech-hospital-app.herokuapp.com/users/profile'
+          , config)
+          .then(res=>{
+
+            dispatch(updateUserDetails(res.data))
+            // setLoading(false)
+            navigate('/dashboard/profile')
+
+            console.log(res)
+          })
+      }
+    }) 
+    .catch (err => console.log(err))
+}
 const validate = Yup.object({
-  name: Yup.string()
+  fullName: Yup.string()
   .required('Name  required'),
   email: Yup.string()
   .email('Email is invalid')
   .required('Email  required'),
   hospitalId: Yup.string()
   .required('Hospital Id  required'),
-  number: Yup.number()
+  phone: Yup.number()
   .required('Number  required'),
   dateOfBirth: Yup.string()
   .required('Date of Birth  required'),
@@ -48,6 +65,21 @@ const validate = Yup.object({
   .required('Address  required'),
   
 })
+
+const pictureUpload = async (e)=> {
+  const files= e.target.files
+ const formData = new FormData()
+ formData.append('file', files[0])
+  formData.append('upload_preset', 'ml_default')
+  setSrc(true)
+  axios.post('https://api.cloudinary.com/v1_1/dneoru6bp/image/upload', formData)
+  .then((res)=>{
+  console.log(res)
+   setImage(res.data.secure_url)
+
+    setSrc(false)
+  })
+};
     return (
       <div className={Editcss.main}>
         <TopNav name= 'Profile Edit'/>
@@ -59,10 +91,10 @@ const validate = Yup.object({
 
           <Formik
         initialValues={
-         {name:'',
+         {fullName:'',
           email: '',
           hospitalId:'',
-          number:'',
+          phone:'',
           dateOfBirth: '',
           nationality: '',
           city: '',
@@ -71,24 +103,24 @@ const validate = Yup.object({
 
      
       validationSchema = {validate}
+
        onSubmit={(values, { setSubmitting }) => {
+         console.log('hello world')
         const data = {
-          name: values.name,
+          profilePhoto: image,
+          fullName: values.fullName,
           email: values.email,
           hospitalId:values.hospitalId,
-          number:values.number,
+          phone:values.phone,
           dateOfBirth: values.dateOfBirth,
           nationality: values.nationality,
           city: values.city,
           address:values.address,
         }
+        
         putUserInfo(data)
-
-         setTimeout(() => {
-          navigate('/dashboard/profile')
-           
-           setSubmitting(false);
-         }, 400);
+       setSubmitting(false);
+     
        }}
      >
        {({
@@ -107,9 +139,15 @@ const validate = Yup.object({
           </div>
           <div className={Editcss.imgWrap}>
             <div className={Editcss.imgPreview}>
-              <img className={Editcss.editProfileImg} src="img/profile-picture.jpg" alt="" />
+              {src? (
+                ''):(
+                  <img className={Editcss.editProfileImg} src={image} alt="" />
+                )
+              }
+
+              
             </div>
-            <input type="file" name="profile-image" id="patient-image" className={Editcss.file} />
+            <input type="file" name="profile-image" id="patient-image" onChange={pictureUpload}className={Editcss.file} />
           </div>
 
           <div className={Editcss.inputWrap}>
@@ -117,14 +155,14 @@ const validate = Yup.object({
               <label for="full-name"> Full Name</label>
               <input
                 type="text"
-                name="name"
+                name="fullName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 id="patient-name"
                 placeholder="Enter your name"
               />
              <div style={{color:"red"}}>  
-             {errors.name && touched.name && errors.name}
+             {errors.fullName && touched.fullName && errors.fullName}
              </div>
 
             </div>
@@ -153,6 +191,8 @@ const validate = Yup.object({
                onChange={handleChange}
                onBlur={handleBlur}
                value={values.hospitalId}
+               placeholder="Enter your Hospital Id"
+
                 />
                 <div style={{color:"red"}}>  
                 {errors.hospitalId && touched.hospitalId && errors.hospitalId}
@@ -164,14 +204,14 @@ const validate = Yup.object({
               <input
                 type="number"
                 id="patient-phone"
-                name="number"
+                name="phone"
                onChange={handleChange}
                onBlur={handleBlur}
                value={values.number}
                 placeholder="Enter your phone number"
               />
               <div style={{color:"red"}}>  
-           {errors.number && touched.number && errors.number}
+           {errors.phone && touched.phone && errors.phone}
            </div>
 
             </div>
@@ -243,9 +283,9 @@ const validate = Yup.object({
           
            <button type="submit" disabled={isSubmitting} 
             value="UPDATE PROFILE"
+            
             className={Editcss.submitForm}
-            id="submit-form"
-            onclick="editProfile();">
+            id="submit-form">
              Submit
            </button>
          </form>
