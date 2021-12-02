@@ -135,7 +135,7 @@ export const sideNavLinks = {
         },
         {
             title: "Manage Doctors",
-            url: "/dashboard/health-tips",
+            url: "/dashboard/manage-doctors",
             icon: "fas fa-heartbeat",
             extraClass: ""
         },

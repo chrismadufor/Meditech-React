@@ -109,8 +109,12 @@ function Appointments() {
                     </button>
                 </div>
             </div>
+            <div>
+              <img src="./img/Elipses (3).png" className="elipses" alt="" />
+            </div>
         </div>
-    )
+          
+  );
 }
 
-export default Appointments
+export default Appointments;
