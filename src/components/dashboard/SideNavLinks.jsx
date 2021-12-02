@@ -72,7 +72,7 @@ export const sideNavLinks = {
         {
             title: "Payments",
             url: "/dashboard/payments",
-            icon: "fas fa-search",
+            icon: "fas fa-credit-card",
             extraClass: ""
         },
         {

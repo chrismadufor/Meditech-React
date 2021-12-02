@@ -8,9 +8,8 @@ import AppointmentStyles from '../styles/Appointments.module.css'
 function Home() {
     // const [user, setUser] = useState({})
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
-    
     const userData = useSelector((state) => (state.authReducer.userDetails))
-    console.log(userData)
+
     let renderTableRows = () => {
         return dummyData.slice(0,4).map((item, index) =>
         <tr className={AppointmentStyles.tRow}>
@@ -33,11 +32,11 @@ function Home() {
                     
 
                     <div className="patient-name">
-                        <img src={patient} alt="" className="patient-img" />
+                        <img src={userData.profilePhoto ? userData.profilePhoto : patient} alt="" className="patient-img" />
 
                     <div className="patient-details">
                         <p className="pat-name">{userData.fullName} </p>
-                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.fullName}</span></p>
+                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
                     </div>
                     
                     </div>

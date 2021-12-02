@@ -1,8 +1,11 @@
 import React from 'react'
 import TopNavCSS from "../../styles/TopNav.module.css"
+import {useSelector} from 'react-redux'
 import patient from '../../img/patient.jpg'
 
 function TopNav({name}) {
+
+    const profilePicture = useSelector(state => state.authReducer.userDetails.profilePhoto)
     return (
       <div className={TopNavCSS.topNav}>
           <div className={TopNavCSS.pageName}>
@@ -17,7 +20,7 @@ function TopNav({name}) {
               <i className="fas fa-bell"></i>
             </div>
           </div>
-          <img src={patient} alt="" className="top-img" />
+          <img src={profilePicture ? profilePicture : patient} alt="" className="top-img" />
         </div>
       </div>
     )
