@@ -35,7 +35,7 @@ function Home() {
                         <img src={userData.profilePhoto ? userData.profilePhoto : patient} alt="" className="patient-img" />
 
                     <div className="patient-details">
-                        <p className="pat-name">{userData.fullName} </p>
+                        <p className={AppointmentStyles.patName}>{userData.fullName} </p>
                     <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
                     </div>
                     
@@ -47,14 +47,15 @@ function Home() {
                     <p>Total Appointments</p>
                     <div className="total">
                         <i className="fas fa-hospital fa-4x "></i>
-                        <p>12</p>
+                        <p>{userData.id}</p>
                     </div>
                     
                     </div>
 
-                    <div className="new-appointments">
-                    <p><a href="/book-appointment.html"> New Appointment</a></p>
-                    <i className='fas fa-plus'></i>
+                    <div className={ AppointmentStyles.newAppointments}
+                     >
+                    <p><a href="/book-appointment.html"> New Appointment</a> <i className='fas fa-plus'></i></p>
+                    
                     {/* <img src="img/plus sign.png" alt="" /> */}
                     </div>
                 </div>
