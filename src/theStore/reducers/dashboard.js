@@ -86,7 +86,7 @@ const INITIAL_STATE = {
 let dashboardReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case ADD_SINGLE_APPOINNTMENT:
-        return {...state, appointments: [...state.appointments, action.payload]}
+        return {...state, appointments: [action.payload, ...state.appointments]}
       case ADD_ALL_APPOINNTMENT:
           return {...state, appointments: [...action.payload]}
       case SET_APPOINTMENT_STATUS:

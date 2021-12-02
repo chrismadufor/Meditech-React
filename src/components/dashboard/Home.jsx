@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import TopNav from './layouts/TopNav'
 import sunrise from '../img/sunrise.png'
 import patient from '../img/patient.jpg'
@@ -54,7 +55,7 @@ function Home() {
 
                     <div className={ AppointmentStyles.newAppointments}
                      >
-                    <p><a href="/book-appointment.html"> New Appointment</a> <i className='fas fa-plus'></i></p>
+                    <p><Link to="/dashboard/book-appointment"> New Appointment</Link> <i className='fas fa-plus'></i></p>
                     
                     {/* <img src="img/plus sign.png" alt="" /> */}
                     </div>

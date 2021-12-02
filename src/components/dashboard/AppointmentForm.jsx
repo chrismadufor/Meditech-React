@@ -1,8 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import TopNav from "./layouts/TopNav";
 import Appointment from "../styles/bookAppointment.module.css";
+import { addAppointment } from '../../theStore/actions'
 
 function AppointmentForm() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [data, setData] = useState({
+    contact: '08099192347',
+    date: '',
+    time: '',
+    doctor: 'Chika Ukoh',
+    status: 'Pending'
+  })
+  const handleChange = (e) => {
+    setData({...data, [e.target.name]: e.target.value})
+  }
+  const submitForm = () => {
+    dispatch(addAppointment(data))
+    navigate('/dashboard/appointments')
+  }
   return (
     <div className="main">
       <TopNav name="Appointments" />
@@ -11,7 +30,7 @@ function AppointmentForm() {
           <h1>Book an Appointment</h1>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="department">Department</label>
-            <select name="department" id="department">
+            <select name="dept" id="department">
               <option value="">Choose a department</option>
               <option value="gynaecology">Gynaecology</option>
               <option value="pediatrics">Pediatrics</option>
@@ -19,11 +38,11 @@ function AppointmentForm() {
           </div>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="appointment-date">Date</label>
-            <input type="date" id="appointment-date" />
+            <input type="date" id="appointment-date" name = "date" onChange = {handleChange} value = {data.date}/>
           </div>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="appointment-time">Time</label>
-            <input type="time" id="appointment-time" />
+            <input type="time" id="appointment-time" name="time" onChange = {handleChange} value = {data.time}/>
           </div>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="appointment-details">
@@ -35,7 +54,7 @@ function AppointmentForm() {
             type="button"
             value="BOOK APPOINTMENT"
             class={Appointment.submitForm}
-            onclick="bookAnAppointment();"
+            onClick= {submitForm}
           ></input>
         </div>
       </div>
