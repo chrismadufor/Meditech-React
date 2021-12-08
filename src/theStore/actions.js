@@ -3,7 +3,9 @@ import
         ADD_SINGLE_APPOINNTMENT, 
         ADD_ALL_APPOINNTMENT,
         UPDATE_USER_DETAILS,
-        USER_LOGGED_IN }
+        USER_LOGGED_IN ,
+        ADD_ALL_DOCTORS
+    }
      from './constants'
 
 export const addAppointment = (payload) => {
@@ -37,6 +39,13 @@ export const updateUserDetails = (payload) => {
 export const userLoggedIn = (payload) => {
     return {
         type: USER_LOGGED_IN,
+        payload: payload
+    }
+}
+
+export const addDoctors = (payload) => {
+    return {
+        type: ADD_ALL_DOCTORS,
         payload: payload
     }
 }
