@@ -1,108 +1,85 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import TopNav from './layouts/TopNav'
-import '../styles/manage-doctors.css'
-function ManageDoctors() {
+import Managedoctors from '../styles/manageDoctors.module.css'
+import axios from 'axios';
+import {useSelector, useDispatch} from 'react-redux'
+import {addDoctors} from '../../theStore/actions'
+import {Link} from 'react-router-dom'
+
+
+ function ManageDoctors() {
+  const doctors = useSelector((state) => state.doctorReducer.doctors)
+const dispatch = useDispatch()
+
+let renderDoctors = () => {
+  return doctors.map((item, index) =>
+  <div className={Managedoctors.card}>
+  <div className={Managedoctors.doctorImage}>
+    <img src={item.profilePhoto} alt=""/>
+  </div>
+  <div className={Managedoctors.doctorText}>
+    <p className={Managedoctors.name}>{item.fullName}</p>
+    <p className={Managedoctors.department}>{item.department}</p>
+  </div>
+  <div className={Managedoctors.hamburger}>
+    <div className={Managedoctors.dot}></div>
+    <div className={Managedoctors.dot}></div>
+    <div className={Managedoctors.dot}></div>
+  </div>
+</div>
+  );
+}
+
+  const getDoctors= ()=>{
+    const token = localStorage.getItem('token');
+
+    const config = {
+      headers : {
+          Authorization : 'Bearer ' + token
+      }
+  }
+    axios.get('https://meditech-hospital-app.herokuapp.com/users/all-doctors', config)
+     .then((res) =>{
+      dispatch(addDoctors(res.data.data))
+
+      console.log(res)
+   
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  };
+
+
+  useEffect(() => {
+    if(!getDoctors ){
+      renderDoctors()
+    }else{
+      getDoctors()
+    }
+     
+    
+  },);
+
     return (
-        <div className='main'>
+
+        <div className='main' >
             <TopNav name = "Manage doctors"/>
           
         
-        <div class="main-content">
+        <div  className='mainContent'>
           
-          <div class="doctor-header">
+          <div className={Managedoctors.doctorHeader}>
             <p>All Doctors</p>
-            <a href="add-doctors.html"><button><i class="fas fa-user user"></i>Add Doctors</button></a>
-          </div>
-          <div class="doctor-list" id="doctor-profile-container">
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/doctor-image.png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Jessica Alaba</p>
-                <p class="department">Gynaecology</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
+            <Link to='/dashboard/add-doctors'><button><i className="fas fa-user user"></i>Add Doctors</button></Link>
             
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/Ellipse 35.png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Hamzat Aliyu</p>
-                <p class="department">Paediatric</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
+          </div>
+          <div className={Managedoctors.doctorList} id="doctor-profile-container">
+
+          {renderDoctors()}
            
-            
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/Ellipse 35 (1).png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Joy Ogedengbe</p>
-                <p class="department">Gynaecology</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/Ellipse 35 (2).png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Chinedum Nwachukwu</p>
-                <p class="department">Gynaecology</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/Ellipse 35 (3).png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Martin Bayo</p>
-                <p class="department">Gynaecology</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="doctor-image">
-                <img src="./img/Ellipse 35 (4).png" alt=""/>
-              </div>
-              <div class="doctor-text">
-                <p class="name">Ezinne Agu</p>
-                <p class="department">Gynaecology</p>
-              </div>
-              <div class="hamburger">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
+
           </div>
-        </div>
 
         <div class="tableControls">
           <div class="control-box">
@@ -131,9 +108,9 @@ function ManageDoctors() {
             </div>
           </div>
         </div>
-        
-        </div>
-    )
+     </div> 
+     </div>  
+ )
 }
 
 export default ManageDoctors
