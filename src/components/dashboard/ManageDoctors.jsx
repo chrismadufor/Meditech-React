@@ -72,6 +72,7 @@ let renderDoctors = () => {
           <div className={Managedoctors.doctorHeader}>
             <p>All Doctors</p>
             <Link to='/dashboard/add-doctors'><button><i className="fas fa-user user"></i>Add Doctors</button></Link>
+            <Link to='/dashboard/schedule-doctors'><button><i className="fas fa-user user"></i>Schedule Doctors</button></Link>
             
           </div>
           <div className={Managedoctors.doctorList} id="doctor-profile-container">
@@ -80,7 +81,7 @@ let renderDoctors = () => {
            
 
           </div>
-
+            
         <div class="tableControls">
           <div class="control-box">
             <p style={{fontWeight: "700"}}>{ '>>'}</p>

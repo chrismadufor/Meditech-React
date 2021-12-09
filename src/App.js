@@ -16,6 +16,7 @@ import Settings from './components/dashboard/Settings'
 import AppointmentForm from './components/dashboard/AppointmentForm'
 import AddDoctors from './components/dashboard/AddDoctors'
 import ManageDoctors from './components/dashboard/ManageDoctors'
+import DoctorSchedule from './components/dashboard/DoctorSchedule'
 
 function App() {
   const role = useSelector(state => state.authReducer.userDetails.userType)
@@ -33,6 +34,7 @@ function App() {
             <Route path='/dashboard/appointments' element={<Appointments />}></Route>
             <Route path = '/dashboard/book-appointment' element = {role === 'patient' ? <AppointmentForm /> : <Navigate to= '/dashboard/home' />}></Route>
             <Route path = '/dashboard/add-doctors' element = {role === 'admin' ? <AddDoctors /> : <Navigate to= '/dashboard/home' />}></Route>
+            <Route path = '/dashboard/schedule-doctors' element = {role === 'admin' ? <DoctorSchedule /> : <Navigate to= '/dashboard/home' />}></Route>
             <Route path = '/dashboard/manage-doctors' element = {role === 'admin' ? <ManageDoctors /> : <Navigate to= '/dashboard/home' />}></Route>
             <Route path='/dashboard/health-tips' element={role === 'patient' ? <HealthTips /> : <Navigate to= '/dashboard/home' /> }></Route>
             <Route path='/dashboard/profile' element={<Profile />}></Route>
