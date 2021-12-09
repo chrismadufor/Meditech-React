@@ -140,8 +140,13 @@ img {
   background-color: #f3f3f3;
   width: 100%;
   transition: 0.3s;
+  /* height: 100vh;
+  overflow: scroll; */
   /* position: relative; */
 }
+/* .main::-webkit-scrollbar {
+  display: none;
+} */
 .main.active {
   margin-left: 75px;
 }

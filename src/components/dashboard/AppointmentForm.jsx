@@ -42,7 +42,19 @@ function AppointmentForm() {
           </div>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="appointment-time">Time</label>
-            <input type="time" id="appointment-time" name="time" onChange = {handleChange} value = {data.time}/>
+            {/* <input type="time" id="appointment-time" name="time" onChange = {handleChange} value = {data.time}/> */}
+            <select id="appointment-time" name="time" onChange = {handleChange} value = {data.time}>
+                <option>Choose a time</option>
+                <option>9AM</option>
+                <option>10AM</option>
+                <option>11AM</option>
+                <option>12PM</option>
+                <option>1PM</option>
+                <option>2PM</option>
+                <option>3PM</option>
+                <option>4PM</option>
+                <option>5PM</option>
+            </select>
           </div>
           <div className={Appointment.formInput}>
             <label className={Appointment.label} for="appointment-details">

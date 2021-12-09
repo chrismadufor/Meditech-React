@@ -10,6 +10,43 @@ function Home() {
     // const [user, setUser] = useState({})
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
     const userData = useSelector((state) => (state.authReducer.userDetails))
+    const patient = (<div className="patient-info">
+    <div className="patient">
+
+    <div className="patient-greet">
+    <p>Good Morning</p> <br />
+    <img src={sunrise} alt="" />
+    </div>
+    
+
+    <div className="patient-name">
+        <img src={userData.profilePhoto ? userData.profilePhoto : patient} alt="" className="patient-img" />
+
+    <div className="patient-details">
+        <p className={AppointmentStyles.patName}>{userData.fullName} </p>
+    <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
+    </div>
+    
+    </div>
+
+    </div>
+
+    <div className="total-appointment">
+    <p>Total Appointments</p>
+    <div className="total">
+        <i className="fas fa-hospital fa-4x "></i>
+        <p>{userData.id}</p>
+    </div>
+    
+    </div>
+
+    <div className={ AppointmentStyles.newAppointments}
+     >
+    <p><Link to="/dashboard/book-appointment">  Appointment</Link> <i className='fas fa-plus'></i></p>
+    
+    {/* <img src="img/plus sign.png" alt="" /> */}
+    </div>
+</div>)
 
     let renderTableRows = () => {
         return dummyData.slice(0,4).map((item, index) =>
@@ -23,43 +60,7 @@ function Home() {
         <div className='main'>
             <TopNav name='Dashboard'/>
             <div className='main-content'>
-                <div className="patient-info">
-                    <div className="patient">
-
-                    <div className="patient-greet">
-                    <p>Good Morning</p> <br />
-                    <img src={sunrise} alt="" />
-                    </div>
-                    
-
-                    <div className="patient-name">
-                        <img src={userData.profilePhoto ? userData.profilePhoto : patient} alt="" className="patient-img" />
-
-                    <div className="patient-details">
-                        <p className={AppointmentStyles.patName}>{userData.fullName} </p>
-                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
-                    </div>
-                    
-                    </div>
-
-                    </div>
-
-                    <div className="total-appointment">
-                    <p>Total Appointments</p>
-                    <div className="total">
-                        <i className="fas fa-hospital fa-4x "></i>
-                        <p>{userData.id}</p>
-                    </div>
-                    
-                    </div>
-
-                    <div className={ AppointmentStyles.newAppointments}
-                     >
-                    <p><Link to="/dashboard/book-appointment"> New Appointment</Link> <i className='fas fa-plus'></i></p>
-                    
-                    {/* <img src="img/plus sign.png" alt="" /> */}
-                    </div>
-                </div>
+                {patient}
                 <div className="tableComponent">
                     <div className="tableTopRow">
                     <div>
