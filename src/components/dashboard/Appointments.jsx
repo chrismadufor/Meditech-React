@@ -1,16 +1,52 @@
 import React from 'react'
 import TopNav from './layouts/TopNav'
 import Styles from '../styles/Appointments.module.css'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
+import { GenericModal } from '../layout/GenericModal';
+import { resolveAppointment } from '../../theStore/actions'
 
 function Appointments() {
+    const dispatch = useDispatch()
+    const role = useSelector(state => state.authReducer.userDetails.userType)
     let [page, setPage] = React.useState(1)
+    let [showModal, setShowModal] = React.useState(false)
     let [bookings, setBookings] = React.useState([])
+    let [item, setItem] = React.useState({})
     let [showAll, setShowAll] = React.useState(false)
     let [currentPage, setCurrentPage] = React.useState([])
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
     
+    let hideModal = () => {
+        setShowModal(false)
+    }
+
+    let docBtn = () => {
+        if(role === 'doctor'){
+            return <button  onClick={e=>updateAppointment(e, 'Completed')} className="btn ml-3 btn-success">
+        Complete Appointment
+        </button>   
+        } else {
+            return ''
+        }
+    } 
+
+    let updateAppointment = (e, val) => {
+        e.preventDefault()
+        let payload = {
+            id: item.id,
+            data: val
+        }
+        dispatch(resolveAppointment(payload))
+        hideModal()
+    }
+
+    let handleShowModal = (e,item) => {
+        e.preventDefault()
+        setItem(item)
+        setShowModal(true)
+    }
+
     let renderTableRows = () => {
         let rows = []
         if(showAll){
@@ -20,7 +56,7 @@ function Appointments() {
         }
         return rows.map(item =>
             <tr className={Styles.tRow}>
-                <td><p>{item.doctor}</p></td><td  className={Styles.Test}><p>{item.date}</p></td><td  className={Styles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td className={Styles[item.status]}><p>{item.status}</p></td>
+                <td><p>{item.doctor}</p></td><td  className={Styles.Test}><p>{item.date}</p></td><td  className={Styles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
             </tr>
         );
     }
@@ -76,6 +112,31 @@ function Appointments() {
                         <img src="./img/Elipses (3).png" className="elipses" alt=''/>
                     </div> 
                     </div>
+                    <GenericModal show={showModal} handleClose={hideModal}>
+                        <div className="container-fluid">
+                            <div  className="row pb-3">
+                                <div className="col">
+                                    Doctor's Name: {item.doctor}
+                                    </div>
+                            </div>
+                            <div  className="row pt-3">
+                                <div className="col">
+                                    Date: {item.date}
+                                    </div>
+                                    <div className="col">
+                                    Time: {item.time}
+                                    </div>
+                            </div>
+                            <div  className="row pt-4">
+                                <div className="col-sm-6 mt-2 btn-lg">
+                                    <button onClick={e=>updateAppointment(e, 'Cancelled')} className="btn btn-danger">
+                                    Cancel Appointment
+                                    </button>
+                                    {docBtn()}
+                                    </div>
+                            </div>
+                        </div>
+                    </GenericModal>
                     <table>
                     <thead>
                         <tr>
