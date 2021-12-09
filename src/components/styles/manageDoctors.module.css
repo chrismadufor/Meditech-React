@@ -8,10 +8,12 @@ html {
   font-size: 10px;
 }
 .mainContent {
-  margin: 30px 0 0;
+  
+  margin: 30px;
   padding: 0 40px;
   font-size: 14px;
-  justify-content: center;
+ 
+
 }
 .doctorHeader {
   display: flex;
@@ -133,25 +135,21 @@ html {
 form > div {
     padding: 10px 0 10px ;
 }
-form > input, form > select, label{
+.formInput, .select, label{
     margin: 20px 5px;
-    font-size: 20px;
+    font-size: 18px;
 
 } 
-form input, .formInput {
-    width: 30%;
+ .formInput {
+    width: 40%;
     padding: 5px;
     margin: 8px;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     
 
 }
-#response{
-    width: 100%;
-    margin: 30px 0 0 30px;
-    color: red;
-}
+
 .submitForm {
   padding: 1.2rem;
   margin: 2rem 0;
@@ -162,7 +160,7 @@ form input, .formInput {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  width: 40%;
+  width: 50%;
 }
 .select{
   padding: 0.5rem;

@@ -19,7 +19,7 @@ let renderDoctors = () => {
   </div>
   <div className={Managedoctors.doctorText}>
     <p className={Managedoctors.name}>{item.fullName}</p>
-    <p className={Managedoctors.department}>{item.department}</p>
+    <p className={Managedoctors.department}>{item.departmentId}</p>
   </div>
   <div className={Managedoctors.hamburger}>
     <div className={Managedoctors.dot}></div>
@@ -42,7 +42,7 @@ let renderDoctors = () => {
      .then((res) =>{
       dispatch(addDoctors(res.data.data))
 
-      console.log(res)
+      // console.log(res.data.data)
    
     })
     .catch(err =>{
