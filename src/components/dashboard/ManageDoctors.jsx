@@ -59,7 +59,7 @@ let renderDoctors = () => {
     }
      
     
-  },);
+  },[]);
 
     return (
 

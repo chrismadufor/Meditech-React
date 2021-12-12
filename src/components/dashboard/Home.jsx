@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react'
 import TopNav from './layouts/TopNav'
 import { useSelector, useDispatch } from "react-redux";
 import { GenericModal } from '../layout/GenericModal';
@@ -105,7 +104,8 @@ function Home() {
                     <thead>
                         <tr>
                             <th>
-                            Doctor Assigned</th>
+                                {role === 'doctor' ? 'Patient Assigned' : 'Doctor Assigned'}
+                            </th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Contact</th>
