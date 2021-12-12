@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import TopNav from './layouts/TopNav'
 import Editcss from '../styles/profile.module.css'
 import { Formik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux'
 import { updateUserDetails } from '../../theStore/actions'
@@ -49,26 +49,7 @@ function ProfileEdit() {
     }) 
     .catch (err => console.log(err))
 }
-const validate = Yup.object({
-  fullName: Yup.string()
-  .required('Name  required'),
-  email: Yup.string()
-  .email('Email is invalid')
-  .required('Email  required'),
-  hospitalId: Yup.string()
-  .required('Hospital Id  required'),
-  phone: Yup.number()
-  .required('Number  required'),
-  dateOfBirth: Yup.string()
-  .required('Date of Birth  required'),
-  nationality: Yup.string()
-  .required('Nationality  required'),
-  city: Yup.string()
-  .required('City  required'),
-  address: Yup.string()
-  .required('Address  required'),
-  
-})
+
 
 const pictureUpload = async (e)=> {
   const files= e.target.files
@@ -112,7 +93,7 @@ const pictureUpload = async (e)=> {
            }}
 
      
-      validationSchema = {validate}
+      // validationSchema = {validate}
 
        onSubmit={(values, { setSubmitting }) => {
          console.log('hello world')

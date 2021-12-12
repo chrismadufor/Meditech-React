@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux'
 import {addDoctors} from '../../theStore/actions'
 import {Link} from 'react-router-dom'
+import profilePic from '../img/patient.jpg'
 
 
  function ManageDoctors() {
@@ -17,7 +18,7 @@ let renderDoctors = () => {
   return doctors.map((item, index) =>
   <div className={Managedoctors.card}>
   <div className={Managedoctors.doctorImage}>
-    <img src={item.profilePhoto} alt=""/>
+    <img src={item.profilePhoto === null ? profilePic : item.profilePhoto  } alt=""/>
   </div>
   <div className={Managedoctors.doctorText}>
     <p className={Managedoctors.name}>{item.fullName}</p>
