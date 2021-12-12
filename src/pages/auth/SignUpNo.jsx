@@ -67,6 +67,7 @@ return (
               axios.post('auth/signup', data) //add role
                 .then (res => {
                   if(res.status === 200) {
+                    console.log('Yes')
                     navigate('/signin');
                     setSubmitting(false); 
                   }

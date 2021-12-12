@@ -10,8 +10,8 @@ function Profile() {
   let navigate = useNavigate();
   
   const user = useSelector((state) => state.authReducer.userDetails)
-console.log(user)
-
+  console.log(user)
+  const role = useSelector(state => state.authReducer.userDetails.userType)
 
   return (
     <div className={Profilecss.main}>
@@ -31,7 +31,9 @@ console.log(user)
                     <p className={Profilecss.profileName}>{user.fullName}</p>
                   </div>
                   <div className={Profilecss.infoItem}>
-                    <p className={Profilecss.infoItemTitle}>Hospital ID</p>
+                    <p className={Profilecss.infoItemTitle}>
+                      {role === 'patient' ? 'Hospital ID' : role === 'doctor' ? 'Doctor ID' : null}
+                    </p>
                     <p className={Profilecss.profileHosID}>{user.hospitalId}</p>
                   </div>
                 </div>

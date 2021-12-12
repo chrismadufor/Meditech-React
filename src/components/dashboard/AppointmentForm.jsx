@@ -25,10 +25,18 @@ function AppointmentForm() {
             Authorization : 'Bearer ' + token
         }
     }
-    axios.post('https://meditech-hospital-app.herokuapp.com/bookings/create', data, config)
+
+    let time = data.time
+    let newTime = time.substring(0, time.length - 2)
+    const payload = {
+       date: data.date,
+       time: newTime
+    }
+    console.log("Payload", payload)
+
+    axios.post('https://meditech-hospital-app.herokuapp.com/bookings/create-booking', payload, config)
          .then((res) =>{   
           console.log(res)
-       
         })
         .catch(err =>{
           console.log(err)
