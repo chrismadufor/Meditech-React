@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import TopNav from './layouts/TopNav'
 import Editcss from '../styles/profile.module.css'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { updateUserDetails } from '../../theStore/actions'
 
 import {  useNavigate } from 'react-router-dom'
@@ -12,11 +12,15 @@ import {  useNavigate } from 'react-router-dom'
 
 
 function ProfileEdit() {
+  const user = useSelector(state => state.authReducer.userDetails)
   let navigate =  useNavigate();
   let dispatch = useDispatch();
+
+  // const [info, setInfo] = useState({})
   const [src, setSrc] = useState(false)
   const [image, setImage] = useState('')
 
+  
 
  const putUserInfo =  (values) => {
    console.log()
@@ -80,6 +84,12 @@ const pictureUpload = async (e)=> {
     setSrc(false)
   })
 };
+
+  useEffect(() => {
+    
+    
+  }, [user])
+
     return (
       <div className={Editcss.main}>
         <TopNav name= 'Profile Edit'/>
@@ -91,14 +101,14 @@ const pictureUpload = async (e)=> {
 
           <Formik
         initialValues={
-         {fullName:'',
-          email: '',
-          hospitalId:'',
-          phone:'',
-          dateOfBirth: '',
-          nationality: '',
-          city: '',
-          address:'',
+         {fullName:user.fullName,
+          email: user.email,
+          hospitalId:user.hospitalId,
+          phone: user.phone,
+          dateOfBirth: user.dateOfBirth,
+          nationality: user.nationality,
+          city: user.city,
+          address: user.address,
            }}
 
      
@@ -160,6 +170,8 @@ const pictureUpload = async (e)=> {
                 onBlur={handleBlur}
                 id="patient-name"
                 placeholder="Enter your name"
+               value={values.fullName}
+
               />
              <div style={{color:"red"}}>  
              {errors.fullName && touched.fullName && errors.fullName}
@@ -207,7 +219,7 @@ const pictureUpload = async (e)=> {
                 name="phone"
                onChange={handleChange}
                onBlur={handleBlur}
-               value={values.number}
+               value={values.phone}
                 placeholder="Enter your phone number"
               />
               <div style={{color:"red"}}>  
