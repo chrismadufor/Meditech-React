@@ -61,7 +61,7 @@ function Home() {
         <div className='main'>
             <TopNav name='Dashboard'/>
             <div className='main-content'>
-                {role === 'patient' ? <AdminDashboardInfo /> : null}
+                {role === 'patient' ? <PatientDashboardInfo /> : role === 'doctor' ? <DoctorDashboardInfo /> : role === 'admin' ? <AdminDashboardInfo /> : null}
                 <GenericModal show={showModal} handleClose={hideModal}>
                         <div className="container-fluid">
                             <div  className="row pb-3">
