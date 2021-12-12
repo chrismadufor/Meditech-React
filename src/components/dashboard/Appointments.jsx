@@ -66,7 +66,7 @@ function Appointments() {
     }
 
     let fetchAppointments = async () => {
-        await axios.get('bookings/getall', {
+        await axios.get('bookings/user', {
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

@@ -1,0 +1,64 @@
+.welcomeFilter {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 15px;
+  }
+  
+  .greeting {
+    width: 50%;
+    justify-content: flex start;
+    display: flex;
+    align-items: center;
+  }
+  
+  .greeting img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    object-position: top;
+    margin-right: 10px;
+  }
+  
+  .greeting h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #252525;
+  }
+  
+  select {
+    border: 1px solid #d3bebe;
+    border-radius: 4px;
+    padding: 3px;
+  }
+  
+  .dashboardCards {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 15px;
+  }
+  
+  .dashCard {
+    width: 20%;
+    background-color: white;
+    height: 20vh;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  }
+  
+  .dashCard p {
+    font-size: 12px;
+    font-weight: bold;
+    color: #252525;
+  }
+  
+  .dashCard h1 {
+    font-size: 38px;
+    font-weight: bold;
+    color: #252525;
+    margin-top: 10px;
+  }
+  

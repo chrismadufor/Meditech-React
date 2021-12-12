@@ -1,0 +1,49 @@
+.greet{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.inner{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.greet img{
+max-width: 35px;
+margin-right: 1em;
+}
+.cards{
+    display: grid;
+    margin-left: -10px;
+    grid-template-columns: 23% 23% 23% 23%;
+    margin-top: 30px;
+    grid-column-gap: 30px;
+}
+.card{
+    border-radius: 20px !important;
+    background-color: #fff;
+    height: 155px !important;
+    padding: 10px;
+    text-align: left
+  }
+  .cardBody{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    flex-direction: column;
+  }
+  .cardBody h1{
+      padding-top: 20px;
+  }
+
+  .card img {
+    max-width: 15%;
+    margin-right: 20px;
+  }
+
+.theDate{
+    width: 160px;
+    border-radius: 5px;
+    height: 32px;
+    background-color: transparent;
+}
