@@ -3,23 +3,37 @@ import {useNavigate} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import TopNav from "./layouts/TopNav";
 import Appointment from "../styles/bookAppointment.module.css";
+import axios from 'axios';
 import { addAppointment } from '../../theStore/actions'
 
 function AppointmentForm() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [data, setData] = useState({
-    contact: '08099192347',
     date: '',
     time: '',
-    doctor: 'Chika Ukoh',
-    status: 'Pending'
+    description: '',
   })
   const handleChange = (e) => {
     setData({...data, [e.target.name]: e.target.value})
   }
   const submitForm = () => {
-    dispatch(addAppointment(data))
+    // dispatch(addAppointment(data))
+    const token = localStorage.getItem('token');
+    const config = {
+        headers : {
+            Authorization : 'Bearer ' + token
+        }
+    }
+    axios.post('https://meditech-hospital-app.herokuapp.com/bookings/create', data, config)
+         .then((res) =>{   
+          console.log(res)
+       
+        })
+        .catch(err =>{
+          console.log(err)
+        })
+    console.log(data)
     navigate('/dashboard/appointments')
   }
   return (
@@ -60,7 +74,7 @@ function AppointmentForm() {
             <label className={Appointment.label} for="appointment-details">
               Appointment Details (Optional)
             </label>
-            <textarea name="appointment-details" id="" cols="30" rows="4"></textarea>
+            <textarea name="description" id="" cols="30" rows="4" onChange = {handleChange} value = {data.description}></textarea>
           </div>
           <input
             type="button"

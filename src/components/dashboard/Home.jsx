@@ -71,10 +71,13 @@ function Home() {
                     <div className="patient-name">
                         <img src={userData.profilePhoto ? userData.profilePhoto : patient} alt="" className="patient-img" />
 
-                    <div className="patient-details">
-                        <p className={AppointmentStyles.patName}>{userData.fullName} </p>
-                    <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
-                    </div>
+                        <div className="patient-details">
+                            <p className={AppointmentStyles.patName}>
+                                <span>{role === 'patient' ? 'Hi, ' : ''}</span> 
+                                {userData.fullName} 
+                            </p>
+                            <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
+                        </div>
                     
                     </div>
 
