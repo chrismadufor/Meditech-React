@@ -6,15 +6,13 @@ import { useNavigate } from "react-router-dom";
 // import {Image} from "cloudinary-react"
 
 function Profile() {
-//  const {pic, setPic} = useState('')
 
-//  useEffect(()=>{
-//   const base64= btoa(String.fromCharCode(...new Uint8Array(user.profilePhoto.data)))
-//   //  {()=> setPic( base64)} 
-//  }, [])
   let navigate = useNavigate();
   
   const user = useSelector((state) => state.authReducer.userDetails)
+console.log(user)
+
+
   return (
     <div className={Profilecss.main}>
       <TopNav name="Profile" />

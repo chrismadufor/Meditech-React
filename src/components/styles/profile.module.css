@@ -113,17 +113,17 @@ label {
 .submitForm {
   width: 100%;
   height: 40px;
-  border: 0;
-  background-color: #00a8db;
-  color: white;
+  border: 1px solid #00a8db;
+  background-color: white;
+  color: #00a8db;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 5em;
 }
 .submitForm:hover {
   cursor: pointer;
-  background-color: transparent;
+  background-color: #00a8db;
   border: 1px solid #00a8db;
-  color: #00a8db;
+  color: white;
 }
 .formTitle {
   display: flex;
