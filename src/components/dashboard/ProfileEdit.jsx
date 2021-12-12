@@ -23,7 +23,7 @@ function ProfileEdit() {
   
 
  const putUserInfo =  (values) => {
-   console.log()
+   
   const token = localStorage.getItem('token');
   const config = {
     headers : {
