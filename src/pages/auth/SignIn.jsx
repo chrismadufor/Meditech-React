@@ -18,7 +18,9 @@ function SignIn(props) {
       .then (res => {
         setShowModal(true)
         localStorage.setItem('token', res.data.accessToken)
-        navigate('/dashboard/home')
+        setTimeout(() => {
+          navigate('/dashboard/home')
+        }, 4000)
       }) 
       .catch (err => console.log(err))
   }
@@ -26,7 +28,7 @@ function SignIn(props) {
   return (
    
     <div>
-    {showModal ? <Feedback text = {'Sign in succesful'} /> : null}
+    {showModal ? <Feedback text = {'Sign in successful'} /> : null}
       <section className= {SignInCss.signInHero}>
         <div className={SignInCss.background}>
           <div className={SignInCss.left}>

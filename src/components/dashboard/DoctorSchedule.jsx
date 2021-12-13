@@ -70,7 +70,7 @@ function DoctorSchedule() {
         <div className='main'>
             <TopNav name = "Schedule doctors"/>
             <div className='main-content'>
-                {showModal ? <Feedback text = {'Schedule succesful'} /> : null}
+                {showModal ? <Feedback text = {'Schedule successful'} /> : null}
                 <form className={Styles.form}>
                     <select className={Styles.select} name='doctor' onChange= {onChange} value={state.doctor}>
                         <option>Choose a doctor</option>
