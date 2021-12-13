@@ -1,39 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import TopNav from "./layouts/TopNav";
 import doctorsCss from "../styles/manageDoctors.module.css";
 import axios from "axios";
-import { addDoctors } from "../../theStore/actions";
 import { Formik } from "formik";
 import {  useNavigate } from 'react-router-dom'
 
 function AddDoctors() {
-  // const [state, setState] = useState({});
   let navigate = useNavigate();
 
- 
-
-   const onClick =(e, user)=>{
-    const token = localStorage.getItem("token");
-
-  const config = {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  };
-
-    axios.post(
-      "https://meditech-hospital-app.herokuapp.com/users/add-doctor",
-      user, config)
-    .then((res) => {
-      console.log(res.data);
-      navigate('./ManageDoctors')
-    });
-    }
-   
-  
-
-  
-  
 
   return (
     <div className="main">
@@ -41,7 +15,7 @@ function AddDoctors() {
       <div className={doctorsCss.mainContent}>
       <div><h1>Add New Doctor</h1></div>
         <Formik
-          initialValues={{ name: "", email: "", department:"" }}
+          initialValues={{ name: "", email: "", departmentName:"" }}
           validate={(values) => {
             const errors = {};
             if (!values.email) {
@@ -63,11 +37,31 @@ function AddDoctors() {
            const  user={
                 fullName: values.name,
                 email: values.email,
-                department: values.department
+                departmentName: values.departmentName,
+                password: '12345', 
+                userType:'doctor'
               }
-             
+
+              
+               const token = localStorage.getItem("token");
+           
+             const config = {
+               headers: {
+                 Authorization: "Bearer " + token,
+               },
+             };
+           
+               axios.post(
+                 "https://meditech-hospital-app.herokuapp.com/users/add-doctor", user, config)
+               .then((res) => {
+                 console.log(res.data);
+                 navigate('/dashboard/manage-doctors')
+               });
+               
+               
             
-            onClick(user);
+           
+            console.log(user)
 
             setSubmitting(false);
           }}
@@ -115,13 +109,16 @@ function AddDoctors() {
                 <label for="doctor-dept">Department: </label>
 
                 <select
-                  name="department"
+                  name="departmentName"
                   id="doctor-dept"
                   className={doctorsCss.select}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // value={values.departmentName}
                 >
                   <option>Enter department</option>
-                  <option value="gynaecology">Gynaecology</option>
-                  <option value="paediatrics">Paediatrics</option>
+                  <option >Gynaecology</option>
+                  <option >Paediatrics</option>
                 </select>
               </div>
 

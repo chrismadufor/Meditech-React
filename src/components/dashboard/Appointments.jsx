@@ -4,7 +4,7 @@ import Styles from '../styles/Appointments.module.css'
 import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
 import { GenericModal } from '../layout/GenericModal';
-import { resolveAppointment } from '../../theStore/actions'
+import { resolveAppointment, addMultipleAppointments } from '../../theStore/actions'
 
 function Appointments() {
     const dispatch = useDispatch()
@@ -32,12 +32,14 @@ function Appointments() {
     } 
 
     let updateAppointment = (e, val) => {
+        console.log(e)
         e.preventDefault()
         let payload = {
             id: item.id,
             data: val
         }
         dispatch(resolveAppointment(payload))
+        // updateAnAppointment(payload)
         hideModal()
     }
 
@@ -56,7 +58,7 @@ function Appointments() {
             rows = currentPage
         }
         return rows.map(item =>
-            <tr className={Styles.tRow}>
+            <tr className={Styles.tRow} data-item={item.id} id={item.id}>
                 <td><p>{item.doctor}</p></td><td  className={Styles.Test}><p>{item.date}</p></td><td  className={Styles.Test}><p>{item.time}</p></td><td><p>{item.contact}</p></td><td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
             </tr>
         );
@@ -66,16 +68,48 @@ function Appointments() {
         setShowAll(!showAll)
     }
 
+    let updateAnAppointment = async (data) => {
+        await axios.put(`https://meditech-hospital-app.herokuapp.com/bookings/update/${data.id}`, data.payload, {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(response => {
+            console.log(response)
+           // dispatch(addMultipleAppointments(val.data.data))
+           // setBookings(val.data.data)
+        }).catch(err => {
+            console.log(err.response.data.message)
+        })
+    }
+
+    let deleteAppointment = async (data) => {
+        await axios.get(`https://meditech-hospital-app.herokuapp.com/bookings/delete/${data}`, {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(val => {
+            console.log(val)
+           // dispatch(addMultipleAppointments(val.data.data))
+           // setBookings(val.data.data)
+        }).catch(err => {
+            console.log(err.response.data.message)
+        })
+    }
+
     let fetchAppointments = async () => {
-        await axios.get('bookings/user', {
+        let url = role === 'admin' ? 'bookings/getall' : 
+        'bookings/user'
+        await axios.get(`https://meditech-hospital-app.herokuapp.com/${url}`, {
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(val => {
             console.log('Val', val)
+            console.log(val)
+            dispatch(addMultipleAppointments(val.data.data))
             setBookings(val.data.data)
         }).catch(err => {
-            console.log(err)
+            console.log(err.response.data.message)
         })
     }
 
