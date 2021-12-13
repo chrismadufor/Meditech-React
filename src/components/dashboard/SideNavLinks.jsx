@@ -69,12 +69,7 @@ export const sideNavLinks = {
             icon: "fas fa-user",
             extraClass: ""
         },
-        {
-            title: "Payments",
-            url: "/dashboard/payments",
-            icon: "fas fa-credit-card",
-            extraClass: ""
-        },
+    
         {
             title: "Notifications",
             url: "/dashboard/notifications",
@@ -139,12 +134,12 @@ export const sideNavLinks = {
             icon: "fas fa-heartbeat",
             extraClass: ""
         },
-        {
-            title: "Profile",
-            url: "/dashboard/profile",
-            icon: "fas fa-user",
-            extraClass: ""
-        },
+        // {
+        //     title: "Profile",
+        //     url: "/dashboard/profile",
+        //     icon: "fas fa-user",
+        //     extraClass: ""
+        // },
         {
             title: "Notifications",
             url: "/dashboard/notifications",

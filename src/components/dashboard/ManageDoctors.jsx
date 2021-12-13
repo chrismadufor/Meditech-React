@@ -5,21 +5,24 @@ import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux'
 import {addDoctors} from '../../theStore/actions'
 import {Link} from 'react-router-dom'
+import profilePic from '../img/patient.jpg'
 
 
  function ManageDoctors() {
   const doctors = useSelector((state) => state.doctorReducer.doctors)
+  console.log(doctors)
 const dispatch = useDispatch()
 
 let renderDoctors = () => {
+
   return doctors.map((item, index) =>
   <div className={Managedoctors.card}>
   <div className={Managedoctors.doctorImage}>
-    <img src={item.profilePhoto} alt=""/>
+    <img src={item.profilePhoto === null ? profilePic : item.profilePhoto  } alt=""/>
   </div>
   <div className={Managedoctors.doctorText}>
     <p className={Managedoctors.name}>{item.fullName}</p>
-    <p className={Managedoctors.department}>{item.departmentId}</p>
+    <p className={Managedoctors.department}>{item.departmentName}</p>
   </div>
   <div className={Managedoctors.hamburger}>
     <div className={Managedoctors.dot}></div>
@@ -84,19 +87,19 @@ let renderDoctors = () => {
             
         <div class="tableControls">
           <div class="control-box">
-            <p style={{fontWeight: "700"}}>{ '>>'}</p>
+            <p style={{fontWeight: "700"}}>{ '<<'}</p>
           </div>
           <div class="control-box">
-            <p style={{fontWeight:' bold'}}>{'>'}</p>
+            <p style={{fontWeight:' bold'}}>{'<'}</p>
           </div>
           <div class="control-box">
            <p>1</p>
           </div>
           <div class="control-box">
-            <p style={{fontWeight: "700"}}>{'<'}</p>
+            <p style={{fontWeight: "700"}}>{'>'}</p>
           </div>
           <div class="control-box">
-            <p style={{fontWeight: "700"}}>{'<<'}</p>
+            <p style={{fontWeight: "700"}}>{'>>'}</p>
           </div>
         </div>
 

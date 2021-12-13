@@ -135,7 +135,7 @@ html {
 form > div {
     padding: 10px 0 10px ;
 }
-.formInput, .select, label{
+.formInput, .select{
     margin: 20px 5px;
     font-size: 18px;
 
