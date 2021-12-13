@@ -4,15 +4,18 @@ import SignUpCss from '../../components/styles/Sign-in.module.css'
 import Background1 from '../../components/img/background1.png'
 import {useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Feedback from "../../components/dashboard/layouts/Feedback";
 
 
 
 function SignUpNo(props) {
 let navigate =  useNavigate();
+const [showModal, setShowModal] = useState(false)
 
 return (
 
   <div>
+  {showModal ? <Feedback text = {'Sign up succesful'} /> : null}
       <section className={SignUpCss.signInHero}>
           <div className= {SignUpCss.background}>
               <div className={SignUpCss.left}>
@@ -67,6 +70,8 @@ return (
               axios.post('auth/signup', data) //add role
                 .then (res => {
                   if(res.status === 200) {
+                    
+                    setShowModal(true)
                     console.log('Yes')
                     navigate('/signin');
                     setSubmitting(false); 

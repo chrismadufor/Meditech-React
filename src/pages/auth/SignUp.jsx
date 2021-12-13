@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Formik } from 'formik';
 import SignUpCss from '../../components/styles/Sign-in.module.css'
 
@@ -7,6 +7,7 @@ import {Link, useNavigate } from 'react-router-dom'
 
 function SignUp(props) {
 let navigate =  useNavigate();
+const [showModal, setShowModal] = useState(false)
 
 
     return (

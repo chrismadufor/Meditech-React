@@ -51,6 +51,7 @@ function Appointments() {
         let rows = []
         if(showAll){
             rows = bookings.length === 0 ? dummyData : bookings
+            console.log('bookings', bookings)
         } else {
             rows = currentPage
         }
@@ -71,7 +72,7 @@ function Appointments() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(val => {
-            console.log(val)
+            console.log('Val', val)
             setBookings(val.data.data)
         }).catch(err => {
             console.log(err)
@@ -141,7 +142,8 @@ function Appointments() {
                     <thead>
                         <tr>
                             <th>
-                            Doctor Assigned</th>
+                                {role === 'patient' ? 'Doctor Assigned' : role === 'doctor' ? 'Patient Assigned' : null}
+                            </th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Contact</th>
