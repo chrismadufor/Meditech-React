@@ -12,7 +12,6 @@ function Appointments() {
     let [page, setPage] = React.useState(1)
     let [showModal, setShowModal] = React.useState(false)
     let [bookings, setBookings] = React.useState([])
-    let [doctors, setDoctors] = React.useState([])
     let [item, setItem] = React.useState({})
     let [showAll, setShowAll] = React.useState(true)
     let [currentPage, setCurrentPage] = React.useState([])
@@ -23,7 +22,7 @@ function Appointments() {
 
     let docBtn = () => {
         if(role === 'doctor'){
-            return <button  onClick={e=>updateAppointment(e, 'Completed')} className="btn ml-3 btn-success">
+            return <button  onClick={e=>updateAppointment(e, 'Completed', item)} className="btn ml-3 btn-success">
         Complete Appointment
         </button>   
         } else {
@@ -31,21 +30,8 @@ function Appointments() {
         }
     } 
 
-    let getAllDocs = async () => {
-        await axios.get(`https://meditech-hospital-app.herokuapp.com/users/all-doctors`, {
-            headers:{
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        }).then(val => {
-            console.log(val)
-            setDoctors(val.data.data)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    let updateAppointment = (e, val) => {
-        console.log(e)
+    let updateAppointment = (e, val, item) => {
+        console.log(item)
         e.preventDefault()
         let payload = {
             id: item.id,
@@ -61,24 +47,33 @@ function Appointments() {
         setShowModal(true)
     }
 
-    // const getName = (val) => (doctors.filter(doc => doc.id === Number(val))[0].fullName) 
 
 
     const renderTableRows = () => {
-        console.log('Table created')
         let rows = []
         rows = bookings;
-        console.log('bookings', bookings)
-        return rows.map(item => 
-            (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
-                <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
-                {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
-                <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
-                <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
-                <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
-                <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
-            </tr>)
-        );
+        if(role === 'admin'){
+            return rows.map(item => 
+                (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
+                     {role === 'admin' ? (<td><p>{item.patientName}</p></td>) : null}
+                    <td><p>{item.doctorName}</p></td>
+                    <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
+                    <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
+                    <td className={Styles[item.status]}><p>{item.status}</p></td>
+                </tr>)
+            );
+        } else {
+            return rows.map(item => 
+                (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
+                    <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
+                    {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
+                    <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
+                    <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
+                    <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
+                    <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
+                </tr>)
+            );
+        }
     }
     let showAllRows = (e) => {
         e.preventDefault()
@@ -125,25 +120,22 @@ function Appointments() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(val => {
-            console.table(val)
-            dispatch(addMultipleAppointments(val.data))
-            setBookings(val.data)
+            // console.table(val)
+            if(role === 'admin'){
+                dispatch(addMultipleAppointments(val.data.data))
+                setBookings(val.data.data)
+            } else {
+                dispatch(addMultipleAppointments(val.data))
+                setBookings(val.data)
+            }
         }).catch(err => {
             console.log(err)
         })
     }
 
-    let particularDoc = id => {
-        let response = doctors.filter(el => el.id == id)
-        if(response.length == 0){
-            return 'Unavailable'
-        } else {{
-            return response[0].fullName 
-        }}
-    }
 
     let modifyTime = old => {
-        if(old == 12 || old < 5){
+        if(old === 12 || old < 5){
             return `${old}pm`
         } else {
             return `${old}am`
@@ -163,8 +155,8 @@ function Appointments() {
     }
 
     React.useEffect(() => {
-        setCurrentPage(bookings.slice(0, 4))
         fetchAppointments()
+        setCurrentPage(bookings.slice(0, 4))
     }, [])
     return (
         <div className='main'>
@@ -188,7 +180,8 @@ function Appointments() {
                         <div className="container-fluid">
                             <div  className="row pb-3">
                                 <div className="col">
-                                    Doctor's Name: {particularDoc(item.doctorId)}
+                            
+                                {role === 'patient' ? "Doctor's Name" : "Patient's Name"}: {role === 'patient' ? item.doctorName : item.patientName}
                                     </div>
                             </div>
                             <div  className="row pt-3">
@@ -201,7 +194,7 @@ function Appointments() {
                             </div>
                             <div  className="row pt-4">
                                 <div className="col-sm-6 mt-2 btn-lg">
-                                    <button onClick={e=>updateAppointment(e, 'Cancelled')} className="btn btn-danger">
+                                    <button onClick={e=>updateAppointment(e, 'Cancelled', item)} className="btn btn-danger">
                                     Cancel Appointment
                                     </button>
                                     {docBtn()}
@@ -213,29 +206,25 @@ function Appointments() {
                     <thead>
                         <tr>
                             <th>
-                                {role === 'doctor' ? 'Patient Assigned' : 'Doctor Assigned'}
+                                {role === 'doctor' || role === 'admin' ? 'Patient Assigned' : 'Doctor Assigned'}
                             </th>
-                            {/* <th>
-                                {role === 'admin' ? 'Patient Assigned' : null}
-                            </th> */}
+                            {
+                                role === 'admin' ?  <th>
+                                Doctor Assigned
+                                </th>  : null
+                            }
                             <th>Date</th>
                             <th>Time</th>
-                            <th>{role === 'admin' ? null : 'Contact'}</th>
+                            {
+                             role === 'doctor' || role === 'patient' ?   <th>Contact</th> : ''   
+                            }
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="table-body-ad">
                     {
-                            bookings.map(item => 
-                                (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
-                <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
-                {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
-                <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
-                <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
-                <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
-                <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
-            </tr>)
-                            )}
+                          renderTableRows()
+                        }
                     </tbody>
                     </table>
                     <div className="tableControls">
