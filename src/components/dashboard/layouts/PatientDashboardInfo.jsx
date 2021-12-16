@@ -7,6 +7,7 @@ import styles from '../../styles/patientDashboardInfo.module.css'
 
 function PatientDashboardInfo() {
     const userData = useSelector((state) => (state.authReducer.userDetails))
+    const appointments = useSelector((state) => (state.dashboardReducer.appointments))
 
     return (
         <div className="patient-info">
@@ -36,7 +37,7 @@ function PatientDashboardInfo() {
                     <p>Total Appointments</p>
                     <div className="total">
                         <i className="fas fa-hospital fa-4x "></i>
-                        <p>{userData.id}</p>
+                        <p>{ appointments.length }</p>
                     </div>
                     
                     </div>
