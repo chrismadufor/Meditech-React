@@ -12,6 +12,7 @@ function Appointments() {
     let [page, setPage] = React.useState(1)
     let [showModal, setShowModal] = React.useState(false)
     let [bookings, setBookings] = React.useState([])
+    let [doctors, setDoctors] = React.useState([])
     let [item, setItem] = React.useState({})
     let [showAll, setShowAll] = React.useState(true)
     let [currentPage, setCurrentPage] = React.useState([])
@@ -29,6 +30,19 @@ function Appointments() {
             return ''
         }
     } 
+
+    let getAllDocs = async () => {
+        await axios.get(`https://meditech-hospital-app.herokuapp.com/users/all-doctors`, {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(val => {
+            console.log(val)
+            setDoctors(val.data.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 
     let updateAppointment = (e, val) => {
         console.log(e)
@@ -59,7 +73,7 @@ function Appointments() {
             (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
                 <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
                 {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
-                <td className={Styles.Test}><p>{(item.date).substring(0, 10)}</p></td>
+                <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
                 <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
                 <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
                 <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
@@ -81,7 +95,7 @@ function Appointments() {
            // dispatch(addMultipleAppointments(val.data.data))
            // setBookings(val.data.data)
         }).catch(err => {
-            console.log(err)
+            console.log({err})
         })
     }
 
@@ -99,6 +113,11 @@ function Appointments() {
         })
     }
 
+    let modifyDate = (old) => {
+        let format = new Date(old)
+        return format.toDateString()
+    } 
+
     let fetchAppointments = async () => {
         let url = role === 'admin' ? 'bookings/getall' : role === 'patient' ? 'bookings/patient': 'bookings/doctor'
         await axios.get(`https://meditech-hospital-app.herokuapp.com/${url}`, {
@@ -106,12 +125,29 @@ function Appointments() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(val => {
-            console.log("Val", val.data)
+            console.table(val)
             dispatch(addMultipleAppointments(val.data))
             setBookings(val.data)
         }).catch(err => {
             console.log(err)
         })
+    }
+
+    let particularDoc = id => {
+        let response = doctors.filter(el => el.id == id)
+        if(response.length == 0){
+            return 'Unavailable'
+        } else {{
+            return response[0].fullName 
+        }}
+    }
+
+    let modifyTime = old => {
+        if(old == 12 || old < 5){
+            return `${old}pm`
+        } else {
+            return `${old}am`
+        }
     }
 
     let flipPage = (e, val) => {
@@ -152,15 +188,15 @@ function Appointments() {
                         <div className="container-fluid">
                             <div  className="row pb-3">
                                 <div className="col">
-                                    Doctor's Name: {item.doctor}
+                                    Doctor's Name: {particularDoc(item.doctorId)}
                                     </div>
                             </div>
                             <div  className="row pt-3">
                                 <div className="col">
-                                    Date: {item.date}
+                                    Date: {modifyDate(item.date)    }
                                     </div>
                                     <div className="col">
-                                    Time: {item.time}
+                                    Time: {modifyTime(item.time)}
                                     </div>
                             </div>
                             <div  className="row pt-4">
@@ -194,7 +230,7 @@ function Appointments() {
                                 (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
                 <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
                 {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
-                <td className={Styles.Test}><p>{(item.date).substring(0, 10)}</p></td>
+                <td className={Styles.Test}><p>{modifyDate(item.date)}</p></td>
                 <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
                 <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
                 <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
