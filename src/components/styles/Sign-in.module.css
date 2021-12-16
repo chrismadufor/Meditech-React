@@ -38,6 +38,10 @@ body {
   -moz-box-shadow: 10px 10px 42px -20px rgba(0, 0, 0, 0.75);
 }
 
+.form {
+  background-color: white;
+  padding: 20px 0;
+}
 /* Card Background */
 
 /* The left part one the card with the logo and input */

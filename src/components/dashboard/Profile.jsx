@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import TopNav from "./layouts/TopNav";
 import Profilecss from "../styles/profile.module.css";
 import { useNavigate } from "react-router-dom";
+import profilePic from '../img/patient.jpg'
 // import {Image} from "cloudinary-react"
 
 function Profile() {
@@ -19,7 +20,7 @@ function Profile() {
       <div className={Profilecss.mainContent}>
         <div className={Profilecss.mainContentWrap}>
           <div className={Profilecss.profilePicture}>
-            <img className={Profilecss.profileImg} src={user.profilePhoto } alt="" />
+            <img className={Profilecss.profileImg} src={user.profilePhoto ? user.profilePhoto : profilePic } alt="" />
             
           </div>
           <div className={Profilecss.profileWrap}>

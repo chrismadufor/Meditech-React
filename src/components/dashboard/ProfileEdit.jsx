@@ -6,12 +6,14 @@ import { Formik } from 'formik';
 import axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux'
 import { updateUserDetails } from '../../theStore/actions'
+import profilePic from '../img/patient.jpg'
 
 import {  useNavigate } from 'react-router-dom'
 
 
 
 function ProfileEdit() {
+  const role = useSelector(state => state.authReducer.userDetails.userType)
   const user = useSelector(state => state.authReducer.userDetails)
   let navigate =  useNavigate();
   let dispatch = useDispatch();
@@ -130,11 +132,7 @@ const pictureUpload = async (e)=> {
           </div>
           <div className={Editcss.imgWrap}>
             <div className={Editcss.imgPreview}>
-              {src? (
-                ''):(
-                  <img className={Editcss.editProfileImg} src={image} alt="" />
-                )
-              }
+              <img className={Editcss.editProfileImg} src={image !== '' ? image : user.profilePhoto ? user.profilePhoto : profilePic } alt="" />
 
               
             </div>
@@ -151,7 +149,7 @@ const pictureUpload = async (e)=> {
                 onBlur={handleBlur}
                 id="patient-name"
                 placeholder="Enter your name"
-               value={values.fullName}
+                value={values.fullName}
 
               />
              <div style={{color:"red"}}>  
@@ -176,7 +174,7 @@ const pictureUpload = async (e)=> {
 
             </div>
             <div className={Editcss.formInput}>
-              <label for="patient-id">Hospital ID</label>
+              <label for="patient-id">{role === 'doctor' ? 'Doctor ID' : 'Hospital ID'}</label>
               <input
                type="text" 
                id="patient-id"

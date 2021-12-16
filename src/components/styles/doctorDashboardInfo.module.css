@@ -3,6 +3,10 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 }
+.greet h3 {
+  font-weight: bold;
+  font-size: 18px;
+}
 .inner{
     display: flex;
     align-items: center;
@@ -23,17 +27,24 @@ margin-right: 1em;
     border-radius: 20px !important;
     background-color: #fff;
     height: 155px !important;
-    padding: 10px;
-    text-align: left
+    padding: 20px;
+    text-align: left;
+    border: 1px solid #eee;
+    box-shadow: 5px 5px 10px #eee;
   }
   .cardBody{
     display: flex;
-    align-items: center;
-    padding-top: 30px;
+    /* align-items: center; */
+    /* padding-top: 30px; */
     flex-direction: column;
   }
   .cardBody h1{
       padding-top: 20px;
+      text-align: center;
+  }
+  .cardBody h4 {
+    font-size: 12px;
+    font-weight: bold;
   }
 
   .card img {

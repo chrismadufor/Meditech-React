@@ -49,17 +49,18 @@ function DoctorSchedule() {
     const createSchedule = e => {
         e.preventDefault()
         const data = {
-            dutyDate: state.date,
+            dutyDate: (state.date).substring((state.date).length - 2),
             period: state.period,
             userId: currUser[0].id
         }
 
        axios.post('https://meditech-hospital-app.herokuapp.com/calendar/create', data, config)
         .then(res => {
-            setShowModal(true)
-            setTimeout(() => {
-                navigate('/dashboard/manage-doctors')
-            }, 4000)
+            // setShowModal(true)
+            // setTimeout(() => {
+            //     navigate('/dashboard/manage-doctors')
+            // }, 4000)
+            console.log("data", data)
         })
         .catch(err => console.log(err))
        

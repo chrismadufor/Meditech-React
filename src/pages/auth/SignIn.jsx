@@ -5,6 +5,7 @@ import Background from '../../components/img/background.png'
 import { Link,  useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Feedback from '../../components/dashboard/layouts/Feedback';
+import AuthModal from './AuthModal';
 
 
 
@@ -28,7 +29,7 @@ function SignIn(props) {
   return (
    
     <div>
-    {showModal ? <Feedback text = {'Sign in successful'} /> : null}
+    {showModal ? <AuthModal text = {'Sign in successful'} /> : null}
       <section className= {SignInCss.signInHero}>
         <div className={SignInCss.background}>
           <div className={SignInCss.left}>
@@ -36,7 +37,7 @@ function SignIn(props) {
               <h1>Welcome!</h1>
               <p>
                 Don't have an account? 
-                <Link to="/signup"  className={SignInCss.goToSignup}>   Sign Up Free!</Link>
+                <Link to="/signupno"  className={SignInCss.goToSignup}>   Sign Up Free!</Link>
               </p>
       
               <Formik 
@@ -78,7 +79,7 @@ function SignIn(props) {
                   isSubmitting,
                 
                 }) => (
-                  <form onSubmit={handleSubmit}>
+                  <form className = {SignInCss.form} onSubmit={handleSubmit}>
                     <input
                       
                       id="username"

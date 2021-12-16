@@ -1,0 +1,48 @@
+.modal {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .logOutWrap {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+  .logOutWrap button {
+    width: 100px;
+    height: 30px;
+    margin: 30px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500px;
+  }
+  .logOutWrap p{
+    font-size: 20px;
+  }
+  .logOutWrap i {
+    font-size: 70px;
+    color: rgb(0, 224, 0);
+    margin-top: 30px;
+  }
+  .blue {
+    background-color: #00a8db;
+  }
+  .warning {
+    background-color: rgb(230, 0, 0);
+  }
