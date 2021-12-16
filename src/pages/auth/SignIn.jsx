@@ -1,21 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Formik } from 'formik';
 import SignInCss from '../../components/styles/Sign-in.module.css'
 import Background from '../../components/img/background.png'
 import { Link,  useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Feedback from '../../components/dashboard/layouts/Feedback';
+import AuthModal from './AuthModal';
 
 
 
 function SignIn(props) {
-
+  
+  const [showModal, setShowModal] = useState(false)
   let navigate =  useNavigate();
 
   const getUserInfo = async (values) => {
     await axios.post('auth/signin', values)
       .then (res => {
+        setShowModal(true)
         localStorage.setItem('token', res.data.accessToken)
-        navigate('/dashboard/home')
+        setTimeout(() => {
+          navigate('/dashboard/home')
+        }, 4000)
       }) 
       .catch (err => console.log(err))
   }
@@ -23,6 +29,7 @@ function SignIn(props) {
   return (
    
     <div>
+    {showModal ? <AuthModal text = {'Sign in successful'} /> : null}
       <section className= {SignInCss.signInHero}>
         <div className={SignInCss.background}>
           <div className={SignInCss.left}>
@@ -30,7 +37,7 @@ function SignIn(props) {
               <h1>Welcome!</h1>
               <p>
                 Don't have an account? 
-                <Link to="/signup"  className={SignInCss.goToSignup}>   Sign Up Free!</Link>
+                <Link to="/signupno"  className={SignInCss.goToSignup}>   Sign Up Free!</Link>
               </p>
       
               <Formik 
@@ -72,7 +79,7 @@ function SignIn(props) {
                   isSubmitting,
                 
                 }) => (
-                  <form onSubmit={handleSubmit}>
+                  <form className = {SignInCss.form} onSubmit={handleSubmit}>
                     <input
                       
                       id="username"

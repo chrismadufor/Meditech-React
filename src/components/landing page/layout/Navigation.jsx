@@ -25,7 +25,7 @@ const Navigation = () => {
               <Link to="/signin">
                 <button className="styl">Sign in</button>
               </Link>
-              <Link to="/signup">
+              <Link to="/signupno">
                 <button className="styl">Get Started</button>
               </Link>
             </Nav>

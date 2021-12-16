@@ -10,7 +10,7 @@ html {
 .mainContent {
   
   margin: 30px;
-  padding: 0 40px;
+  padding: 0 50px;
   font-size: 14px;
  
 
@@ -19,7 +19,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 7vh;
+  padding: 0 50px;
   margin: 2em;
 }
 
@@ -45,12 +45,13 @@ html {
 }
 
 .doctorList {
-  margin-top: 2vh;
-  /* height: 69vh; */
+  margin-top: 40px;
   display: flex;
+  gap: 20px;
   flex-wrap: wrap;
-  align-content: space-between;
-  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+  /* justify-content: center; */
 }
 
 .card {
@@ -61,8 +62,9 @@ html {
   -webkit-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.75);
   position: relative;
-  margin-right: 2.35rem;
+  /* margin-right: 2.35rem; */
   margin-bottom: 10px;
+  background-color: white;
 
 }
 
@@ -71,6 +73,10 @@ html {
     width: 46%;
     border-radius: 50%;
     margin: 2rem auto;
+}
+
+.doctorImage img {
+  object-fit: cover;
 }
 
 .card .doctorText {

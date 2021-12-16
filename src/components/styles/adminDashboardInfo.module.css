@@ -38,7 +38,7 @@
   }
   
   .dashCard {
-    width: 20%;
+    width: 22%;
     background-color: white;
     height: 20vh;
     border-radius: 10px;
@@ -47,8 +47,10 @@
     display: flex;
     flex-direction: column;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    padding: 0 20px;
+    position: relative;
   }
-  
+
   .dashCard p {
     font-size: 12px;
     font-weight: bold;

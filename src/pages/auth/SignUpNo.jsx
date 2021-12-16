@@ -2,17 +2,20 @@ import React, {useState} from "react";
 import { Formik } from 'formik';
 import SignUpCss from '../../components/styles/Sign-in.module.css'
 import Background1 from '../../components/img/background1.png'
-import {useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import AuthModal from "./AuthModal";
 
 
 
 function SignUpNo(props) {
 let navigate =  useNavigate();
+const [showModal, setShowModal] = useState(false)
 
 return (
 
   <div>
+  {showModal ? <AuthModal text = {'Registration successful'} /> : null}
       <section className={SignUpCss.signInHero}>
           <div className= {SignUpCss.background}>
               <div className={SignUpCss.left}>
@@ -67,8 +70,13 @@ return (
               axios.post('auth/signup', data) //add role
                 .then (res => {
                   if(res.status === 200) {
+                    
+                    setShowModal(true)
                     console.log('Yes')
-                    navigate('/signin');
+                    setTimeout(() => {
+                      navigate('/signin');
+                    }, 4000)
+                    
                     setSubmitting(false); 
                   }
                 })
@@ -85,7 +93,7 @@ return (
               isSubmitting,
             
             }) => (
-              <form onSubmit={handleSubmit}>
+              <form className= {SignUpCss.form} onSubmit={handleSubmit}>
                 
                 <input
                   type="text"
@@ -143,6 +151,11 @@ return (
                 
                 <button type="submit " className={SignUpCss.signInBtn}  disabled={isSubmitting}> SIGN UP </button> 
                 
+                <p className='not-reg'>Already have an account? <br/>
+                <Link to="/signin" style={{  color: '#0ab1e4'}} > Sign in here </Link>
+                
+                </p>
+
               </form>
 
               

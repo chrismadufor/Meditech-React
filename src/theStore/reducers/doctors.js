@@ -2,41 +2,7 @@
 import{ ADD_ALL_DOCTORS} from '../constants'
 
 let initialState ={
-  doctors :[
-     {
-       name:' Ugochukwu Inyang',
-       department: 'Paediatrics'
-
-     },
-
-     {
-      name:'Abigail Odeh',
-      department: 'Gynaecology'
-
-    },
-    {
-      name:'Emmanuel Okoroji',
-      department: 'Paediatrics'
-
-    },
-    {
-      name:'Emmanuel Okoroji',
-      department: 'Paediatrics'
-
-    },
-    {
-      name:'Emmanuel Okoroji',
-      department: 'Paediatrics'
-
-    },
-    {
-      name:'Emmanuel Okoroji',
-      department: 'Paediatrics'
-
-    },
-
-
-  ]
+  doctors :[]
   
 }
 

@@ -31,6 +31,9 @@
   object-fit: cover;
   margin-right: 50px;
 }
+.profilePicture img {
+  object-fit: cover;
+}
 .flex {
   display: flex;
   

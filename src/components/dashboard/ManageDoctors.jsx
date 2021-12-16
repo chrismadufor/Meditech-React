@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+ import React, {useEffect} from 'react'
 import TopNav from './layouts/TopNav'
 import Managedoctors from '../styles/manageDoctors.module.css'
 import axios from 'axios';
@@ -70,7 +70,7 @@ let renderDoctors = () => {
             <TopNav name = "Manage doctors"/>
           
         
-        <div  className='mainContent'>
+        <div  className={ManageDoctors.mainContent}>
           
           <div className={Managedoctors.doctorHeader}>
             <p>All Doctors</p>

@@ -1,5 +1,6 @@
 import React from 'react'
 import sunrise from '../../img/sunrise.png'
+import vec from '../../img/v3.svg'
 import { useSelector } from "react-redux";
 import styles from '../../styles/adminDashboardInfo.module.css'
 
@@ -12,7 +13,7 @@ function AdminDashboardInfo() {
            <div className={styles.welcomeFilter}>
                 <div className={styles.greeting}>
                     <img src={sunrise} alt="" />
-                    <h3>Good Morning, Admin</h3>
+                    <h3>Good day, Admin</h3>
                 </div>
                 <div className={styles.filter}>
                     <select>
@@ -26,6 +27,7 @@ function AdminDashboardInfo() {
                 <div className={styles.dashCard}>
                     <p>All Patients</p>
                     <h1>206</h1>
+                    <img src={vec} alt=''/>
                 </div>
                 <div className={styles.dashCard}>
                     <p>All Doctors</p>

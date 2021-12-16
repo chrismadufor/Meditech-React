@@ -5,14 +5,18 @@ import {useDispatch, useSelector} from 'react-redux'
 import { sideNavLinks } from '../SideNavLinks'
 import SideNavCSS from "../../styles/SideNav.module.css"
 import { userLoggedIn, updateUserDetails } from '../../../theStore/actions'
+import LogoutModal from './LogoutModal'
 
 
 function SideNav() {
     
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [logout, setLogout] = useState(false)
+
 
     const userRole = useSelector((state) => (state.authReducer.userDetails.userType))
+    
 
     let navLinks;
     if (userRole === 'patient') {
@@ -42,11 +46,9 @@ function SideNav() {
     }
 
     const logOut = () => {
-        localStorage.removeItem('token')
-        dispatch(updateUserDetails({}))
-        dispatch(userLoggedIn(false))
-        navigate('/signin')
+       setLogout(true)
     }
+    const hideLogoutModal = () => setLogout(false)
 
     return (
         <div className= {`${SideNavCSS.sideNav} ${active ? SideNavCSS.active : ""}`}>
@@ -57,6 +59,8 @@ function SideNav() {
                         <i className="fas fa-bars"></i>
                     </div>
             </div>
+            
+            {logout ? <LogoutModal function = {hideLogoutModal} /> : null}
             <ul className={SideNavCSS.sideNavLinks}>
                 {navLinks ?
                    <> {navLinks.map((link, index) => (

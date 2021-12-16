@@ -4,10 +4,14 @@ import TopNav from './layouts/TopNav'
 import {useSelector, useDispatch} from 'react-redux'
 import Styles from '../styles/DoctorSchedule.module.css'
 import {addDoctors} from '../../theStore/actions'
+import Feedback from './layouts/Feedback'
+import { useNavigate } from 'react-router-dom'
 
 
 function DoctorSchedule() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [showModal, setShowModal] = useState(false)
     
     const token = localStorage.getItem('token');
     const config = {
@@ -45,14 +49,18 @@ function DoctorSchedule() {
     const createSchedule = e => {
         e.preventDefault()
         const data = {
-            dutyDate: state.date,
+            dutyDate: (state.date).substring((state.date).length - 2),
             period: state.period,
             userId: currUser[0].id
         }
 
        axios.post('https://meditech-hospital-app.herokuapp.com/calendar/create', data, config)
         .then(res => {
-            console.log('res', res)
+            // setShowModal(true)
+            // setTimeout(() => {
+            //     navigate('/dashboard/manage-doctors')
+            // }, 4000)
+            console.log("data", data)
         })
         .catch(err => console.log(err))
        
@@ -63,6 +71,7 @@ function DoctorSchedule() {
         <div className='main'>
             <TopNav name = "Schedule doctors"/>
             <div className='main-content'>
+                {showModal ? <Feedback text = {'Schedule successful'} /> : null}
                 <form className={Styles.form}>
                     <select className={Styles.select} name='doctor' onChange= {onChange} value={state.doctor}>
                         <option>Choose a doctor</option>

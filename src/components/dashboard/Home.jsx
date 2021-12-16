@@ -1,24 +1,63 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TopNav from './layouts/TopNav'
 import { useSelector, useDispatch } from "react-redux";
 import { GenericModal } from '../layout/GenericModal';
-import { resolveAppointment } from '../../theStore/actions'
+import { addDoctors, resolveAppointment } from '../../theStore/actions'
 import AppointmentStyles from '../styles/Appointments.module.css'
 import PatientDashboardInfo from './layouts/PatientDashboardInfo';
 import DoctorDashboardInfo from './layouts/DoctorDashboardInfo';
 import AdminDashboardInfo from './layouts/AdminDashboardInfo';
+import axios from 'axios'
 
 function Home() {
+    
+    let [bookings, setBookings] = React.useState([])
     const dispatch = useDispatch()
     const role = useSelector(state => state.authReducer.userDetails.userType)
     let [showModal, setShowModal] = React.useState(false)
     let [item, setItem] = React.useState({})
     const dummyData = useSelector((state) => state.dashboardReducer.appointments);
-    // const userData = useSelector((state) => (state.authReducer.userDetails))
+
+    let fetchAppointments = async () => {
+        let url = role === 'admin' ? 'bookings/getall' : 
+        'bookings/user'
+        await axios.get(`https://meditech-hospital-app.herokuapp.com/${url}`, {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(val => {
+            console.log("Val", val.data)
+            // dispatch(addMultipleAppointments(val.data))
+            setBookings(val.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    if(role === 'admin') {
+        const token = localStorage.getItem('token');
+
+        const config = {
+            headers : {
+                Authorization : 'Bearer ' + token
+            }
+        }
+        axios.get('https://meditech-hospital-app.herokuapp.com/users/all-doctors', config)
+        .then((res) =>{
+        dispatch(addDoctors(res.data.data))
+        sessionStorage.setItem('doctors', JSON.stringify(res.data.data))
+        // console.log("Response", res.data.data)
+    
+        })
+        .catch(err =>{
+        console.log(err)
+        })
+    }
 
     let hideModal = () => {
         setShowModal(false)
     }
+
 
     let docBtn = () => {
         if(role === 'doctor'){
@@ -54,7 +93,10 @@ function Home() {
             </tr>
         );
     }
-
+    React.useEffect(() => {
+        // setCurrentPage(bookings.slice(0, 4))
+        fetchAppointments()
+    }, [])
     
     return (
         <div className='main'>
@@ -113,9 +155,17 @@ function Home() {
                         </tr>
                     </thead>
                     <tbody id="table-body-ad">
-                    {
-                        renderTableRows()
-                    }
+                    {role !== 'admin' ? 
+                            bookings.map(item => 
+                            (<tr data-item={item.id} id={item.id}>
+                                <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
+                                {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
+                                <td><p>{(item.date).substring(0, 10)}</p></td>
+                                <td><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
+                                <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
+                                <td onClick={e=>handleShowModal(e, item)}><p>{item.status}</p></td>
+                            </tr>)
+                            ) : null}
                     </tbody>
                     </table>
                     <button className="afterTable">

@@ -1,0 +1,24 @@
+.dashCard {
+    width: 20%;
+    background-color: white;
+    height: 20vh;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  }
+  
+  .dashCard p {
+    font-size: 12px;
+    font-weight: bold;
+    color: #252525;
+  }
+  
+  .dashCard h1 {
+    font-size: 38px;
+    font-weight: bold;
+    color: #252525;
+    margin-top: 10px;
+  }
