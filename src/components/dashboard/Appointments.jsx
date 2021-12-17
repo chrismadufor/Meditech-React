@@ -192,13 +192,13 @@ function Appointments() {
                     {
                             bookings.map(item => 
                                 (<tr className={Styles.tRow} data-item={item.id} id={item.id}>
-                <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
-                {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
-                <td className={Styles.Test}><p>{(item.date).substring(0, 10)}</p></td>
-                <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
-                <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
-                <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
-            </tr>)
+                                    <td><p>{role === 'patient' ? item.doctorName : item.patientName}</p></td>
+                                    {role === 'admin' ? (<td><p>{item.doctorName}</p></td>) : null}
+                                    <td className={Styles.Test}><p>{(item.date).substring(0, 10)}</p></td>
+                                    <td className={Styles.Test}><p>{item.time + ((item.time >= 9 ) ? 'AM' : 'PM')}</p></td>
+                                    <td><p>{role === 'patient' ? item.doctorContact : item.patientContact}</p></td>
+                                    <td onClick={e=>handleShowModal(e, item)} className={Styles[item.status]}><p>{item.status}</p></td>
+                                </tr>)
                             )}
                     </tbody>
                     </table>
