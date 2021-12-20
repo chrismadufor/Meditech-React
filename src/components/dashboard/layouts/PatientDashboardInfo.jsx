@@ -14,7 +14,7 @@ function PatientDashboardInfo() {
                     <div className="patient">
 
                     <div className="patient-greet">
-                    <p>Good Morning</p> <br />
+                    <p>Good Day,</p> <br />
                     <img src={sunrise} alt="" />
                     </div>
                     
@@ -26,7 +26,7 @@ function PatientDashboardInfo() {
                             <p className={styles.patName}> 
                                 {userData.fullName} 
                             </p>
-                            <p className="hosed">Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
+                            <p className= {styles.hosed}>Hospital ID: <span className="hos-num">{userData.hospitalId ? userData.hospitalId : 'To be assigned'}</span></p>
                         </div>
                     
                     </div>

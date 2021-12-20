@@ -8,9 +8,12 @@ import PatientDashboardInfo from './layouts/PatientDashboardInfo';
 import DoctorDashboardInfo from './layouts/DoctorDashboardInfo';
 import AdminDashboardInfo from './layouts/AdminDashboardInfo';
 import axios from 'axios'
+import {SyncLoader} from 'react-spinners'
+import {css} from '@emotion/react'
 
 function Home() {
     
+    const [loading, setLoading] = useState(true)
     let [bookings, setBookings] = React.useState([])
     const dispatch = useDispatch()
     const role = useSelector(state => state.authReducer.userDetails.userType)
@@ -29,9 +32,11 @@ function Home() {
             if(role === 'admin'){
                 dispatch(addMultipleAppointments(val.data.data))
                 setBookings(val.data.data)
+                setLoading(false)
             } else {
                 dispatch(addMultipleAppointments(val.data))
                 setBookings(val.data)
+                setLoading(false)
             }
         }).catch(err => {
             console.log(err)
@@ -126,10 +131,18 @@ function Home() {
         // setCurrentPage(bookings.slice(0, 4))
         fetchAppointments()
     }, [])
+    const LoaderCss = css`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `
     
     return (
         <div className='main'>
             <TopNav name='Dashboard'/>
+            {loading ? <SyncLoader loading = {loading} css={LoaderCss} size= {15} color = ' #00a8db'/> :
             <div className='main-content'>
                 {role === 'patient' ? <PatientDashboardInfo /> : role === 'doctor' ? <DoctorDashboardInfo /> : role === 'admin' ? <AdminDashboardInfo /> : null}
                 <GenericModal show={showModal} handleClose={hideModal}>
@@ -157,7 +170,8 @@ function Home() {
                             </div>
                         </div>
                     </GenericModal>
-                <div className="tableComponent">
+                    { bookings.length === 0 ? (<p style = {{margin: '30px auto', width: '400px', textAlign: 'center'}}>No appointments yet</p>) : 
+                    (<div className="tableComponent">
                     <div className="tableTopRow">
                     <div>
                         <select name="label"  className="filterOption">
@@ -201,8 +215,9 @@ function Home() {
                     View all
                     </a>
                     </button>
-                </div>
+                </div>)}
             </div>
+            }
         </div>
     )
 }

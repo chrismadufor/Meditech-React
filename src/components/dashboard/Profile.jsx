@@ -26,7 +26,7 @@ function Profile() {
           <div className={Profilecss.profileWrap}>
             <h2>Basic Information</h2>
               <div className={`${Profilecss.basicInfo}, ${Profilecss.flex}`}>
-                <div className={Profilecss.wide}>
+                <div className={Profilecss.first}>
                   <div className={Profilecss.infoItem}>
                     <p className={Profilecss.infoItemTitle}>Full Name</p>
                     <p className={Profilecss.profileName}>{user.fullName}</p>
@@ -63,10 +63,10 @@ function Profile() {
             <hr />
             <h2 className={Profilecss.h2}>Other Information</h2>
             <div className={`${Profilecss.otherInfo}, ${Profilecss.flex}`}>
-              <div>
+              <div className={Profilecss.first}>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>Date of birth</p>
-                  <p className={Profilecss.profileDOB}>{user.dateOfBirth}</p>
+                  <p className={Profilecss.profileDOB}>{user.dateOfBirth ? (user.dateOfBirth.substring(0, 10)): null}</p>
                 </div>
                 <div className={Profilecss.infoItem}>
                   <p className={Profilecss.infoItemTitle}>City</p>

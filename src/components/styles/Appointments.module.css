@@ -33,7 +33,8 @@
 }
 
 .tRow td p{
-    font-weight: 200 !important;
+    font-weight: 500 !important;
+    font-size: 14px;
     
 }
 .patName{

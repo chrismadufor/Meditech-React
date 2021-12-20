@@ -5,8 +5,17 @@
     background-color: #00A8DB;
     color: white;
     padding: 10px 20px;
+    animation: show 0.5s forwards ease;
     /* height: 50px; */
 }
 .text {
     margin-bottom: 0;
+}
+@keyframes show {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0%);
+    }
 }
