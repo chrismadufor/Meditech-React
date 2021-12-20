@@ -55,7 +55,7 @@ function Dashboard() {
     return (
         
         <div className={DashboardCSS.container}>
-            {loading ? <SyncLoader loading = {loading} css={LoaderCss} size= {20} color = ' #00a8db'/> :
+            {loading ? <SyncLoader loading = {loading} css={LoaderCss} size= {15} color = ' #00a8db'/> :
             <>
                 <SideNav />
                 <Outlet />

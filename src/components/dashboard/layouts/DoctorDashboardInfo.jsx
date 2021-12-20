@@ -20,7 +20,7 @@ function DoctorDashboardInfo() {
             <div className={styles.greet}>
                 <div className={styles.inner}>
                 <img src={sunrise} alt="" />
-                    <h3>Good Morning, Dr. <span className={styles.doctorName}> {userData.fullName} </span></h3>
+                    <h3>Good Day, Dr. <span className={styles.doctorName}> {userData.fullName} </span></h3>
                 </div>
                 <div>
                     <select className={styles.theDate} name="theDate">

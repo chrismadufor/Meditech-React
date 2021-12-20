@@ -5,8 +5,10 @@ import TopNav from "./layouts/TopNav";
 import Appointment from "../styles/bookAppointment.module.css";
 import axios from 'axios';
 import { addAppointment } from '../../theStore/actions'
+import Feedback from './layouts/Feedback'
 
 function AppointmentForm() {
+  const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [data, setData] = useState({
@@ -36,17 +38,19 @@ function AppointmentForm() {
 
     axios.post('https://meditech-hospital-app.herokuapp.com/bookings/create-booking', payload, config)
          .then((res) =>{   
-          console.log(res)
+          setShowModal(true)
+            setTimeout(() => {
+                navigate('/dashboard/appointments')
+            }, 3000)
         })
         .catch(err =>{
           console.log(err)
         })
-    console.log(data)
-    navigate('/dashboard/appointments')
   }
   return (
     <div className="main">
       <TopNav name="Appointments" />
+      {showModal ? <Feedback text = {'Appointment booked successfully'} /> : null}
       <div className={Appointment.background}>
         <div className={Appointment.mainBackground}>
           <h1>Book an Appointment</h1>

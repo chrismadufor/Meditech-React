@@ -5,21 +5,22 @@
 }
 
 .mainBackground {
-  /* background-color: burlywood; */
+  width: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgb(255, 255, 255);
 }
 
 .mainBackground h1 {
-  font-size: 35px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .formInput {
-  width: 48%;
+  width: 100%;
   margin: 5px 0;
   display: flex;
   flex-direction: column;
@@ -35,7 +36,7 @@
 }
 
 .submitForm {
-    width: 48%;
+    width: 100%;
     height: 40px;
     border: 0;
     background-color: #00a8db;
