@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
 import { GenericModal } from '../layout/GenericModal';
 import { resolveAppointment, addMultipleAppointments } from '../../theStore/actions'
+import {SyncLoader} from 'react-spinners'
+import {css} from '@emotion/react'
 
 function Appointments() {
     const dispatch = useDispatch()
@@ -15,6 +17,7 @@ function Appointments() {
     let [item, setItem] = React.useState({})
     let [showAll, setShowAll] = React.useState(true)
     let [currentPage, setCurrentPage] = React.useState([])
+    const [loading, setLoading] = useState(true)
     
     let hideModal = () => {
         setShowModal(false)
@@ -124,9 +127,11 @@ function Appointments() {
             if(role === 'admin'){
                 dispatch(addMultipleAppointments(val.data.data))
                 setBookings(val.data.data)
+                setLoading(false)
             } else {
                 dispatch(addMultipleAppointments(val.data))
                 setBookings(val.data)
+                setLoading(false)
             }
         }).catch(err => {
             console.log(err)
@@ -158,9 +163,20 @@ function Appointments() {
         fetchAppointments()
         setCurrentPage(bookings.slice(0, 4))
     }, [])
+
+    const LoaderCss = css`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
     return (
         <div className='main'>
-            <TopNav name='Appointments'/>
+        <TopNav name='Appointments'/>
+        {loading ? <SyncLoader loading = {loading} css={LoaderCss} size= {15} color = ' #00a8db'/> :
+        <>
             <div className='main-content' >
                 { bookings.length === 0 ? (<p style = {{margin: '0 auto', width: '400px', textAlign: 'center'}}>No appointments yet</p>) : (<div className="tableComponent">
                     <div className="tableTopRow">
@@ -238,16 +254,17 @@ function Appointments() {
                          <i className='fas fa-chevron-right'></i>
                     </button>
                     </div>
-                    <button className="afterTable"  onClick={e=>showAllRows(e)}>
+                    {/* <button className="afterTable"  onClick={e=>showAllRows(e)}>
                     <a href="/patient-appointment.html">
                     {`${showAll?'View less':'View all'}`}
                     </a>
-                    </button>
+                    </button> */}
                 </div>)}
             </div>
             <div>
               <img src="./img/Elipses (3).png" className="elipses" alt="" />
             </div>
+        </>}
         </div>
           
   );

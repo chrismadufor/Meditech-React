@@ -2,7 +2,7 @@
   background-color: #f3f3f3;
   width: 100%;
   transition: 0.3s;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 
 }
 .mainContent {
@@ -26,8 +26,8 @@
 }
 .profilePicture {
   width: 20%;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
   object-fit: cover;
   margin-right: 50px;
 }
@@ -54,11 +54,15 @@ hr {
 }
 .infoItem p:last-child {
   font-weight: bold;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-weight: 500;
   margin: 10px 30px;
 }
 div.wide {
   width: 60%;
+}
+.first {
+  width: 300px;
 }
 .infoItemTitle {
   font-size: 14px;
@@ -67,11 +71,11 @@ div.wide {
 .editProfile {
   background-color: #00a8db;
   color: white;
-  padding: 5px 5px;
+  padding: 5px 10px;
   margin-right: 20px;
   font-weight: bold;
-  height: 50px;
-  width: 150px;
+  height: 40px;
+  width: 200px;
 }
 .editProfile i {
   margin-right: 10px;

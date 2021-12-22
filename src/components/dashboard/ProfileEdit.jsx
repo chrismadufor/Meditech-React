@@ -7,12 +7,13 @@ import axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux'
 import { updateUserDetails } from '../../theStore/actions'
 import profilePic from '../img/patient.jpg'
-
+import Feedback from './layouts/Feedback'
 import {  useNavigate } from 'react-router-dom'
 
 
 
 function ProfileEdit() {
+  const [showModal, setShowModal] = useState(false)
   const role = useSelector(state => state.authReducer.userDetails.userType)
   const user = useSelector(state => state.authReducer.userDetails)
   let navigate =  useNavigate();
@@ -43,7 +44,10 @@ function ProfileEdit() {
 
             dispatch(updateUserDetails(res.data))
             // setLoading(false)
-            navigate('/dashboard/profile')
+            setShowModal(true)
+            setTimeout(() => {
+                navigate('/dashboard/profile')
+            }, 4000)
 
             console.log(res)
           })
@@ -76,6 +80,7 @@ const pictureUpload = async (e)=> {
     return (
       <div className={Editcss.main}>
         <TopNav name= 'Profile Edit'/>
+        {showModal ? <Feedback text = {'Profile updated successfully'} /> : null}
         <div className={Editcss.mainContent}>
           <div className={Editcss.mainContentWrap}>
              
@@ -214,7 +219,7 @@ const pictureUpload = async (e)=> {
                 name="dateOfBirth"
                onChange={handleChange}
                onBlur={handleBlur}
-               value={values.dateOfBirth}
+               value={values.dateOfBirth ? (values.dateOfBirth.substring(0, 10)): null}
                 placeholder="Enter your date of birth"
               />
               <div style={{color:"red"}}>  

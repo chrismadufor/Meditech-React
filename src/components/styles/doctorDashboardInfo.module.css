@@ -7,6 +7,9 @@ justify-content: space-between;
   font-weight: bold;
   font-size: 18px;
 }
+.doctorName {
+  font-size: 18px;
+}
 .inner{
     display: flex;
     align-items: center;

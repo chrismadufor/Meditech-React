@@ -56,10 +56,10 @@ function DoctorSchedule() {
 
        axios.post('https://meditech-hospital-app.herokuapp.com/calendar/create', data, config)
         .then(res => {
-            // setShowModal(true)
-            // setTimeout(() => {
-            //     navigate('/dashboard/manage-doctors')
-            // }, 4000)
+            setShowModal(true)
+            setTimeout(() => {
+                navigate('/dashboard/manage-doctors')
+            }, 4000)
             console.log("data", data)
         })
         .catch(err => console.log(err))

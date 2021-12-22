@@ -131,7 +131,7 @@ export const sideNavLinks = {
         {
             title: "Manage Doctors",
             url: "/dashboard/manage-doctors",
-            icon: "fas fa-heartbeat",
+            icon: "fas fa-user-md",
             extraClass: ""
         },
         // {
